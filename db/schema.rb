@@ -10,9 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_30_133508) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_150959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "group_users", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "name"
+    t.integer "duration"
+    t.integer "rating"
+    t.integer "year"
+    t.string "country"
+    t.string "keyword"
+    t.string "restriction"
+    t.string "poster"
+    t.string "platform"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ordered_choices", force: :cascade do |t|
+    t.integer "point"
+    t.bigint "movie_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_ordered_choices_on_group_id"
+    t.index ["movie_id"], name: "index_ordered_choices_on_movie_id"
+  end
+
+  create_table "quizz_choices", force: :cascade do |t|
+    t.string "genre"
+    t.string "actor"
+    t.string "keyword"
+    t.integer "duration"
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_quizz_choices_on_group_id"
+    t.index ["user_id"], name: "index_quizz_choices_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +76,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_133508) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "groups", "users"
+  add_foreign_key "ordered_choices", "groups"
+  add_foreign_key "ordered_choices", "movies"
+  add_foreign_key "quizz_choices", "groups"
+  add_foreign_key "quizz_choices", "users"
 end
