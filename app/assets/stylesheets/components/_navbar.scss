@@ -43,21 +43,30 @@ Nav Styles
   position: fixed;
   width: 100%;
   color: #353535;
-  background-color: #090E6B;
   top: -100%;
   left: 0;
   right: 0;
+  height: 50%;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   transform: scale(0);
-  background-color: #F2C242;
+  background-color: $yellow;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.5rem;
 
 }
+
 
 
 .text-color {
   color: #353535;
+  font-weight: bold;
+  margin-top: 17px;
+  text-align: center;
 }
+
 //
 
 /**
