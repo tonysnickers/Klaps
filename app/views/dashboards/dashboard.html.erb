@@ -1,39 +1,59 @@
-<h1>Welcome <%= @users.username %></h1>
-
-<div class="row">
-  <div class="col">
-    <div class="cards">
-
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>Find a movie</p>
-          <img src="clap_1_ivufzu.png" alt="">
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <% if current_user.username.empty? %>
+        <h1>Welcome <%= current_user.username %></h1>
+      <% else %>
+        <h1>Welcome</h1>
       <% end %>
+    </div>
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>My "old" movies</p>
-        </div>
-      <% end %>
+    <div class="row cont-display">
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>My wishlist</p>
-        </div>
-      <% end %>
+      <div class="col-sm bord padd-b">
+        <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+          <div class="d-flex justify-content-around">
+            <p class="text-align align-middle">Find a movie</p>
+            <%= cl_image_tag("clap_1_ivufzu.png", width: 100, height: 100) %>
+          </div>
+        <% end %>
+      </div>
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>Add some friends</p>
-        </div>
-      <% end %>
+      <div class="col-sm d-print-grid">
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>My friend's movies</p>
+        <div class="bord padd-s">
+          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+            <div class="">
+              <p>My "old" movies</p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+
+        <div class="bord padd-s">
+          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+            <div class="">
+              <p>My wishlist</p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="bord padd-s">
+          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+            <div class="">
+              <p>Add some friends</p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="bord padd-s">
+          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+            <div class="">
+              <p>My friend's movies</p>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
 
     </div>
   </div>

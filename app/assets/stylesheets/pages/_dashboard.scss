@@ -1,8 +1,28 @@
-.cards {
+.cont-display {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-template-columns: auto auto auto auto;
 }
+.bord {
+  gap: 10px;
+  margin: 10px;
+  border: 1px solid $yellow;
+  border-radius: $radius;
+  text-align: center;
+  p{
+    color: $yellow;
+    vertical-align: middle;
+    margin-top: 1rem;
+  }
+}
+.padd-b {
+  padding: 30px;
+  grid-column-start: span 4;
+}
+.padd-s {
+  padding: 30px 50px;
+  grid-column-start: span 2;
+}
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
