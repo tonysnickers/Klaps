@@ -7,10 +7,10 @@
 </div> %>
 
 <div class="navbar">
-  <i class="fa-solid fa-angle-left fa-2x arrow"></i>
+  <%= link_to request.referer.present? ? request.referer : default_path, class:"link-none" do  %>
+    <i class="fa-solid fa-angle-left fa-2x arrow"></i>
+  <% end  %>
   <input id="toggle" type="checkbox">
-
-
 
   <label for="toggle" class="hamburger">
     <div class="top-bun"></div>
