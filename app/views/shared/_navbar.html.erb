@@ -6,22 +6,22 @@
   </a>
 </div> %>
 
+<div class="navbar">
+  <i class="fa-solid fa-angle-left fa-2x arrow"></i>
+  <input id="toggle" type="checkbox">
 
-<input id="toggle" type="checkbox"> 
 
-<label for="toggle" class="hamburger">
-  <div class="top-bun"></div>
-  <div class="meat"></div>
-  <div class="bottom-bun"></div>
-</label>
 
-<div class="nav">
-  <div class="nav-wrapper">
-    <nav>
-      <a href="#">HOME</a><br>
-      <a href="#">ABOUT</a><br>
-      <a href="#">WORK</a><br>
-      <a href="#">SERVICES</a>
-    </nav>
+  <label for="toggle" class="hamburger">
+    <div class="top-bun"></div>
+    <div class="meat"></div>
+    <div class="bottom-bun"></div>
+  </label>
+
+  <div class="nav py-4">
+    <div class="d-flex flex-column justify-content-start">
+      <%= link_to "HOME", "#", class: 'px-4 py-2 text-white text_decoration_none text-color' %>
+      <%= link_to "LOGOUT", "#", class: 'px-4 py-2 text-white text_decoration_none text-color' %>
+    </div>
   </div>
 </div>
