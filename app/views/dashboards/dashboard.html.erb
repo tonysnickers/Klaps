@@ -1,0 +1,29 @@
+<h1>Welcome <%= @users.username %></h1>
+
+<div class="row">
+  <div class="col">
+    <div class="cards">
+
+      <div class="card-category">
+        <%= link_to "Find a movie", dashboard_index_path %>
+      </div>
+
+      <div class="card-category">
+        <%= link_to 'My "old" movies', dashboard_index_path %>
+      </div>
+
+      <div class="card-category">
+        <%= link_to "My wishlist", dashboard_index_path %>
+      </div>
+
+      <div class="card-category">
+        <%= link_to "Add some friends", dashboard_index_path %>
+      </div>
+
+      <div class="card-category">
+        <%= link_to "My friend's movies", dashboard_index_path %>
+      </div>
+
+    </div>
+  </div>
+</div>
