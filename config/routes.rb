@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#dashboard'
   get 'dashboard/index', to: 'dashboards#index', as: :dashboard_index
 
-  resources :group, only: [:index, :show, :new, :create, :delete] do
+  resources :groups, only: [:index, :show, :new, :create, :update] do
     resources :ordered_choices, only: %i[new edit]
     resources :quizz_choices, only: %i[new edit]
   end

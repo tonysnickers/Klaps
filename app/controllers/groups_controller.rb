@@ -1,8 +1,8 @@
-class GroupController < ApplicationController
-  before_action :set_group, only [:show, :edit, :update]
+class GroupsController < ApplicationController
+  before_action :set_group, only: [:show, :edit, :update]
 
   def index
-    @group = Group.all
+    @groups = Group.all
   end
 
   def show() end
@@ -15,12 +15,8 @@ class GroupController < ApplicationController
     @group = Group.new(params_group)
   end
 
-  def edit
-
-  end
-
   def update
-
+    @group.archive = true
   end
 
   private
