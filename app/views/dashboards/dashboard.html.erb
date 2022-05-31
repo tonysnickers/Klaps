@@ -4,25 +4,36 @@
   <div class="col">
     <div class="cards">
 
-      <div class="card-category">
-        <%= link_to "Find a movie", dashboard_index_path %>
-      </div>
+      <%= link_to dashboard_index_path do %>
+        <div class="card-category">
+          <p>Find a movie</p>
+          <img src="clap_1_ivufzu.png" alt="">
+        </div>
+      <% end %>
 
-      <div class="card-category">
-        <%= link_to 'My "old" movies', dashboard_index_path %>
-      </div>
+      <%= link_to dashboard_index_path do %>
+        <div class="card-category">
+          <p>My "old" movies</p>
+        </div>
+      <% end %>
 
-      <div class="card-category">
-        <%= link_to "My wishlist", dashboard_index_path %>
-      </div>
+      <%= link_to dashboard_index_path do %>
+        <div class="card-category">
+          <p>My wishlist</p>
+        </div>
+      <% end %>
 
-      <div class="card-category">
-        <%= link_to "Add some friends", dashboard_index_path %>
-      </div>
+      <%= link_to dashboard_index_path do %>
+        <div class="card-category">
+          <p>Add some friends</p>
+        </div>
+      <% end %>
 
-      <div class="card-category">
-        <%= link_to "My friend's movies", dashboard_index_path %>
-      </div>
+      <%= link_to dashboard_index_path do %>
+        <div class="card-category">
+          <p>My friend's movies</p>
+        </div>
+      <% end %>
 
     </div>
   </div>
