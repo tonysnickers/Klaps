@@ -3,11 +3,44 @@ require 'json'
 
 puts "Cleaning up database..."
 Movie.destroy_all
+User.destroy_all
 puts "Database cleaned"
 
-# for i in (570..575) do # TODO: pages de 1 à 500
-  movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4").read)["results"]
-# p movies
+antoine = User.new(
+  username: "antoine",
+  email: "antoine.mendy@gmail.com",
+  password: "moviefinder"
+)
+manoa = User.new(
+  username: "manoa",
+  email: "manoa.ras@gmail.com",
+  password: "moviefinder"
+)
+
+jeanne = User.new(
+  username: "jeanne",
+  email: "jeanne.deleusse@gmail.com",
+  password: "moviefinder"
+)
+
+jacques = User.new(
+  username: "ja",
+  email: "ja.dc@gmail.com",
+  password: "moviefinder"
+)
+
+antoine.save!
+manoa.save!
+jeanne.save!
+jacques.save!
+
+p antoine
+p jeanne
+p manoa
+p antoine
+
+(1..3).each do |page_number|
+  movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
 
   movies.each do |movie|
     base_poster_url = "https://image.tmdb.org/t/p/original"
@@ -21,18 +54,42 @@ puts "Database cleaned"
     moviez = JSON.parse(URI.open(base_movie_url).read)
     actors = JSON.parse(URI.open(base_actor_url).read)
 
+    # si il existe une plateforme pour voir le film,
+    # alors on stocke dans l'array platform toutes les plateformes FR qui le diffusent
     if platforms['results']['FR'] && platforms['results']['FR']['flatrate']
-      platform = platforms['results']['FR']['flatrate'][0]['provider_name']
+      platform = []
+      platforms['results']['FR']['flatrate'].each do |plat|
+        platform << plat['provider_name']
+      end
+      # platform = [0]['provider_name']
     end
 
+    # on stocke dans actor les 5 premiers noms du casting
+    if actors['cast']
+      actor = []
+      actors['cast'].first(5).each do |cast|
+        actor << cast['name']
+      end
+    end
+
+    # si il y a un pays de production
     if moviez['production_countries'] && moviez['production_countries'][0] && moviez['production_countries'][0]['name']
       country = moviez['production_countries'][0]['name']
     end
 
-    if keywords.length > 0
+    # si il y  a des keywords on les met tous dans l'array keyword
+    if keywords.length.positive?
       keyword = []
-      keywords.each do |key|
+      keywords.first(15).each do |key|
         keyword << key['name']
+      end
+    end
+
+    # si il y  a des genres on les met tous dans l'array genre
+    if moviez['genres']
+      genre = []
+      moviez['genres'].each do |gender|
+        genre << gender['name']
       end
     end
 
@@ -40,7 +97,6 @@ puts "Database cleaned"
 
     Movie.create!(
       name: movie['title'],
-      # idapi: movie['id'],
       duration: moviez['runtime'],
       rating: movie['vote_average'],
       year: movie['release_date'],
@@ -48,12 +104,12 @@ puts "Database cleaned"
       keyword: keyword,
       poster: "#{base_poster_url}#{movie['poster_path']}",
       synopsis: movie['overview'],
-      # genre: moviez['genres'][0]['name'],
+      genre: genre,
       platform: platform,
-      # actor: actors[cast].first(5)
+      actor: actor
     )
   end
-# end
+end
 
 puts "Movies created"
 puts Movie.all.last.keyword
