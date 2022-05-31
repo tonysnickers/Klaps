@@ -1,4 +1,9 @@
-<h1>Welcome <%= @users.username %></h1>
+
+<% if current_user.username.empty? %>
+  <h1>Welcome <%= current_user.username %></h1>
+<% else %>
+  <h1>Welcome</h1>
+<% end %>
 
 <div class="row">
   <div class="col">

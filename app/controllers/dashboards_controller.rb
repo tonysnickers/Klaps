@@ -1,6 +1,5 @@
 class DashboardsController < ApplicationController
   def dashboard
-    @users = User.new
   end
 
   def index
