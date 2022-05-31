@@ -1,0 +1,5 @@
+<h1>Organize a film show</h1>
+
+<%= simple_form_for @group_user do |f| %>
+  <%= f.association :users, as: :check_boxes %>
+<% end %>
