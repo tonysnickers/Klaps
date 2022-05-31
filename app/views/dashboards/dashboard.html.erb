@@ -1,43 +1,61 @@
-<% if current_user.username.empty? %>
-  <h1>Welcome <%= current_user.username %></h1>
-<% else %>
-  <h1>Welcome</h1>
-<% end %>
-
-<div class="row">
-  <div class="col">
-    <div class="cards border border-dark">
-
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category d-flex justify-content-around border">
-          <p>Find a movie</p>
-          <%= cl_image_tag("clap_1_ivufzu.png", width: 100, height: 100) %>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <% if current_user.username.empty? %>
+        <h1>Welcome <%= current_user.username %></h1>
+      <% else %>
+        <h1>Welcome</h1>
       <% end %>
+    </div>
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>My "old" movies</p>
-        </div>
-      <% end %>
+    <div class="row">
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>My wishlist</p>
-        </div>
-      <% end %>
+      <div class="col-sm bord">
+        <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+          <div class="card-category d-flex justify-content-around">
+            <p class="text-align align-middle">Find a movie</p>
+            <%= cl_image_tag("clap_1_ivufzu.png", width: 100, height: 100) %>
+          </div>
+        <% end %>
+      </div>
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>Add some friends</p>
-        </div>
-      <% end %>
+      <div class="col-sm-12">
+        <div class="d-flex">
 
-      <%= link_to dashboard_index_path do %>
-        <div class="card-category">
-          <p>My friend's movies</p>
+          <div class="col-sm-6 bord">
+            <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+              <div class="card-category">
+                <p>My "old" movies</p>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col-sm-6 bord">
+            <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+              <div class="card-category">
+                <p>My wishlist</p>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col-sm-6 bord">
+            <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+              <div class="card-category">
+                <p>Add some friends</p>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col-sm-6 bord">
+            <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+              <div class="card-category">
+                <p>My friend's movies</p>
+              </div>
+            <% end %>
+          </div>
+
         </div>
-      <% end %>
+      </div>
 
     </div>
   </div>
