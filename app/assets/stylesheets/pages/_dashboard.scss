@@ -1,11 +1,9 @@
-.cards {
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
-  // grid-gap: 16px;
-  border: 1px solid black;
+.cont-display {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
-
 .bord {
+  gap: 10px;
   margin: 10px;
   border: 1px solid $yellow;
   border-radius: $radius;
@@ -13,13 +11,16 @@
   p{
     color: $yellow;
     vertical-align: middle;
+    margin-top: 1rem;
   }
 }
-.marg {
+.padd-b {
   padding: 30px;
+  grid-column-start: span 4;
 }
-.padd {
-  padding: 30px 5px;
+.padd-s {
+  padding: 30px 50px;
+  grid-column-start: span 2;
 }
 
 
