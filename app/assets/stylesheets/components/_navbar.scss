@@ -1,53 +1,91 @@
 .navbar {
   background-color: $darkgray;
-  height: 100px;
+  height: 10vh;
+  margin-top: -8px;
+  display: flex;
+  align-items: center;
+
 }
 
-.back-button {
-  text-decoration: none;
-  width: 25px;
-  height: 25px;
-  border-left: 2.5px solid $light-gray;
-  border-bottom: 2.5px solid $light-gray;
+
+#toggle {
+  display: none;
+}
+
+/**
+  Hamburger
+**/
+.hamburger {
+  position: absolute;
+  top: 5em;
+  right: 5%;
+  margin-left: -2em;
+  margin-top: -45px;
+  width: 2em;
+  height: 45px;
+  z-index: 5;
+}
+
+.hamburger div {
+  position: relative;
+  width: 2em;
+  height: 4px;
+  border-radius: 3px;
+  background-color: #DDDDDD;
+  margin-top: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/**
+Nav Styles
+**/
+.nav {
+  position: fixed;
+  width: 100%;
+  color: #353535;
+  background-color: #090E6B;
+  top: -100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0);
+  background-color: #F2C242;
+
+}
+
+
+.text-color {
+  color: #353535;
+}
+//
+
+/**
+Animations
+**/
+#toggle:checked + .hamburger .top-bun {
+  transform: rotate(-44deg);
+  margin-top: 21px;
+}
+
+
+
+#toggle:checked + .hamburger .bottom-bun {
+  opacity: 0;
   transform: rotate(45deg);
-  position: absolute;
-  top: 25px;
-  left: 20px;
+}
+#toggle:checked + .hamburger .meat {
+  transform: rotate(45deg);
+  margin-top: -4px;
 }
 
-.back-button:hover {
-  color: $light-gray;
-}
-
-.menu-button {
-  width: 50px;
-  height: 30px;
-  color: $light-gray;
-  position: absolute;
-  top: 25px;
-  right: 20px;
-}
-
-.menu-button:hover {
-  color: $light-gray;
-}
-
-.bar-one {
-  background-color: $light-gray;
-  width: 31px;
-  height: 2.5px;
-  border-radius: 25px;
-  position: absolute;
+#toggle:checked + .hamburger + .nav {
   top: 0;
-  right: 0;
+  transform: scale(1);
 }
 
-.bar-two {
-  background-color: $light-gray;
-  width: 14px;
-  height: 2px;
-  border-radius: 25px;
-  position: absolute;
-  top: 13px;
-  right: 0;
+
+.arrow{
+  margin-top: 15px;
+  margin-left: 15px;
 }
