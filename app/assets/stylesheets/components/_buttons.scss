@@ -1,0 +1,45 @@
+.tag-button {
+  background-color: $white;
+  text-decoration: none;
+  color: $darkgray;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.tag-button:hover {
+  color: $darkgray;
+}
+
+.tag-button:focus {
+  background-color: $yellow;
+  font-weight: bold;
+}
+
+.bottom-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color: $darkgray;
+  text-decoration: none;
+  background-color: $yellow;
+  font-weight: bold;
+}
+
+.bottom-button:hover {
+  color: $darkgray;
+}
+
+.plus-button {
+  text-decoration: none;
+  padding: 10px 100px;
+  background-color: $yellow;
+  color: $darkgray;
+  font-weight: bold;
+  border-radius: 25px;
+}
+
+.plus-button:hover {
+  color: $darkgray;
+}
