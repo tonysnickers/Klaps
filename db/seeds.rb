@@ -3,27 +3,29 @@ require 'json'
 
 puts "Cleaning up database..."
 Movie.destroy_all
+GroupUser.destroy_all
+Group.destroy_all
 User.destroy_all
 puts "Database cleaned"
 
-antoine = User.new(
+antoine = User.create!(
   username: "antoine",
   email: "antoine.mendy@gmail.com",
   password: "moviefinder"
 )
-manoa = User.new(
+manoa = User.create!(
   username: "manoa",
   email: "manoa.ras@gmail.com",
   password: "moviefinder"
 )
 
-jeanne = User.new(
+jeanne = User.create!(
   username: "jeanne",
   email: "jeanne.deleusse@gmail.com",
   password: "moviefinder"
 )
 
-jacques = User.new(
+jacques = User.create!(
   username: "ja",
   email: "ja.dc@gmail.com",
   password: "moviefinder"
@@ -35,9 +37,26 @@ jeanne.save!
 jacques.save!
 
 p antoine
-p jeanne
-p manoa
-p jacques
+
+mf = Group.create!(
+  user: antoine,
+  name: "mf"
+)
+
+jea = GroupUser.create!(
+  user: jeanne,
+  group: mf
+)
+
+ant = GroupUser.create!(
+  user: antoine,
+  group: mf
+)
+
+man = GroupUser.create!(
+  user: manoa,
+  group: mf
+)
 
 (1..3).each do |page_number|
   movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
