@@ -3,4 +3,29 @@
   <div class="progress">
     <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
   </div>
+
+  <input type="text" id="search">
+  <ul id="results">
+      <li>Actor 1 :</li>
+      <li>Actor 2 :</li>
+    </ul>
+
+<% (1...2).each do |page_number|  %>
+  <% actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"] %>
+  <% actor_list = [] %>
+  <% actors.each do |act| %>
+    <% actor_list << act['name'] %>
+  <% end %>
+<% end %>
+
+<%= actor_list %>
+
+
+<%#= form_tag(root_path, method: 'get', class: "form-inline") do %>
+  <div id= "search-data" class="form-search search-data" data-skills="<%= @skills.to_json %>">
+    <%#= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by programming language..." %>
+    <%#= submit_tag "Search", class: "btn btn-primary button-home" %>
+  </div>
+<%# end %>
+
 </div>

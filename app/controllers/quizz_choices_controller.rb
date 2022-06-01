@@ -10,7 +10,7 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.group = Group.find(params[:group_id])
     @quizz_choice.user = current_user
     if @quizz_choice.save
-      redirect_to
+      redirect_to edit_quizz_choice_path(@quizz_choice)
     else
 
     end
