@@ -27,7 +27,6 @@ class QuizzChoicesController < ApplicationController
         @actor_list << act['name']
       end
     end
-
   end
 
   def add_keyword
@@ -47,7 +46,9 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_date
+    raise
     # rajouter la year choisis à l'instance @quizz_choice
+    # @quizz_choice.date = params[]
     @quizz_choice.step = "add_date"
     # @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
