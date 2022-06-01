@@ -1,4 +1,7 @@
-<h1>Group#show</h1>
-<%= @group.name %>
+<h1><%= @group.name %></h1>
+<h3>Members of the group</h3>
+<% @group.users.each do |user| %>
+  <%= user[:username]  %><br>
+<% end %>
 
-<%#= link_to "Delete this group", update path (???) %>
+<%= link_to "Delete this group", group_path(@group.id), method: "patch" %>

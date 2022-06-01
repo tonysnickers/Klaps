@@ -1,9 +1,8 @@
 <h1>Group#index</h1>
 <% @groups.each do |group| %>
   <%# if group.archive == false do |group| %>
-    <%= group.name %>
+    <%= link_to group.name, group_path(group.id), method: "get" %>
     <%= group.user_id %>
+    <%# link_to "Delete group", group_path(group.id), method: "patch" %>
   <%# end %>
 <% end %>
-
-<%# link_to "Delete group",  %>
