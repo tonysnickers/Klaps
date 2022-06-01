@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_keyword add_actor add_year add_duration]
+  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor]
 
   def new
     @group = Group.find(params[:group_id])
@@ -30,10 +30,10 @@ class QuizzChoicesController < ApplicationController
         @actor_list << act['name']
       end
     end
-
   end
 
   def add_keyword
+    # raise
     @quizz_choice.keyword = params["quizz_choice"]["keyword"]
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
@@ -41,15 +41,17 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_duration
-    raise
-    # rajouter la duration choisis à l'instance @quizz_choice
+    # raise
+    @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
-    # @quizz_choice.save!
+    @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
   def add_date
+    raise
     # rajouter la year choisis à l'instance @quizz_choice
+    # @quizz_choice.date = params[]
     @quizz_choice.step = "add_date"
     # @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
