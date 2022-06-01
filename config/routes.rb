@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :ordered_choices, only: %i[new edit]
     resources :quizz_choices, only: %i[new create]
   end
+  resources :group_users, only: [:create]
 
   resources :quizz_choices, only: %i[edit] do
     member do
