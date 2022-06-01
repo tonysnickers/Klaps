@@ -20,16 +20,19 @@ class QuizzChoicesController < ApplicationController
 
   def add_casting
     # rajouter les castings choisis à l'instance @quizz_choice
+    # @quizz_choice = [casting, duration, date]
+    # @quizz_choice.add
+
     # @quizz_choice.step = "add_casting"
     # @quizz_choice.save!
-    # redirect_to edit_path
+    # redirect_to edit_group_ordered_choice
   end
 
   def add_duration
     # rajouter la duration choisis à l'instance @quizz_choice
     # @quizz_choice.step = "add_duration"
     # @quizz_choice.save!
-    # redirect_to edit_path
+    # redirect_to edit_group_ordered_choice
   end
 
   def add_date
