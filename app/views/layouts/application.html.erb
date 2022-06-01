@@ -13,14 +13,13 @@
 
   <body>
 
-    <% if action_name != 'home' %>
+    <% if controller_name != 'sessions' && action_name != 'home' %>
       <%= render "shared/navbar" %>
     <% end %>
 
     <%= render "shared/flashes" %>
 
     <%= yield %>
-
 
   </body>
 </html>

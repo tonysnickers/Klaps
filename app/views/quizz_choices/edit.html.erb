@@ -1,0 +1,7 @@
+<% if @quizz_choice.step == "initial" %>
+  <%= render "casting" %>
+<% elsif @quizz_choice.step == "add_casting" %>
+  <%= render "duration" %>
+<% else %>
+  <%= render "date" %>
+<% end %>
