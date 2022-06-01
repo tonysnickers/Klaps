@@ -63,10 +63,10 @@ man = GroupUser.create!(
 
   movies.each do |movie|
     base_poster_url = "https://image.tmdb.org/t/p/original"
-    base_keyword_url = "https://api.themoviedb.org/3/movie/#{movie["id"]}/keywords?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
-    base_platform_url = "https://api.themoviedb.org/3/movie/#{movie["id"]}/watch/providers?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
-    base_movie_url = "https://api.themoviedb.org/3/movie/#{movie["id"]}?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
-    base_actor_url = "https://api.themoviedb.org/3/movie/#{movie["id"]}/credits?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
+    base_keyword_url = "https://api.themoviedb.org/3/movie/#{movie['id']}/keywords?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
+    base_platform_url = "https://api.themoviedb.org/3/movie/#{movie['id']}/watch/providers?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
+    base_movie_url = "https://api.themoviedb.org/3/movie/#{movie['id']}?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
+    base_actor_url = "https://api.themoviedb.org/3/movie/#{movie['id']}/credits?api_key=5a07d55b0507c919cb598bae7c6fd7b4"
 
     keywords = JSON.parse(URI.open(base_keyword_url).read)['keywords']
     platforms = JSON.parse(URI.open(base_platform_url).read)
