@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_31_150618) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_01_103705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,9 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_31_150618) do
   end
 
   create_table "quizz_choices", force: :cascade do |t|
-    t.string "genre"
-    t.string "actor"
-    t.string "keyword"
+    t.string "genre", array: true
+    t.string "actor", array: true
+    t.string "keyword", array: true
     t.integer "duration"
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
