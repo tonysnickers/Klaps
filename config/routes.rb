@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :group_users, only: [:create]
 
-  resources :quizz_choices, only: %i[edit] do
+  resources :quizz_choices, only: %i[index edit] do
     member do
       patch :add_actor
       patch :add_duration
