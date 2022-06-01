@@ -37,7 +37,7 @@ jacques.save!
 p antoine
 p jeanne
 p manoa
-p antoine
+p jacques
 
 (1..3).each do |page_number|
   movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
