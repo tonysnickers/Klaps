@@ -1,7 +1,6 @@
 <div class="container">
   <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
-    <%#= f.input :date, as: :date %>
-    <%= f.input :date, as: :year, order: :year %>
+    <input id="date-picker" />
     <div class="progress">
       <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
         50%
