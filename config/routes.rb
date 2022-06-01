@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   resources :groups, only: %i[index show new create update] do
     resources :ordered_choices, only: %i[new edit]
-    resources :quizz_choices, only: %i[new]
+    resources :quizz_choices, only: %i[new create]
   end
+
   resources :quizz_choices, only: %i[edit] do
     member do
       patch :add_casting
