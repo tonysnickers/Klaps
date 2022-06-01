@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class QuizzChoicesController < ApplicationController
   before_action :find_quizz_choice, only: %i[edit add_keyword add_actor add_year add_duration]
 
@@ -18,6 +20,14 @@ class QuizzChoicesController < ApplicationController
   end
 
   def edit
+    (1...2).each do |page_number|
+      actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
+      @actor_list = []
+      actors.each do |act|
+        @actor_list << act['name']
+      end
+    end
+
   end
 
   def add_keyword
@@ -43,13 +53,13 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_actor
-    # rajouter les actors choisis à l'instance @quizz_choice
-    # @quizz_choice = [actor, duration, date]
-    # @quizz_choice.add
-
+    @quizz_choice.actor = params["q"]
     @quizz_choice.step = "add_actor"
-    # @quizz_choice.save!
-    # redirect_to edit_group_ordered_choice
+    @quizz_choice.save!
+
+    redirect_to movies_path
+    # **********
+    # LA OU LA MAGIE OPERE
   end
 
   private
