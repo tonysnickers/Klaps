@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   resources :quizz_choices, only: %i[edit] do
     member do
-      patch :add_casting
+      patch :add_actor
       patch :add_duration
       patch :add_date
+      patch :add_keyword
     end
   end
 end

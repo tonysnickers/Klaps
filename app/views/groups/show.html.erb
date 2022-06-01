@@ -1,9 +1,10 @@
 <h1><%= @group.name %></h1>
 <h3>Members of the group</h3>
 <% @group.users.each do |user| %>
-  <%= user[:username]  %><br>
+  <%= user[:username] %><br>
 <% end %>
 
 <%= link_to "next", new_group_quizz_choice_path(@group) %>
 
 <%= link_to "Delete this group", group_path(@group.id), method: "patch" %>
+
