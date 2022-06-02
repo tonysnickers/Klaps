@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       patch :add_duration
       patch :add_date
       patch :add_keyword
+      patch :change_step
     end
   end
 end

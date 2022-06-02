@@ -2,20 +2,25 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :update]
 
   def index
-    @groups = Group.where(archive: false) # Scope avec Pundit
-    #@groups = Group.all
+    @groups = policy_scope(Group)
   end
 
-  def show() end
+  def show
+    authorize @group
+  end
 
   def new
     @group = Group.new
+    authorize @group
     @group_user = GroupUser.new
   end
 
   def create
     @group = Group.new(params_group)
     @group.user = current_user
+
+    authorize @group
+
     if (params["group"]["user_id"].count > 1) && @group.save
       @user_ids = params[:group][:user_id]
       @user_ids.each do |id|
@@ -29,6 +34,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+    authorize @group
     @group.update(archive: true)
     redirect_to groups_path, status: :see_other
   end

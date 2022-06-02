@@ -1,12 +1,16 @@
 <div class="container">
-  <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
-    <%#= f.input :date, as: :date %>
-    <%#= f.input :date, as: :year, html5: true %>
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-        50%
-      </div>
+
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+      50%
     </div>
-    <%= f.submit %>
-  <% end %>
+  </div>
+
+  <div>
+    <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
+      <%= f.select :start_year, options_for_select(1960..2022, 2000), { prompt: "start year" }, placeholder: "Please Select" %>
+      <%= f.select :end_year, options_for_select(1960..2022, 2000), { prompt: "end date" }, placeholder: "Please Select" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
