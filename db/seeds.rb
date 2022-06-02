@@ -2,8 +2,12 @@ require 'open-uri'
 require 'json'
 
 puts "Cleaning up database..."
+OrderedChoice.destroy_all
+puts "OrderedChoice drop ok"
 Movie.destroy_all
 puts "movie drop ok"
+QuizzChoice.destroy_all
+puts "QuizzChoice drop ok"
 GroupUser.destroy_all
 puts "group user drop ok"
 Group.destroy_all
