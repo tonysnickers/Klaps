@@ -3,8 +3,11 @@ require 'json'
 
 puts "Cleaning up database..."
 Movie.destroy_all
+puts "movie drop ok"
 GroupUser.destroy_all
+puts "group user drop ok"
 Group.destroy_all
+puts "group drop ok"
 User.destroy_all
 puts "Database cleaned"
 
