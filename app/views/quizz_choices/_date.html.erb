@@ -6,11 +6,11 @@
     </div>
   </div>
 
-  <div>
-    <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
-      <%= f.select :start_year, options_for_select(1960..2022, 2000), { prompt: "start year" }, placeholder: "Please Select" %>
-      <%= f.select :end_year, options_for_select(1960..2022, 2000), { prompt: "end date" }, placeholder: "Please Select" %>
-      <%= f.submit %>
-    <% end %>
-  </div>
+  <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
+    <div class="d-flex justify-content-center w-100 fs-1">
+      <%= f.select :start_year, options_for_select(1960..2022, 2000), { prompt: "start year" }, inner_html: { class: 'date-year' } %>
+      <%= f.select :end_year, options_for_select(1960..2022, 2000), { prompt: "end date" }, inner_html: { class: 'date-year' } %>
+    </div>
+    <%= f.submit %>
+  <% end %>
 </div>

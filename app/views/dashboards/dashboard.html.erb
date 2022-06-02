@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex">
     <div class="text-center">
       <% if current_user.username.empty? %>
         <h1>Welcome</h1>
       <% else %>
-        <h1>Welcome <%= current_user.username %></h1>
+        <h1>Welcome <%= current_user.username.capitalize %></h1>
       <% end %>
     </div>
 
-    <div class="row cont-display">
+    <div class="row">
 
       <div class="col-sm bord padd-b">
         <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
@@ -39,6 +39,7 @@
       </div>
 
       <div class="col-sm d-flex">
+
         <div class="bord padd-s">
           <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
             <div class="">
@@ -54,6 +55,7 @@
             </div>
           <% end %>
         </div>
+
       </div>
 
     </div>
