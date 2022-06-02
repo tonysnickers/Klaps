@@ -22,7 +22,6 @@ class QuizzChoicesController < ApplicationController
   end
 
   def index
-
     @quizz_choices = policy_scope(QuizzChoice)
 
   end
