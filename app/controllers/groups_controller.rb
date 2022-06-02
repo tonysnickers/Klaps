@@ -15,18 +15,17 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(params_group)
-      @group.user = current_user
-      if (params["group"]["user_id"].count > 1) && @group.save
-        @user_ids = params[:group][:user_id]
-        @user_ids.each do |id|
-          group_user = GroupUser.new(user_id: id, group_id: @group.id)
-          group_user.save
-        end
-        redirect_to groups_path
-      else
-        render :new
+    @group.user = current_user
+    if (params["group"]["user_id"].count > 1) && @group.save
+      @user_ids = params[:group][:user_id]
+      @user_ids.each do |id|
+        group_user = GroupUser.new(user_id: id, group_id: @group.id)
+        group_user.save
       end
-
+      redirect_to groups_path
+    else
+      render :new
+    end
   end
 
   def update
