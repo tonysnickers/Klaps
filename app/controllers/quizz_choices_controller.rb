@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor]
+  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor change_step]
 
   def new
     @group = Group.find(params[:group_id])
@@ -22,7 +22,8 @@ class QuizzChoicesController < ApplicationController
   end
 
   def index
-    
+    @quizz_choices = policy_scope(QuizzChoice)
+    @quizz_choice
   end
 
   def edit
@@ -37,6 +38,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def change_step
+    authorize @quizz_choice
     @quizz_choice = QuizzChoice.find(params[:id])
     @old_step = @quizz_choice.step
     case @quizz_choice.step
@@ -81,7 +83,7 @@ class QuizzChoicesController < ApplicationController
     # @quizz_choice.date = params[]
     @quizz_choice.step = "add_date"
     # @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    redirect_to quizz_choices_path(@quizz_choice)
   end
 
   def add_actor
@@ -98,6 +100,7 @@ class QuizzChoicesController < ApplicationController
   private
 
   def find_quizz_choice
+    # authorize @quizz_choice
     @quizz_choice = QuizzChoice.find(params[:id])
   end
 
