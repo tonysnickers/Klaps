@@ -2,7 +2,8 @@
   <%= simple_form_for @quizz_choice, url: add_duration_quizz_choice_path, method: :patch do |f| %>
     <%= f.input :duration,
                 as: :range,
-                range: ["60", "75", "90", "105", "120", "135", "150", "175", "190", "205", "220", "235", "250"] %>
+                range: ["60", "90", "120", "150", "180", "210", "240", "270", "300"] %>
+    <p>Value = <%= @quizz_choice.duration %></p>
     <div class="progress">
       <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
         25%

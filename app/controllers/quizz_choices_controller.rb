@@ -49,11 +49,10 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_date
-    raise
-    # rajouter la year choisis à l'instance @quizz_choice
-    # @quizz_choice.date = params[]
+    @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
-    # @quizz_choice.save!
+    @quizz_choice.save!
+    # raise
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
@@ -74,7 +73,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def quizz_choice_params
-    params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword)
+    params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword, :start_year, :end_year)
   end
 end
 
