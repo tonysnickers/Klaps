@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor]
+  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor change_step]
 
   def new
     @group = Group.find(params[:group_id])
@@ -22,6 +22,9 @@ class QuizzChoicesController < ApplicationController
   end
 
   def index
+
+    @quizz_choices = policy_scope(QuizzChoice)
+
   end
 
   def edit
@@ -33,6 +36,25 @@ class QuizzChoicesController < ApplicationController
         @actor_list << act['name']
       end
     end
+  end
+
+  def change_step
+    authorize @quizz_choice
+    @quizz_choice = QuizzChoice.find(params[:id])
+    @old_step = @quizz_choice.step
+    case @quizz_choice.step
+    when "add_keyword"
+      @quizz_choice.step = "initial"
+    when "add_duration"
+      @quizz_choice.step = "add_keyword"
+    when "add_date"
+      @quizz_choice.step = "add_duration"
+    when "add_actor"
+      @quizz_choice.step = "add_date"
+    end
+    @quizz_choice.save!
+    @new_step = @quizz_choice.step
+    redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
   def add_keyword
@@ -47,8 +69,6 @@ class QuizzChoicesController < ApplicationController
   def add_duration
     authorize @quizz_choice
     # raise
-    # rajouter la duration choisis à l'instance @quizz_choice
-    # raise
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
     @quizz_choice.save!
@@ -57,12 +77,13 @@ class QuizzChoicesController < ApplicationController
 
   def add_date
     authorize @quizz_choice
-    # raise
-    # rajouter la year choisis à l'instance @quizz_choice
-    # @quizz_choice.date = params[]
+    @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
+
     # @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    redirect_to quizz_choices_path(@quizz_choice)
+
+
   end
 
   def add_actor
@@ -79,11 +100,12 @@ class QuizzChoicesController < ApplicationController
   private
 
   def find_quizz_choice
+    # authorize @quizz_choice
     @quizz_choice = QuizzChoice.find(params[:id])
   end
 
   def quizz_choice_params
-    params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword)
+    params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword, :start_year, :end_year)
   end
 end
 
