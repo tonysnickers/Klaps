@@ -46,7 +46,7 @@ class QuizzChoicesController < ApplicationController
 
   def add_duration
     authorize @quizz_choice
-    raise
+    # raise
     # rajouter la duration choisis à l'instance @quizz_choice
     # raise
     @quizz_choice.duration = params["quizz_choice"]["duration"]
@@ -57,7 +57,7 @@ class QuizzChoicesController < ApplicationController
 
   def add_date
     authorize @quizz_choice
-    raise
+    # raise
     # rajouter la year choisis à l'instance @quizz_choice
     # @quizz_choice.date = params[]
     @quizz_choice.step = "add_date"

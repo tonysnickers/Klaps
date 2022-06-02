@@ -17,4 +17,20 @@ class QuizzChoicePolicy < ApplicationPolicy
     def update?
       record.user == user
     end
+
+    def add_keyword?
+      true
+    end
+
+    def add_date?
+      true
+    end
+
+    def add_duration?
+      true
+    end
+
+    def add_actor?
+      true
+    end
 end
