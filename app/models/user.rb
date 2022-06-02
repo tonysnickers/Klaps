@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :groups
   has_many :group_users
+  has_many :my_groups, through: :group_users, source: :group
   has_many :quizz_choices
 end

@@ -1,6 +1,6 @@
 <h1>Your groups</h1>
 <% @groups.each do |group| %>
-    <%= link_to group.name, group_path(group.id) %> -
+    <%= link_to group.name.capitalize, group_path(group.id) %> -
     <%= link_to "Delete this group", group_path(group.id), data: {turbo_method: "patch"} %><br>
 <% end %>
 
