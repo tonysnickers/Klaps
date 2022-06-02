@@ -70,7 +70,7 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.actor = params["q"]
     @quizz_choice.step = "add_actor"
     @quizz_choice.save!
-
+    raise
     redirect_to movies_path
     # **********
     # LA OU LA MAGIE OPERE
