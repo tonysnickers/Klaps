@@ -62,7 +62,6 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_keyword
-
     @quizz_choice.keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
 
     authorize @quizz_choice

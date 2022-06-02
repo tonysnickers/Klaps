@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  include Searchable
   def index
     # d'abord on donne des valeurs aux genre, duration, date, actor à un utilisateur qui ne spécifie pas
     @genre = params["quizz_choice"]["genre"].reject(&:empty?)
@@ -14,9 +13,9 @@ class MoviesController < ApplicationController
                 "Western"]
     end
 
-    @duration = params["quizz_choice"]["duration"] if @duration.nil?
-    @keyword = params["quizz_choice"]["keyword"] if @keyword.nil?
-    @date = params["quizz_choice"]["date"] if @date.nil?
+    @duration = 150 if @duration.nil?
+    # @keyword = params["quizz_choice"]["keyword"] if @keyword.nil?
+    @date = [1980, 2022] if @date.nil?
     @actor = params["q"] if @actor.nil?
 
     # je récupère l'ID du groupe d'un questionnaire
@@ -48,19 +47,10 @@ class MoviesController < ApplicationController
       m unless (actor_all & m.actor).empty?
       m unless duration_average < m.duration
       m unless m.date < date_range[0] || m.date > date_range[1]
-
-      # date_all.each do |date|
-      #   m.date.include?(date)
-      # end
     end
 
     movie_popular = movie_finder.tally
-    movie_popular.values
-
-
-    # movie_popular.sort_by(movie.rating, asc)
-    # movie_final = movie_popular.first(10)
-
+    @movies = movie_popular.max_by(5) { |key, value| value }.map { |a| a[0] }
   end
 
   def new
