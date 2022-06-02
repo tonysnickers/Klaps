@@ -6,31 +6,35 @@ class QuizzChoicePolicy < ApplicationPolicy
     end
   end
 
-    def show?
-      true
-    end
+  def show?
+    true
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def update?
-      record.user == user
-    end
+  def update?
+    record.user == user
+  end
 
-    def add_keyword?
-      true
-    end
+  def add_keyword?
+    true
+  end
 
-    def add_date?
-      true
-    end
+  def add_date?
+    true
+  end
 
-    def add_duration?
-      true
-    end
+  def add_duration?
+    true
+  end
 
-    def add_actor?
-      true
-    end
+  def add_actor?
+    true
+  end
+
+  def change_step?
+    true
+  end
 end
