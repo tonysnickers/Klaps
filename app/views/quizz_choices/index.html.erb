@@ -2,9 +2,11 @@
   <div>
     <h1 class="d-flex justify-content-center my-5">All your choice</h1>
       <h3 class="d-flex text-center">Your mood</h3>
-        <%= @quizz_choice %>
+        <%= @quizz_choices.each do |quizz_choice| %>
+              <%= quizz_choice.genre %>
+        <% end  %>
         <h3>Casting</h3>
-        <%= @actor_list %>
+        <%=  %>
         <h3>Date</h3>
         <%= %>
 

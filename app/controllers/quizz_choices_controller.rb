@@ -23,7 +23,9 @@ class QuizzChoicesController < ApplicationController
 
   def index
     @quizz_choices = policy_scope(QuizzChoice)
-
+    @group = Group.find(params[:group_id])
+    @quizz_choices = @group.quizz_choices.where(user: current_user)
+    raise
   end
 
   def edit
@@ -79,10 +81,8 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
 
-    # @quizz_choice.save!
-    redirect_to quizz_choices_path(@quizz_choice)
-
-
+    @quizz_choice.save!
+    redirect_to group_quizz_choices_path(@quizz_choice.group)
   end
 
   def add_actor
