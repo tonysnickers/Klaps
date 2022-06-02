@@ -22,8 +22,9 @@ class QuizzChoicesController < ApplicationController
   end
 
   def index
+
     @quizz_choices = policy_scope(QuizzChoice)
-    @quizz_choice
+
   end
 
   def edit
@@ -68,8 +69,6 @@ class QuizzChoicesController < ApplicationController
   def add_duration
     authorize @quizz_choice
     # raise
-    # rajouter la duration choisis à l'instance @quizz_choice
-    # raise
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
     @quizz_choice.save!
@@ -78,12 +77,13 @@ class QuizzChoicesController < ApplicationController
 
   def add_date
     authorize @quizz_choice
-    # raise
-    # rajouter la year choisis à l'instance @quizz_choice
-    # @quizz_choice.date = params[]
+    @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
+
     # @quizz_choice.save!
     redirect_to quizz_choices_path(@quizz_choice)
+
+
   end
 
   def add_actor
@@ -105,7 +105,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def quizz_choice_params
-    params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword)
+    params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword, :start_year, :end_year)
   end
 end
 
