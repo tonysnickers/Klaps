@@ -4,6 +4,9 @@
   <%= user[:username].capitalize %><br>
 <% end %>
 
-<%= link_to "next", new_group_quizz_choice_path(@group) %>
-
-<%= link_to "Delete this group", group_path(@group.id), method: "patch" %>
+<div>
+  <%= link_to "Start the quiz", new_group_quizz_choice_path(@group) %>
+</div>
+<div>
+  <%= link_to "Delete this group", group_path(@group.id), method: "patch" %>
+</div>

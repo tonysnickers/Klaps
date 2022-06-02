@@ -1,5 +1,7 @@
+require 'open-uri'
+
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_keyword add_actor add_year add_duration]
+  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor]
 
   def new
     @group = Group.find(params[:group_id])
@@ -19,12 +21,23 @@ class QuizzChoicesController < ApplicationController
     end
   end
 
+  def index
+  end
+
   def edit
     authorize @quizz_choice
+    (1...2).each do |page_number|
+      actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
+      @actor_list = []
+      actors.each do |act|
+        @actor_list << act['name']
+      end
+    end
   end
 
   def add_keyword
     authorize @quizz_choice
+    # raise
     @quizz_choice.keyword = params["quizz_choice"]["keyword"]
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
@@ -35,14 +48,18 @@ class QuizzChoicesController < ApplicationController
     authorize @quizz_choice
     raise
     # rajouter la duration choisis à l'instance @quizz_choice
+    # raise
+    @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
-    # @quizz_choice.save!
+    @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
   def add_date
     authorize @quizz_choice
+    raise
     # rajouter la year choisis à l'instance @quizz_choice
+    # @quizz_choice.date = params[]
     @quizz_choice.step = "add_date"
     # @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
@@ -50,13 +67,13 @@ class QuizzChoicesController < ApplicationController
 
   def add_actor
     authorize @quizz_choice
-    # rajouter les actors choisis à l'instance @quizz_choice
-    # @quizz_choice = [actor, duration, date]
-    # @quizz_choice.add
-
+    @quizz_choice.actor = params["q"]
     @quizz_choice.step = "add_actor"
-    # @quizz_choice.save!
-    # redirect_to edit_group_ordered_choice
+    @quizz_choice.save!
+
+    redirect_to movies_path
+    # **********
+    # LA OU LA MAGIE OPERE
   end
 
   private

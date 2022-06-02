@@ -204,6 +204,8 @@ GEM
       activesupport (= 7.0.3)
       bundler (>= 1.15.0)
       railties (= 7.0.3)
+    rails-autocomplete (2.0.1)
+      rails (>= 4.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -306,6 +308,7 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit
   rails (~> 7.0.3)
+  rails-autocomplete
   sassc-rails
   selenium-webdriver
   simple_form!
