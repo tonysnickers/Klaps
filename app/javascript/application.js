@@ -4,7 +4,6 @@ import "./controllers"
 import { autocompleteSearch } from "./components/autocomplete"
 import "bootstrap"
 
-
 document.addEventListener('turbo:load', function () {
   autocompleteSearch();
 })
