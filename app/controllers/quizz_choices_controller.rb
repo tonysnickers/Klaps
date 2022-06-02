@@ -26,8 +26,9 @@ class QuizzChoicesController < ApplicationController
   end
 
   def index
-
     @quizz_choices = policy_scope(QuizzChoice)
+    @group = Group.find(params[:group_id])
+    @quizz_choices = @group.quizz_choices.where(user: current_user)
 
   end
 
@@ -95,10 +96,9 @@ class QuizzChoicesController < ApplicationController
 
     @quizz_choice.step = "add_date"
 
-    # @quizz_choice.save!
-    redirect_to quizz_choices_path(@quizz_choice)
-
-
+    @quizz_choice.save!
+    # redirect_to group_quizz_choices_path(@quizz_choice.group)
+    redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
   def add_actor
@@ -106,8 +106,8 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.actor = params["q"]
     @quizz_choice.step = "add_actor"
     @quizz_choice.save!
-    raise
-    redirect_to movies_path
+    redirect_to group_quizz_choices_path(@quizz_choice.group)
+
     # **********
     # LA OU LA MAGIE OPERE
   end
