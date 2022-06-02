@@ -1,6 +1,18 @@
 .date-year {
   width: 50%;
-  text-align: center;
-  color: green;
+  border: 0;
+  background-color: $darkgray;
+  color: $white;
   font-size: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 79% 0;
+  outline: none
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }

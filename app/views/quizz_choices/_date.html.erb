@@ -6,10 +6,11 @@
     </div>
   </div>
 
+  <h2>Select an interval of year for your film</h2>
   <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
     <div class="d-flex justify-content-center w-100 fs-1">
-      <%= f.select :start_year, options_for_select(1960..2022, 2000), { prompt: "start year" }, input_html: { class: 'date-year' } %>
-      <%= f.select :end_year, options_for_select(1960..2022, 2000), { prompt: "end date" }, input_html: { class: 'date-year' } %>
+      <%= f.select :start_year, options_for_select(1960..2022, 1960), { prompt: "start year" }, class: 'date-year border-end' %>
+      <%= f.select :end_year, options_for_select(1960..2022, 2022), { prompt: "end date" }, class: 'date-year' %>
     </div>
     <%= f.submit %>
   <% end %>
