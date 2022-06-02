@@ -53,12 +53,12 @@ class MoviesController < ApplicationController
     @movies = movie_popular.max_by(5) { |key, value| value }.map { |a| a[0] }
   end
 
-  def new
-  end
+  # def new
+  # end
 
-  def create
-  end
+  # def create
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 end

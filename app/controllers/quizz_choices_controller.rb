@@ -13,11 +13,8 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice = QuizzChoice.new(quizz_choice_params)
     @quizz_choice.group = Group.find(params[:group_id])
     @quizz_choice.user = current_user
-
     @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
-
     authorize @quizz_choice
-
     if @quizz_choice.save
       redirect_to edit_quizz_choice_path(@quizz_choice)
     else
