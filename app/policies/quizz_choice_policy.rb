@@ -1,8 +1,8 @@
-class GroupPolicy < ApplicationPolicy
+class QuizzChoicePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      user.my_groups.where(archive: false)
+      scope.all
     end
   end
 

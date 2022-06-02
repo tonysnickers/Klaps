@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = policy_scope(Group)
-    # @groups = Group.where(archive: false) # Scope avec Pundit
   end
 
   def show
@@ -14,27 +13,26 @@ class GroupsController < ApplicationController
     @group = Group.new
     authorize @group
     @group_user = GroupUser.new
-    authorize @group_user
   end
 
   def create
     @group = Group.new(params_group)
-      @group.user = current_user
-      authorize @group
-      if (params["group"]["user_id"].count > 1) && @group.save
-        @user_ids = params[:group][:user_id]
-        @user_ids.each do |id|
-          group_user = GroupUser.new(user_id: id, group_id: @group.id)
-          group_user.save
-        end
-        redirect_to groups_path
-      else
-        render :new
+    @group.user = current_user
+    authorize @group
+    if (params["group"]["user_id"].count > 1) && @group.save
+      @user_ids = params[:group][:user_id]
+      @user_ids.each do |id|
+        group_user = GroupUser.new(user_id: id, group_id: @group.id)
+        group_user.save
       end
-
+      redirect_to groups_path
+    else
+      render :new
+    end
   end
 
   def update
+    authorize @group
     @group.update(archive: true)
     redirect_to groups_path, status: :see_other
   end

@@ -4,12 +4,14 @@ class QuizzChoicesController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @quizz_choice = QuizzChoice.new
+    authorize @quizz_choice
   end
 
   def create
     @quizz_choice = QuizzChoice.new(quizz_choice_params)
     @quizz_choice.group = Group.find(params[:group_id])
     @quizz_choice.user = current_user
+    authorize @quizz_choice
     if @quizz_choice.save
       redirect_to edit_quizz_choice_path(@quizz_choice)
     else
@@ -18,9 +20,11 @@ class QuizzChoicesController < ApplicationController
   end
 
   def edit
+    authorize @quizz_choice
   end
 
   def add_keyword
+    authorize @quizz_choice
     @quizz_choice.keyword = params["quizz_choice"]["keyword"]
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
@@ -28,6 +32,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_duration
+    authorize @quizz_choice
     raise
     # rajouter la duration choisis à l'instance @quizz_choice
     @quizz_choice.step = "add_duration"
@@ -36,6 +41,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_date
+    authorize @quizz_choice
     # rajouter la year choisis à l'instance @quizz_choice
     @quizz_choice.step = "add_date"
     # @quizz_choice.save!
@@ -43,6 +49,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_actor
+    authorize @quizz_choice
     # rajouter les actors choisis à l'instance @quizz_choice
     # @quizz_choice = [actor, duration, date]
     # @quizz_choice.add
