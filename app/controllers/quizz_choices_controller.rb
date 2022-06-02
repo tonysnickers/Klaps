@@ -13,7 +13,11 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice = QuizzChoice.new(quizz_choice_params)
     @quizz_choice.group = Group.find(params[:group_id])
     @quizz_choice.user = current_user
+
+    @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
+
     authorize @quizz_choice
+
     if @quizz_choice.save
       redirect_to edit_quizz_choice_path(@quizz_choice)
     else
@@ -58,17 +62,23 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_keyword
+
+    @quizz_choice.keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
+
     authorize @quizz_choice
     # raise
     @quizz_choice.keyword = params["quizz_choice"]["keyword"]
+
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
   def add_duration
+
     authorize @quizz_choice
     # raise
+
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
     @quizz_choice.save!
@@ -76,8 +86,13 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_date
+
+    # rajouter la year choisis à l'instance @quizz_choice
+    # @quizz_choice.date = params[]
+
     authorize @quizz_choice
     @quizz_choice.update(quizz_choice_params)
+
     @quizz_choice.step = "add_date"
 
     # @quizz_choice.save!

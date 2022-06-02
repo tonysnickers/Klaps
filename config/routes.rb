@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'movies/index'
+  get 'movies/new'
+  get 'movies/create'
+  get 'movies/edit'
   devise_for :users
   root to: "pages#home"
   get 'dashboard', to: 'dashboards#dashboard'

@@ -18,7 +18,9 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params_group)
     @group.user = current_user
+
     authorize @group
+
     if (params["group"]["user_id"].count > 1) && @group.save
       @user_ids = params[:group][:user_id]
       @user_ids.each do |id|
