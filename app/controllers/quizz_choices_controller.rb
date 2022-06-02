@@ -6,12 +6,14 @@ class QuizzChoicesController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @quizz_choice = QuizzChoice.new
+    authorize @quizz_choice
   end
 
   def create
     @quizz_choice = QuizzChoice.new(quizz_choice_params)
     @quizz_choice.group = Group.find(params[:group_id])
     @quizz_choice.user = current_user
+    authorize @quizz_choice
     if @quizz_choice.save
       redirect_to edit_quizz_choice_path(@quizz_choice)
     else
@@ -23,6 +25,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def edit
+    authorize @quizz_choice
     (1...2).each do |page_number|
       actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
       @actor_list = []
@@ -33,6 +36,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_keyword
+    authorize @quizz_choice
     # raise
     @quizz_choice.keyword = params["quizz_choice"]["keyword"]
     @quizz_choice.step = "add_keyword"
@@ -41,6 +45,9 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_duration
+    authorize @quizz_choice
+    # raise
+    # rajouter la duration choisis à l'instance @quizz_choice
     # raise
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
@@ -49,7 +56,8 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_date
-    raise
+    authorize @quizz_choice
+    # raise
     # rajouter la year choisis à l'instance @quizz_choice
     # @quizz_choice.date = params[]
     @quizz_choice.step = "add_date"
@@ -58,6 +66,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_actor
+    authorize @quizz_choice
     @quizz_choice.actor = params["q"]
     @quizz_choice.step = "add_actor"
     @quizz_choice.save!
