@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  include Searchable
   def index
     # d'abord on donne des valeurs aux genre, duration, date, actor à un utilisateur qui ne spécifie pas
     @genre = params["quizz_choice"]["genre"].reject(&:empty?)
@@ -63,12 +62,12 @@ class MoviesController < ApplicationController
 
   end
 
-  def new
-  end
+  # def new
+  # end
 
-  def create
-  end
+  # def create
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 end

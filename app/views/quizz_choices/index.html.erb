@@ -3,7 +3,7 @@
     <h1 class="d-flex justify-content-center my-5">All your choice</h1>
       <h3 class="d-flex text-center">Your mood</h3>
         <%= @quizz_choices.each do |quizz_choice| %>
-              <%= quizz_choice.genre %>
+              <%#= quizz_choice.genre %>
               <%= quizz_choice.actor %>
               <%= quizz_choice.keyword %>
               <%= quizz_choice.duration %>
@@ -12,7 +12,7 @@
         <%=  %>
         <h3>Date</h3>
         <%= %>
-
   </div>
-
 </div>
+
+<%= link_to "next", movies_index_path %>
