@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'movies/index'
-  get 'movies/new'
-  get 'movies/create'
-  get 'movies/edit'
   devise_for :users
   root to: "pages#home"
   get 'dashboard', to: 'dashboards#dashboard'
@@ -23,4 +19,9 @@ Rails.application.routes.draw do
       patch :change_step
     end
   end
+
+  get 'movies/index'
+  get 'movies/new'
+  get 'movies/create'
+  get 'movies/edit'
 end

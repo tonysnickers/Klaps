@@ -29,7 +29,6 @@ class QuizzChoicesController < ApplicationController
     @quizz_choices = policy_scope(QuizzChoice)
     @group = Group.find(params[:group_id])
     @quizz_choices = @group.quizz_choices.where(user: current_user)
-
   end
 
   def edit
@@ -76,10 +75,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_duration
-
     authorize @quizz_choice
-    # raise
-
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
     @quizz_choice.save!
@@ -87,17 +83,10 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_date
-
-    # rajouter la year choisis à l'instance @quizz_choice
-    # @quizz_choice.date = params[]
-
     authorize @quizz_choice
     @quizz_choice.update(quizz_choice_params)
-
     @quizz_choice.step = "add_date"
-
     @quizz_choice.save!
-    # redirect_to group_quizz_choices_path(@quizz_choice.group)
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
@@ -107,7 +96,6 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.step = "add_actor"
     @quizz_choice.save!
     redirect_to group_quizz_choices_path(@quizz_choice.group)
-
     # **********
     # LA OU LA MAGIE OPERE
   end
