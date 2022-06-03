@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'dashboard/index', to: 'dashboards#index'
 
   resources :groups, only: %i[index show new create update] do
-    resources :ordered_choices, only: %i[new edit]
     resources :quizz_choices, only: %i[new create index]
+    resources :movies, only: %i[ index ]
   end
   resources :group_users, only: [:create]
 
@@ -19,9 +19,4 @@ Rails.application.routes.draw do
       patch :change_step
     end
   end
-
-  get 'movies/index'
-  get 'movies/new'
-  get 'movies/create'
-  get 'movies/edit'
 end
