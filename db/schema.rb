@@ -60,9 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_155759) do
   end
 
   create_table "quizz_choices", force: :cascade do |t|
-    t.string "genre", array: true
-    t.string "actor", array: true
-    t.string "keyword", array: true
+    t.string "genre"
+    t.string "actor"
+    t.string "keyword"
     t.integer "duration", default: 180
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
