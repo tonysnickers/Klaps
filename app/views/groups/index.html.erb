@@ -1,17 +1,14 @@
-<h1>Your groups</h1>
-
-<div class="cards mx-50">
-  <% @groups.each do |group| %>
-    <div class="card-category mx-50">
-    <br>
-      <%= link_to group.name.capitalize, group_path(group.id) %> - <br>
-      <%= link_to "Delete", group_path(group.id), data: {turbo_method: "patch"} %><br>
-    </div>
-  <% end %>
-  <br>
+<div class="row d-flex">
+  <h1 class="dash-text mb-5">Your groups</h1>
 </div>
-<br>
-<br>
-<br>
 
-<p class="text-decoration-none"><%= link_to "Create a new film show", new_group_path %></p>
+<div class="row">
+  <div class="col-sm padd-s">
+    <% @groups.each do |group| %>
+      <%= link_to group.name.capitalize, group_path(group.id), class:'group-button' %> -
+      <%= link_to "Delete", group_path(group.id), data: {turbo_method: "patch"}, class:'group-button' %>
+    <% end %>
+  </div>
+</div>
+
+<p><%= link_to "Create a new film show", new_group_path, class:'group-button' %></p>
