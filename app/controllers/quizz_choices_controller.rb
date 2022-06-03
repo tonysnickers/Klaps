@@ -37,6 +37,12 @@ class QuizzChoicesController < ApplicationController
         @actor_list << act['name']
       end
     end
+
+    @keywords_list = []
+    keyword_movies = Movie.all
+    keyword_movies.each do |k_movie|
+      @keywords_list << k_movie.keyword
+    end
   end
 
   def change_step
@@ -59,6 +65,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_keyword
+
     authorize @quizz_choice
     @quizz_choice.keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
     @quizz_choice.step = "add_keyword"

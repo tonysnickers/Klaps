@@ -1,22 +1,41 @@
 class MoviesController < ApplicationController
   def index
-    # d'abord on donne des valeurs aux genre, duration, date, actor à un utilisateur qui ne spécifie pas
-    @genre = params["quizz_choice"]["genre"].reject(&:empty?)
-    @keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
-    @duration = params["quizz_choice"]["duration"]
-    @date = params["quizz_choice"]["date"]
-    @quizz_choice.actor = params["q"]
+    raise
+    @genre, @keyword, @duration, @date, @actor = Array.new(5) { [] }
 
-    if @genre.nil?
-      @genre = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Family",
+    # On itères
+    Group.find(params["group_id"]).quizz_choices.each do |m|
+      m.genre.each do |g|
+        if g.nil?
+          g = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Family",
                 "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "Thriller", "TV Movie", "War",
                 "Western"]
+        end
+      @genre << g
+      end
+      m.keyword.each do |k|
+        (@keyword << @keywords_list) if k.empty?
+        @keyword << k
+      end
+      m.duration.each do |d|
+        (d = 150) if d.nil?
+        @duration << d
+      end
+      m.date.each do |d|
+        (d = [1980, 2022]) if d.nil?
+        @date << d
+      end
+      m.actor.each do |a|
+        (@actor << @actor_list) if a.empty?
+        @actor << a
+      end
     end
 
-    @duration = 150 if @duration.nil?
-    # @keyword = params["quizz_choice"]["keyword"] if @keyword.nil?
-    @date = [1980, 2022] if @date.nil?
-    @actor = params["q"] if @actor.nil?
+    # @quizz_choice.actor = params["q"]
+    # @actor = params["q"] if @actor.nil?
+
+
+
 
     # je récupère l'ID du groupe d'un questionnaire
     @quizz_choice.group = group_id
