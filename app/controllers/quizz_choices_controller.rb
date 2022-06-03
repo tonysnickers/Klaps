@@ -69,7 +69,7 @@ class QuizzChoicesController < ApplicationController
 
     authorize @quizz_choice
     # raise
-    @quizz_choice.keyword = params["q"]
+    # @quizz_choice.keyword = params["q"]
 
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
