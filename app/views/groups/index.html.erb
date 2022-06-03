@@ -1,7 +1,17 @@
 <h1>Your groups</h1>
-<% @groups.each do |group| %>
-    <%= link_to group.name.capitalize, group_path(group.id) %> -
-    <%= link_to "Delete this group", group_path(group.id), data: {turbo_method: "patch"} %><br>
-<% end %>
 
-<%= link_to "Create a new film show", new_group_path %>
+<div class="cards mx-50">
+  <% @groups.each do |group| %>
+    <div class="card-category mx-50">
+    <br>
+      <%= link_to group.name.capitalize, group_path(group.id) %> - <br>
+      <%= link_to "Delete", group_path(group.id), data: {turbo_method: "patch"} %><br>
+    </div>
+  <% end %>
+  <br>
+</div>
+<br>
+<br>
+<br>
+
+<p class="text-decoration-none"><%= link_to "Create a new film show", new_group_path %></p>

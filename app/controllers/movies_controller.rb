@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   def index
     # d'abord on donne des valeurs aux genre, duration, date, actor à un utilisateur qui ne spécifie pas
     @genre = params["quizz_choice"]["genre"].reject(&:empty?)
-    @keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
+    @keyword = params["q"].reject(&:empty?)
     @duration = params["quizz_choice"]["duration"]
     @date = params["quizz_choice"]["date"]
     @quizz_choice.actor = params["q"]

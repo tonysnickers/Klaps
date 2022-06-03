@@ -16,24 +16,24 @@ User.destroy_all
 puts "Database cleaned"
 
 antoine = User.create!(
-  username: "antoine",
+  username: "Antoine",
   email: "antoine.mendy@gmail.com",
   password: "moviefinder"
 )
 manoa = User.create!(
-  username: "manoa",
+  username: "Manoa",
   email: "manoa.ras@gmail.com",
   password: "moviefinder"
 )
 
 jeanne = User.create!(
-  username: "jeanne",
+  username: "Jeanne",
   email: "jeanne.deleusse@gmail.com",
   password: "moviefinder"
 )
 
 jacques = User.create!(
-  username: "ja",
+  username: "J.A",
   email: "ja.dc@gmail.com",
   password: "moviefinder"
 )
@@ -47,7 +47,7 @@ p antoine
 
 mf = Group.create!(
   user: antoine,
-  name: "mf"
+  name: "Movie Finder Team !"
 )
 
 jea = GroupUser.create!(
