@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
   def index
-    raise
+
+
     @genre, @keyword, @duration, @date, @actor = Array.new(5) { [] }
+
 
     # On itères
     Group.find(params["group_id"]).quizz_choices.each do |m|
