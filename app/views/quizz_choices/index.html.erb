@@ -1,51 +1,47 @@
 <div class="container">
-  <div class="d-flex justify-content-center my-5">
+  <div class="d-flex justify-content-center my-2">
 
     <div class="row">
-      <h1 class="text-center my-5">All your choice</h1>
+      <h1 class="text-center my-4 font-weight-bold">All your choice</h1>
       <h3 class="text-center">Your mood</h3>
       <div class="text-center">
         <% @quizz_choices.each do |quizz_choice| %>
-          <%= quizz_choice.keyword %>
+          <p class="recap"><%= quizz_choice.keyword %></p>
         <% end %>
       </div>
 
-      <h3 class="text-center">Casting</h3>
+      <h3 class="text-center my-3">Casting</h3>
       <div class="text-center">
         <% @quizz_choices.each do |quizz_choice| %>
-          <%= quizz_choice.actor %>
+          <p class="recap"><%= quizz_choice.actor %></p>
         <% end %>
       </div>
 
-      <h3 class="text-center">Duration</h3>
+      <h3 class="text-center my-3">Duration</h3>
       <div class="text-center">
         <% @quizz_choices.each do |quizz_choice| %>
-          <%= quizz_choice.duration %>
+          <p class="recap"><%= quizz_choice.duration %></p>
         <% end %>
       </div>
 
-      <h3 class="text-center">Date</h3>
+      <h3 class="text-center my-3">Date start</h3>
       <div class="text-center">
         <% @quizz_choices.each do |quizz_choice| %>
-          <%= quizz_choice.start_year %>
+          <p class="recap"><%= quizz_choice.start_year %></p>
         <% end %>
       </div>
+
 
       <%#= quizz_choice.genre %>
 
-      <h3 class="text-center">Date</h3>
+      <h3 class="text-center my-3">Date end</h3>
       <div class="text-center">
         <% @quizz_choices.each do |quizz_choice| %>
-          <%= quizz_choice.end_year %>
+          <p class="recap"><%= quizz_choice.end_year %></p>
         <% end %>
       </div>
     </div>
 
-  </div>
-
-
-<div class = "bottom-button">
-
-  <%= link_to "Let the magic begin !", group_movies_path(@quizz_choices.first.group) %>
+      <%= link_to "Let the magic begin !", group_movies_path(@quizz_choices.first.group), class:"bottom-button" %>
 
 </div>
