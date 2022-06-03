@@ -3,12 +3,13 @@
 </div>
 
 <div class="row">
-  <div class="col-sm padd-s">
+  <div class="col-sm padd-s text-center d-block">
     <% @groups.each do |group| %>
-      <%= link_to group.name.capitalize, group_path(group.id), class:'group-button' %> -
-      <%= link_to "Delete", group_path(group.id), data: {turbo_method: "patch"}, class:'group-button' %>
+      <div class="border-start border-end">
+        <%= link_to group.name.capitalize, group_path(group.id), class:'add-group' %>
+      </div>
     <% end %>
   </div>
-</div>
 
-<p><%= link_to "Create a new film show", new_group_path, class:'group-button' %></p>
+  <%= link_to "Create a new film show", new_group_path, class:'group-button pos' %>
+</div>
