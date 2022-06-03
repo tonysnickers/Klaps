@@ -59,12 +59,8 @@ class QuizzChoicesController < ApplicationController
   end
 
   def add_keyword
-    @quizz_choice.keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
-
     authorize @quizz_choice
-    # raise
-    @quizz_choice.keyword = params["quizz_choice"]["keyword"]
-
+    @quizz_choice.keyword = params["quizz_choice"]["keyword"].reject(&:empty?)
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
     redirect_to edit_quizz_choice_path(@quizz_choice)
