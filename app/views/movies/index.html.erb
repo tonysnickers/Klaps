@@ -1,4 +1,11 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+<h1>Here are your results!</h1>
+<% n = 0 %>
 
-<%= @movies %>
+<% @movies.each do |m| %>
+  <h2><%= n += 1 %><%= ". " + m.name %></h2>
+  <p><%= m.year %></p>
+  <p>Genre:<%= m.genre %></p>
+  <p><%= m.keyword unless m.keyword.empty? %></p>
+  <p><%= m.actor %></p>
+  <p><%= m.duration %> min</p>
+<% end %>
