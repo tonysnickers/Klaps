@@ -65,7 +65,7 @@ man = GroupUser.create!(
   group: mf
 )
 
-(1...2).each do |page_number|
+(1...20).each do |page_number|
   movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
 
   movies.each do |movie|
