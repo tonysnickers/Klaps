@@ -1,11 +1,20 @@
-<h1>Here are your results!</h1>
-<% n = 0 %>
 
-<% @movies.each do |m| %>
-  <h2><%= n += 1 %><%= ". " + m.name %></h2>
-  <p><%= m.year %></p>
-  <p>Genre:<%= m.genre %></p>
-  <p><%= m.keyword unless m.keyword.empty? %></p>
-  <p><%= m.actor %></p>
-  <p><%= m.duration %> min</p>
-<% end %>
+<div class = "title" >
+  <h1>Here are your results!</h1>
+</div>
+<% n = 0 %>
+<% base_poster_url = "https://image.tmdb.org/t/p/original" %>
+<br>
+<div class = "movie-container w-75 m-auto">
+  <% @movies.each do |m| %>
+    <div class="card-movie">
+      <img src= <%= "#{base_poster_url}#{m.poster}" %> />
+      <div class="card-movie-infos">
+        <h2><%= n += 1 %><%= ". " + m.name %></h2>
+        <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+        <p><%= m.year %> - <%= m.duration %> min</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
