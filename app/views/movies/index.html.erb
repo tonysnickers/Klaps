@@ -6,9 +6,9 @@
 <% base_poster_url = "https://image.tmdb.org/t/p/original" %>
 <br>
 <div class = "movie-container w-75 m-auto">
-  <% @movies.each do |m| %>
+  <% @movies.compact.each do |m| %>
     <div class="card-movie">
-      <img src= <%= "#{base_poster_url}#{m.poster}" %> />
+      <img src= "<%= m.poster %>" />
       <div class="card-movie-infos">
         <h2><%= n += 1 %><%= ". " + m.name %></h2>
         <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>

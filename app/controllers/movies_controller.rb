@@ -54,6 +54,7 @@ class MoviesController < ApplicationController
 
     movie_popular = movie_finder.tally
     @movies = movie_popular.max_by(5) { |key, value| value }.map { |a| a[0] }
+
   end
 
   # def new
