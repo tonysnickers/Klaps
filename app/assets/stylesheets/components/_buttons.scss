@@ -18,12 +18,13 @@
 .bottom-button {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   padding: 20px;
-  text-align: center;
   color: $darkgray;
-  text-decoration: none;
+  text-align: center;
   background-color: $yellow;
+  text-decoration: none;
   font-weight: bold;
 }
 
@@ -42,4 +43,32 @@
 
 .plus-button:hover {
   color: $darkgray;
+}
+
+.group-button {
+  text-align: center;
+  border: 1px solid $yellow;
+  background-color: $yellow;
+  text-decoration: none;
+  color: $white;
+  // opacity: .7;
+}
+// .group-button:focus {
+//   opacity: 1;
+//   color: $white;
+//   background-color: $yellow;
+// }
+.add-group {
+  font-size: 20px;
+  color: $yellow;
+  text-decoration: none;
+}
+.delete {
+  color: red;
+  text-decoration: none;
+}
+.pos {
+  padding: 15px;
+  position: absolute;
+  bottom: 0px;
 }
