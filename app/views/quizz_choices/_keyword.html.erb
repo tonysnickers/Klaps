@@ -9,9 +9,6 @@
 
 
   <div>
-    <%= simple_form_for @quizz_choice, url: add_keyword_quizz_choice_path, method: :patch do |f| %>
-      <%= f.input :keyword, as: :check_boxes, collection: ["coucou 1", "coucou 2"] %>
-      <%= f.submit %>
     <%= form_tag(add_keyword_quizz_choice_path(@quizz_choice), method: 'patch', class: "form-inline") do %>
       <div id="search-data" class="form-search search-data" data-skills="<%= @keywords_list.flatten.to_json %>">
       <%#= f.input :keywords, collection: @keywords_list, input_html: { data: { controller: 'select2' }} %>
@@ -19,8 +16,8 @@
         <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a keyword..." %>
         <br>
         <%#= submit_tag "Search", class: "btn btn-primary button-home" %>
+        <%= submit_tag "Next", class: "bottom-button"%>
+    <% end %>
       </div>
   </div>
 </div>
-        <%= submit_tag "Next", class: "bottom-button"%>
-    <% end %>
