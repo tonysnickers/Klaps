@@ -1,23 +1,37 @@
-<div class="d-block row">
-  <div class="col-sm">
+<div class="container">
+  <div class="row d-flex">
+    <div class="text-center">
+      <h3>Let's find a movie</h1>
+    </div>
+    <br>
+    <br>
 
-      <%= link_to groups_path do %>
-        <div class="bord">
-          <p>Join a group</p>
-        </div>
-      <% end %>
+    <div class="d-block row">
+      <div class="col-sm d-flex">
+          <div class="bord padd-s">
+            <%= link_to groups_path, class: "text-decoration-none" do %>
+              <div class="bord">
+                <p>Join a group</p>
+              </div>
+            <% end %>
+          </div>
 
-      <%= link_to new_group_path do %>
-        <div class="bord">
-          <p>Create a group</p>
-        </div>
-      <% end %>
-
-      <%= link_to groups_path do %>
-        <div class="bord">
-          <p>Solo</p>
-        </div>
-      <% end %>
-
+          <div class="bord padd-s">
+            <%= link_to new_group_path, class: "text-decoration-none" do %>
+              <div class="bord">
+                <p>Create a group</p>
+              </div>
+            <% end %>
+          </div>
+      </div>
+      <div class="col-sm d-flex">
+          <div class="bord padd-s p-20">
+            <%= link_to groups_path, class: "text-decoration-none" do %>
+              <div class="bord">
+                <p>Solo</p>
+              </div>
+            <% end %>
+          </div>
+      </div>
   </div>
 </div>
