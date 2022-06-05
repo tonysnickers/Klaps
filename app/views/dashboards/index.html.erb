@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row d-flex">
     <div class="text-center">
@@ -15,6 +16,27 @@
               </div>
             <% end %>
           </div>
+
+<div class="dash-index d-block row">
+  <div class="col-sm">
+
+      <%= link_to groups_path, class: "text-decoration-none" do %>
+        <div class="bord padd-b padd-index">
+          <p>Join a group</p>
+        </div>
+      <% end %>
+
+      <%= link_to new_group_path, class: "text-decoration-none" do %>
+        <div class="bord padd-b padd-index">
+          <p>Create a group</p>
+        </div>
+      <% end %>
+
+      <%= link_to groups_path, class: "text-decoration-none" do %>
+        <div class="bord padd-b padd-index">
+          <p>Solo</p>
+        </div>
+      <% end %>
 
           <div class="bord padd-s">
             <%= link_to new_group_path, class: "text-decoration-none" do %>

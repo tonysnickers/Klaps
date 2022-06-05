@@ -1,16 +1,22 @@
-<h1><%= @group.name %></h1>
-<br><br>
-<h6> <u> Members of the group:</u></h6>
-<br>
-<% @group.users.each do |user| %>
-  <%= user[:username].capitalize %><br>
-<% end %>
-<br>
-<div>
-  <%= link_to "Delete this group", group_path(@group.id), method: "patch" %>
+<div class="row d-flex">
+  <h1 class="dash-text"><%= @group.name %></h1>
 </div>
 
+<div class="row">
+  <div class="col-sm padd-s text-center d-block">
 
-<div class = "bottom-button">
-  <%= link_to "Start the quiz", new_group_quizz_choice_path(@group) %>
+    <h6 class="mt-4"><u> Members of the group:</u></h6>
+
+    <% @group.users.each do |user| %>
+      <%= user[:username].capitalize %><br>
+    <% end %>
+
+    <br>
+    <br>
+
+    <%= link_to "Delete this group", group_path(@group.id), data: {turbo_method: "patch"}, class: 'delete' %>
+
+    <%= link_to "Start the quiz", new_group_quizz_choice_path(@group), class: "bottom-button" %>
+
+  </div>
 </div>
