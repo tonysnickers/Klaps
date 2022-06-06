@@ -57,7 +57,20 @@
 
         <h3 class="text-center my-3">Duration</h3>
         <div class="text-center">
-          <p class="recap"><%= @quizz_choice.duration %></p>
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#durationModal">
+            <%= @quizz_choice.duration %>
+          </button>
+        </div>
+
+        <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'duration' %>
+
+            </div>
+          </div>
         </div>
 
       </div>
@@ -65,14 +78,27 @@
       <div>
         <h3 class="text-center my-3">Date start</h3>
         <div class="text-center">
-          <p class="recap"><%= @quizz_choice.start_year %></p>
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#dateStartModal">
+            <%= @quizz_choice.start_year %>
+          </button>
         </div>
-      </div>
 
-      <div>
         <h3 class="text-center my-3">Date end</h3>
         <div class="text-center">
-          <p class="recap"><%= @quizz_choice.end_year %></p>
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#dateStartModal">
+            <%= @quizz_choice.end_year %>
+          </button>
+        </div>
+
+        <div class="modal fade" id="dateStartModal" tabindex="-1" aria-labelledby="dateStartModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'date' %>
+
+            </div>
+          </div>
         </div>
       </div>
 

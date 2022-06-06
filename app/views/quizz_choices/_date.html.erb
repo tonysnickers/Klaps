@@ -8,7 +8,9 @@
 
 <h3>Select an interval of year for your film</h3>
 
-<%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path, method: :patch do |f| %>
+<br>
+
+<%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path(@quizz_choice), method: :patch do |f| %>
   <div class="d-flex justify-content-center w-100 fs-1">
     <%= f.select :start_year, options_for_select(1960..2022, 1960), { prompt: "start year" }, class: 'date-year border-end' %>
     <%= f.select :end_year, options_for_select(1960..2022, 2022), { prompt: "end date" }, class: 'date-year' %>
