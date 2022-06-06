@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   def index
+    @group = Group.find(params["group_id"])
     @movies = policy_scope(Movie)
     @genre_all, @keyword_all, @duration_all, @date_all, @actor_all = Array.new(5) { [] }
 
@@ -35,6 +36,9 @@ class MoviesController < ApplicationController
       end
     end
 
-    @movies = @movies_max.tally.max_by(5) { |key, value| value }.map { |a| a[0] }
+    @movies = @movies_max.tally.max_by(6) { |key, value| value }.map { |a| a[0] }
+
+    # movie_popular = movie_finder.tally
+    # @movies = movie_popular.max_by(6) { |_key, value| value }.map { |a| a[0] }.reject { |m| m.nil? }
   end
 end

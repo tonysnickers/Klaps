@@ -1,0 +1,6 @@
+<h3>Choose a genre</h3>
+
+<%= simple_form_for [@group, @quizz_choice], url: add_genre_quizz_choice_path(@quizz_choice), method: :patch do |f| %>
+  <%= f.input :genre, as: :check_boxes, collection: ["Action", "Adventure", "Animation","Comedy","Crime","Documentary","Drama","Fantasy","Family","History","Horror","Music","Mystery","Romance","Science Fiction","Thriller", "TV Movie", "War", "Western"]  %>
+  <%= f.button :submit, class: "bottom-button"  %>
+<% end %>

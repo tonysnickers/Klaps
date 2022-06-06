@@ -1,7 +1,9 @@
 require 'open-uri'
 
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_keyword add_duration add_date add_actor change_step]
+  before_action :find_quizz_choice, only: %i[edit add_genre add_keyword add_duration add_date add_actor change_step]
+  before_action :actor_list_params, only: %i[index edit]
+  before_action :keyword_list_params, only: %i[index edit]
 
   def new
     @group = Group.find(params[:group_id])
@@ -25,7 +27,7 @@ class QuizzChoicesController < ApplicationController
   def index
     @quizz_choices = policy_scope(QuizzChoice)
     @group = Group.find(params[:group_id])
-    @quizz_choices = @group.quizz_choices.where(user: current_user)
+    @quizz_choice = current_user.quizz_choices.where(group: @group).first
     @nb_of_users = Group.find(params[:group_id]).users.count
     @nb_of_quizz_submitted = Group.find(params[:group_id]).quizz_choices.where(sent: true).count
     redirect_to group_movies_path if @nb_of_users == @nb_of_quizz_submitted
@@ -33,19 +35,7 @@ class QuizzChoicesController < ApplicationController
 
   def edit
     authorize @quizz_choice
-    (1..20).each do |page_number|
-      actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
-      @actor_list = []
-      actors.each do |act|
-        @actor_list << act['name']
-      end
-    end
 
-    @keywords_list = []
-    keyword_movies = Movie.all
-    keyword_movies.each do |k_movie|
-      @keywords_list << k_movie.keyword
-    end
   end
 
   def change_step
@@ -65,6 +55,15 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.save!
     @new_step = @quizz_choice.step
     redirect_to edit_quizz_choice_path(@quizz_choice)
+  end
+
+  def add_genre
+    # authorize @quizz_choice
+    # @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
+    @quizz_choice.update(quizz_choice_params)
+    @quizz_choice.step = "add_genre"
+    @quizz_choice.save!
+    redirect_to group_quizz_choices_path(@quizz_choice.group)
   end
 
   def add_keyword
@@ -120,6 +119,24 @@ class QuizzChoicesController < ApplicationController
 
   def quizz_choice_params
     params.require(:quizz_choice).permit(:genre, :duration, :actor, :keyword, :start_year, :end_year)
+  end
+
+  def actor_list_params
+    (1..100).each do |page_number|
+      actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
+      @actor_list = []
+      actors.each do |act|
+        @actor_list << act['name']
+      end
+    end
+  end
+
+  def keyword_list_params
+    @keywords_list = []
+    keyword_movies = Movie.all
+    keyword_movies.each do |k_movie|
+      @keywords_list << k_movie.keyword
+    end
   end
 end
 

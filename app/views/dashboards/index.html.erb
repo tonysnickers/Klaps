@@ -1,59 +1,33 @@
 
 <div class="container">
-  <div class="row d-flex">
-    <div class="text-center">
-      <h3>Let's find a movie</h1>
+    <div class="text-center my-4">
+      <h1>De nouveaux films vous attendent</h1>
+      <p class="p-index">Matcher vos préférences dès maintenant</p>
     </div>
-    <br>
-    <br>
 
-    <div class="d-block row">
-      <div class="col-sm d-flex">
-          <div class="bord padd-s">
-            <%= link_to groups_path, class: "text-decoration-none" do %>
-              <div class="bord">
-                <p>Join a group</p>
-              </div>
-            <% end %>
+  <div class="row">
+      <div class="col-sm">
+        <%= link_to groups_path, class: "text-decoration-none" do %>
+          <div class="option-join d-flex align-items-center justify-content-center">
+            <%= image_tag 'Vector.png', class:"logo-join" %>
+            <p class="mb-0">Join a group</p></i>
           </div>
+        <% end %>
 
-<div class="dash-index d-block row">
-  <div class="col-sm">
-
-      <%= link_to groups_path, class: "text-decoration-none" do %>
-        <div class="bord padd-b padd-index">
-          <p>Join a group</p>
-        </div>
-      <% end %>
-
-      <%= link_to new_group_path, class: "text-decoration-none" do %>
-        <div class="bord padd-b padd-index">
-          <p>Create a group</p>
-        </div>
-      <% end %>
-
-      <%= link_to groups_path, class: "text-decoration-none" do %>
-        <div class="bord padd-b padd-index">
-          <p>Solo</p>
-        </div>
-      <% end %>
-
-          <div class="bord padd-s">
-            <%= link_to new_group_path, class: "text-decoration-none" do %>
-              <div class="bord">
-                <p>Create a group</p>
-              </div>
-            <% end %>
+        <%= link_to new_group_path, class: "text-decoration-none " do %>
+          <div class="option-background d-flex align-items-center justify-content-center my-4">
+            <%= image_tag 'plus.png', class:"logo-join" %>
+            <p class="mb-0">Create a group</p>
           </div>
-      </div>
-      <div class="col-sm d-flex">
-          <div class="bord padd-s p-20">
-            <%= link_to groups_path, class: "text-decoration-none" do %>
-              <div class="bord">
-                <p>Solo</p>
-              </div>
-            <% end %>
+        <% end %>
+
+        <%= link_to groups_path, class: "text-decoration-none text-center" do %>
+          <div class="d-flex align-items-center justify-content-center  my-4">
+            <%= image_tag 'black_lives_matter.png', class:"logo-join" %>
+            <p class="mb-0">Solo</p>
           </div>
-      </div>
-  </div>
+        <% end %>
+    <%= cl_image_tag("Group_18_cujicv.png", class:"img-bottom") %>
+    </div>
+
 </div>
