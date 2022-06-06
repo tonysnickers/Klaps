@@ -26,6 +26,9 @@ class QuizzChoicesController < ApplicationController
     @quizz_choices = policy_scope(QuizzChoice)
     @group = Group.find(params[:group_id])
     @quizz_choices = @group.quizz_choices.where(user: current_user)
+    @nb_of_users = Group.find(params[:group_id]).users.count
+    @nb_of_quizz_submitted = Group.find(params[:group_id]).quizz_choices.where(sent: true).count
+    redirect_to group_movies_path if @nb_of_users == @nb_of_quizz_submitted
   end
 
   def edit
@@ -96,6 +99,16 @@ class QuizzChoicesController < ApplicationController
     redirect_to group_quizz_choices_path(@quizz_choice.group)
     # **********
     # LA OU LA MAGIE OPERE
+  end
+
+  def validate
+    @quizz_choice = QuizzChoice.where(user_id: current_user.id).find(params[:id])
+    authorize @quizz_choice
+
+    @quizz_choice.sent = true
+    @quizz_choice.save
+
+    redirect_to group_quizz_choices_path(@quizz_choice.group)
   end
 
   private
