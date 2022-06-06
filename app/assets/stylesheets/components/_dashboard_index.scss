@@ -1,0 +1,59 @@
+.logo-join {
+  color: $darkgray;
+  width: 20px;
+  height: 18px;
+  top: 43.5px;
+  margin-right: 10px;
+}
+
+.dash-index  {
+  .dashboard-option {
+    background-color: $yellow;
+  }
+}
+
+
+.img-bottom {
+  position: relative;
+  bottom: -8%;
+  width: 365.96px;;
+  left: -1px;
+  border-radius: 10px;
+}
+
+
+.option-background {
+  border: 1px solid $yellow;
+  border-radius: 10px;
+  margin: 15px;
+  text-align: center;
+  justify-content: center;
+  padding: 5px;
+  font-size: 20px;
+  margin-top: none;
+  color: $yellow;
+
+}
+
+.option-join {
+  height: 111px;
+  top: 221px;
+  border-radius: 10px;
+  margin: 15px;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  margin-top: none;
+  background-color: $yellow;
+  color: $darkgray;
+
+}
+
+.option-background p {
+margin: none;
+}
+
+
+.p-index{
+  color: rgba(255, 255, 255, 0.6);
+}
