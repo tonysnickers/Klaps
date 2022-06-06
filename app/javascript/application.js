@@ -1,8 +1,8 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import "./controllers"
-import { autocompleteSearch } from "./components/autocomplete"
 import "bootstrap"
+
 
 // Default SortableJS
 // import Sortable from 'sortablejs';
@@ -25,6 +25,6 @@ import "bootstrap"
         // import Sortable, { AutoScroll } from 'sortablejs/modular/sortable.core.esm.js';
 // Sortable.mount(new AutoScroll());
 
-document.addEventListener('turbo:load', function () {
-  autocompleteSearch();
-})
+// document.addEventListener('turbo:load', function () {
+//  autocompleteSearch();
+// })

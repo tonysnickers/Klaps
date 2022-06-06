@@ -1,63 +1,52 @@
-<div class="dashboard">
-  <div class="row d-flex">
-    <div class="dash-text">
+
+  <div class="dashboard">
+
+    <div class="dash-text text-center my-4">
       <% if current_user.username.empty? %>
         <h1>Welcome</h1>
       <% else %>
-        <h1>Welcome <%= current_user.username.capitalize %></h1>
+        <h1>Welcome <%= current_user.username %></h1>
       <% end %>
     </div>
 
-    <div class="row">
 
-      <div class="col-sm bord padd-b">
+      <div class="dashboard-header justify-content-center align-items-center text-center">
         <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-          <div class="d-flex justify-content-around">
-            <p class="text-align align-middle">Find a movie</p>
-            <%# <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_efjqvygt.json" style="width: 100px; height: 100px;"></lottie-player> %>
+          <div class="justify-content-center align-items-center text-center my-3">
+            <h1 class="">Find a movie</h1>
           </div>
         <% end %>
       </div>
 
-      <div class="col-sm d-flex">
-
-        <div class="bord padd-s">
-          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-            <div class="">
-              <p>My "old" movies</p>
+        <div class="dashboard-card my-5">
+          <div class="dahboard-card-content ">
+            <div class="dashboard-option">
+              <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+                  <p>My "old" movies</p>
+              <% end %>
             </div>
-          <% end %>
+
+            <div class="dashboard-option">
+              <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+                  <p>My wishlist    </p>
+              <% end %>
+            </div>
+
+          </div>
+
+          <div class="">
+            <div class="dashboard-option">
+              <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+                  <p>Add some friends erfer</p>
+              <% end %>
+            </div>
+
+            <div class="dashboard-option">
+              <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+                  <p>My friend's movies</p>
+              <% end %>
+            </div>
+          </div>
         </div>
 
-        <div class="bord padd-s">
-          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-            <div class="">
-              <p>My wishlist</p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="col-sm d-flex">
-
-        <div class="bord padd-s">
-          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-            <div class="">
-              <p>Add some friends</p>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="bord padd-s">
-          <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-            <div class="">
-              <p>My friend's movies</p>
-            </div>
-          <% end %>
-        </div>
-
-      </div>
-
-    </div>
   </div>
-</div>
