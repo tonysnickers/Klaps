@@ -1,22 +1,20 @@
 class MoviesController < ApplicationController
   def index
+    @group = Group.find(params["group_id"])
     @movies = policy_scope(Movie)
     @genre_all, @keyword_all, @duration_all, @date_all, @actor_all = Array.new(5) { [] }
-
-    # On itère sur chaque quiz, et dans chaque quiz sur chaque réponse
-    # Les variables contiennent donc les réponses de tous les utilisateurs
 
     Group.find(params["group_id"]).quizz_choices.each do |q|
       q.genre.each do |g|
         if g.nil?
           g = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Family",
-                "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "Thriller", "TV Movie", "War",
-                "Western"]
+              "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "Thriller", "TV Movie", "War",
+              "Western"]
         end
         @genre_all << g
       end
 
-      if q.keyword.empty?
+      if q.keyword.nil? || q.keyword.empty?
         @keyword_all << @keywords_list
       else
         @keyword_all << q.keyword
@@ -30,15 +28,12 @@ class MoviesController < ApplicationController
       q.end_year = 2022 if q.end_year.nil?
       @date_all << q.end_year
 
-      if q.actor.empty?
+      if q.actor.nil? || q.actor.empty?
         @actor_all << @actor_list
       else
         @actor_all << q.actor
       end
     end
-
-    # @quizz_choice.actor = params["q"]
-    # @actor = params["q"] if @actor.nil?
 
     big_movie = Movie.all
     duration_average = @duration_all.sum / @duration_all.length.to_f
@@ -53,8 +48,7 @@ class MoviesController < ApplicationController
     end
 
     movie_popular = movie_finder.tally
-    @movies = movie_popular.max_by(5) { |key, value| value }.map { |a| a[0] }
-
+    @movies = movie_popular.max_by(6) { |_key, value| value }.map { |a| a[0] }.reject { |m| m.nil? }
   end
 
   # def new
@@ -65,4 +59,6 @@ class MoviesController < ApplicationController
 
   # def edit
   # end
+
+
 end
