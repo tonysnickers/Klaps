@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :my_groups, through: :group_users, source: :group
   has_many :quizz_choices
+
+  has_many :friends
+  has_many :users, source: :friend, through: :friends
 end
