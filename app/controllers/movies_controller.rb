@@ -5,14 +5,11 @@ class MoviesController < ApplicationController
     @genre_all, @keyword_all, @duration_all, @date_all, @actor_all = Array.new(5) { [] }
 
     Group.find(params["group_id"]).quizz_choices.each do |q|
-
       @genre_all << q.genre
       @keyword_all << q.keyword
       @duration_all << q.duration
       @date_all << [q.start_year, q.end_year]
       @actor_all << q.actor
-
-
     end
 
     @movies_max = []
@@ -37,27 +34,11 @@ class MoviesController < ApplicationController
       @actor_all.flatten.each do |a|
         @movies_max << m if m.actor.include?(a)
       end
-
     end
 
-
-
-
     @movies = @movies_max.tally.max_by(6) { |key, value| value }.map { |a| a[0] }
-
 
     # movie_popular = movie_finder.tally
     # @movies = movie_popular.max_by(6) { |_key, value| value }.map { |a| a[0] }.reject { |m| m.nil? }
   end
-
-  # def new
-  # end
-
-  # def create
-  # end
-
-  # def edit
-  # end
-
-
 end
