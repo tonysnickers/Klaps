@@ -16,7 +16,8 @@
 
     <%= link_to "Delete this group", group_path(@group.id), data: {turbo_method: "patch"}, class: 'delete' %>
 
-    <%= link_to "Start the quiz", new_group_quizz_choice_path(@group), class: "bottom-button" %>
-
+    <% if @group.quizz_choices.where(user_id: current_user.id).first.nil? || @group.quizz_choices.where(user_id: current_user.id).first.sent == false %>
+      <%= link_to "Start the quiz", new_group_quizz_choice_path(@group), class: "bottom-button" %>
+    <% end %>
   </div>
 </div>
