@@ -2,55 +2,103 @@
   <div class="d-flex justify-content-center my-2">
 
     <div class="row">
+
       <h1 class="text-center my-4 font-weight-bold">All your choice</h1>
-      <h3 class="text-center">Your mood</h3>
-      <div class="text-center">
-        <% @quizz_choices.each do |quizz_choice| %>
-          <p class="recap"><%= quizz_choice.keyword %></p>
-        <% end %>
+
+      <div>
+        <div class="text-center">
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#genreModal">
+            <%= @quizz_choice.genre.flatten.to_s.gsub(/[\[\]\"]/,"") %>
+          </button>
+        </div>
+        <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'genre_edit' %>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h3 class="text-center my-3">Casting</h3>
-      <div class="text-center">
-        <% @quizz_choices.each do |quizz_choice| %>
-          <p class="recap"><%= quizz_choice.actor %></p>
-        <% end %>
+      <div>
+        <div class="text-center">
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#keywordModal">
+            <%= @quizz_choice.keyword.capitalize %>
+          </button>
+        </div>
+        <div class="modal fade" id="keywordModal" tabindex="-1" aria-labelledby="keywordModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'keyword' %>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h3 class="text-center my-3">Duration</h3>
-      <div class="text-center">
-        <% @quizz_choices.each do |quizz_choice| %>
-          <p class="recap"><%= quizz_choice.duration %></p>
-        <% end %>
+      <div>
+        <div class="text-center">
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#actorModal">
+            <%= @quizz_choice.actor %>
+          </button>
+        </div>
+        <div class="modal fade" id="actorModal" tabindex="-1" aria-labelledby="actorModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'actor' %>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h3 class="text-center my-3">Date start</h3>
-      <div class="text-center">
-        <% @quizz_choices.each do |quizz_choice| %>
-          <p class="recap"><%= quizz_choice.start_year %></p>
-        <% end %>
+      <div>
+        <div class="text-center">
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#durationModal">
+            <%= @quizz_choice.duration %>
+          </button>
+        </div>
+        <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'duration' %>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <div>
+        <div class="text-center">
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#dateModal">
+            <%= @quizz_choice.start_year %> - <%= @quizz_choice.end_year %>
+          </button>
+        </div>
 
-      <%#= quizz_choice.genre %>
-
-      <h3 class="text-center my-3">Date end</h3>
-      <div class="text-center">
-        <% @quizz_choices.each do |quizz_choice| %>
-          <p class="recap"><%= quizz_choice.end_year %></p>
-        <% end %>
+        <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="dateModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'date' %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <% if @quizz_choices.first.sent? %>
-      <p>Wait for the others...</p>
-    <% else %>
-      <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choices.first), data: { turbo_method: :patch } %>
-    <% end %>
+    <div>
+      <% if @quizz_choices.first.sent? %>
+        <p>Wait for the others...</p>
+      <% else %>
+        <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choices.first), data: { turbo_method: :patch } %>
+      <% end %>
+    </div>
 
-    <script>
+    <%# <script>
       setTimeout(function() {
         location.reload();
       }, 3000);
-    </script>
+    </script> %>
+  </div>
 </div>
