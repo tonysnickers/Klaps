@@ -6,15 +6,28 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#dashboard'
   get 'dashboard/index', to: 'dashboards#index'
 
-  resources :groups, only: %i[index show new create update] do
+  resources :groups, only: %i[index show new create update results] do
     resources :quizz_choices, only: %i[new create index]
     resources :movies, only: %i[index]
+
+    member do
+      patch :results
+    end
   end
+
+  resources :group_users, only: %i[create update]
+  resources :group_users, only: %i[edit] do
+    member do
+      get :movie_order
+      patch :movie_order
+    end
+  end
+
 
   resources :movie_seens, only: [:new, :create, :index]
   resources :wishes, only: [:new, :create, :index]
 
-  resources :group_users, only: [:create]
+
 
   resources :quizz_choices, only: %i[edit] do
     member do
