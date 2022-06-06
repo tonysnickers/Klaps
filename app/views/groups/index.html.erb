@@ -5,8 +5,9 @@
 <div class="row">
   <div class="col-sm padd-s text-center d-block">
     <% @groups.each do |group| %>
-      <div class="border-start border-end">
+      <div class="tag-button" style="margin: 20px">
         <%= link_to group.name.capitalize, group_path(group.id), class:'add-group' %>
+        <br><br>
       </div>
     <% end %>
   </div>
