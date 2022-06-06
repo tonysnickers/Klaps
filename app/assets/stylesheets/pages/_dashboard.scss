@@ -1,42 +1,42 @@
-
-.bord {
-  gap: 10px;
-  margin: 10px;
-  border-radius: $radius;
-  text-align: center;
-  p{
-    color: $yellow;
-    vertical-align: middle;
-    margin-top: 1rem;
-  }
-}
-.padd-b {
-  border: 1px solid $darkgray;
-  padding: 30px;
-  grid-column-start: span 4;
-  background-color: $yellow;
-  h5{
-    color: $darkgray;
-    vertical-align: middle;
-    margin-top: 1rem;
-  }
-}
-.padd-s {
-  border: 1px solid $yellow;
-  padding: 30px 50px;
-  grid-column-start: span 2;
-
 .dashboard {
-  margin: 0;
-}
-.dash-index {
-  margin: 50px 0;
+  margin: 0 auto;
 }
 
-.dash-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.dashboard-header {
+  border: 1px solid $yellow;
+  border-radius: 15px;
+  background-color: $yellow;
+  margin: 15px;
+  height: 250px;
+
+  h1{
+    padding-top: 35px;
+    color: #353535;
+    font-weight: bolder;
+  }
+
+  img{
+    text-align: center;
+  }
+}
+
+.dashboard-title {
+  color: white;
+  font-size: 34px;
+  font-weight: bolder;
+}
+
+
+.dashboard-option p {
+  border: 1px solid $yellow;
+  border-radius: 15px;
+  margin: 15px;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  margin-top: none;
+  color: $yellow;
+  font-weight: bolder;
 }
 
 // // Smallest device
