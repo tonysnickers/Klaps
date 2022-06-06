@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_02_155759) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_06_081918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_155759) do
     t.string "step", default: "initial"
     t.integer "start_year", default: 1960
     t.integer "end_year", default: 2022
+    t.boolean "sent", default: false
     t.index ["group_id"], name: "index_quizz_choices_on_group_id"
     t.index ["user_id"], name: "index_quizz_choices_on_user_id"
   end

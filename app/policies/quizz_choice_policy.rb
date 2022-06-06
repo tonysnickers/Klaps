@@ -37,4 +37,8 @@ class QuizzChoicePolicy < ApplicationPolicy
   def change_step?
     true
   end
+
+  def validate?
+    record.user == user
+  end
 end

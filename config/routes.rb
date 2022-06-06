@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       patch :add_date
       patch :add_keyword
       patch :change_step
+      patch :validate
     end
   end
 end
