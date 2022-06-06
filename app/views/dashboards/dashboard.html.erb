@@ -5,7 +5,7 @@
       <% if current_user.username.empty? %>
         <h1>Welcome</h1>
       <% else %>
-        <h1>Welcome <%= current_user.username.capitalize %></h1>
+        <h1>Welcome <%= current_user.username %></h1>
       <% end %>
     </div>
 
@@ -24,14 +24,13 @@
               <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
                   <p>My "old" movies</p>
               <% end %>
-
             </div>
 
             <div class="dashboard-option">
               <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
                   <p>My wishlist    </p>
               <% end %>
-          </div>
+            </div>
 
           </div>
 
@@ -49,7 +48,5 @@
             </div>
           </div>
         </div>
-
-
 
   </div>
