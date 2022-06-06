@@ -1,0 +1,13 @@
+<h1>My wishlist</h1>
+
+<% movies = [] %>
+  <% Wishe.where(user_id: current_user.id).each do |wish| %>
+    <% movies << wish.movie_id %>
+<% end %>
+
+<% movies.each do |id| %>
+  <h3><%= Movie.where(id: id)[0].name %></h3>
+  <p><%= Movie.where(id: id)[0].year %></p>
+  <p><%= Movie.where(id: id)[0].actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+  <p><%= Movie.where(id: id)[0].synopsis %></p>
+<% end %>
