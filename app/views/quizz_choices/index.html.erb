@@ -48,4 +48,9 @@
       <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choices.first), data: { turbo_method: :patch } %>
     <% end %>
 
+    <script>
+      setTimeout(function() {
+        location.reload();
+      }, 3000);
+    </script>
 </div>
