@@ -4,7 +4,7 @@
 
 <%= simple_form_for(@friend, data: {turbo_method: 'post'}) do |f| %>
   <%= f.association :users_friend, as: :check_boxes, label_method: :username %>
-  <%= f.submit class: "tag-button"  %>
+  <%= f.submit class: "bottom-button"  %>
 <% end %>
 
 <h2>Your friends</h2>

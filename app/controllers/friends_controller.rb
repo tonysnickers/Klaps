@@ -4,11 +4,6 @@ class FriendsController < ApplicationController
     @friend = Friend.new
   end
 
-  def new
-    @friend = Friend.new
-    authorize @friend
-  end
-
   def create
     params[:friend][:users_friend_id].reject(&:empty?).each do |id|
       user = User.find(id.to_i)

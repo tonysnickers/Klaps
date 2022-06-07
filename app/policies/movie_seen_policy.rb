@@ -6,7 +6,11 @@ class MovieSeenPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
+    true
+  end
+
+  def create?
     true
   end
 end

@@ -64,6 +64,7 @@
           </div>
 
           <div class="modal-footer">
+            <%= link_to "Add to my wishlist <3", group_wishes_path(@group, wishe: { movie_id: m.id }), data: {turbo_method: 'post'} %>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
 
