@@ -11,7 +11,7 @@
       <img src="<%= m.poster %>" width="10%" />
       <div class="card-movie-infos">
         <h2 class="text-start overflow-visible"><%= m.name %></h2>
-        <p class="text-start genre">
+        <p class="text-start text-warning">
           <%= m.genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
         </p>
         <p class="text-start"><%= m.year %> ~ <%= m.duration %> min ~ <%= m.rating %>/10 <i class="fa-solid fa-star"></i></p>
@@ -66,7 +66,9 @@
           </div>
 
           <div class="modal-footer">
-            <%= link_to "Add to my wishlist <3", group_wishes_path(@group, wishe: { movie_id: m.id }), data: {turbo_method: 'post'} %>
+            <%= link_to group_wishes_path(@group, wishe: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            <% end %>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
 

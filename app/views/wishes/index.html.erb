@@ -1,14 +1,76 @@
 <br><br>
 <h1 class="text-center">My wishlist</h1>
 
+<br>
+
 <% movies = [] %>
   <% Wishe.where(user_id: current_user.id).each do |wish| %>
     <% movies << wish.movie_id %>
 <% end %>
 
-<% movies.each do |id| %>
-  <h3><%= Movie.where(id: id)[0].name %></h3>
-  <p><%= Movie.where(id: id)[0].year %></p>
-  <p><%= Movie.where(id: id)[0].actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
-  <p><%= Movie.where(id: id)[0].synopsis %></p>
-<% end %>
+<div class="movie-container">
+  <% movies.each do |id| %>
+    <button type="button" class="card-movie background" id = "dragitem"
+            data-drag-target="card" data-movie-id="<%= Movie.where(id: id)[0].id %>"
+            data-bs-toggle="modal" data-bs-target="#filmsModal<%=Movie.where(id: id)[0].id%>" >
+      <img src="<%= Movie.where(id: id)[0].poster %>" width="10%" />
+      <div class="card-movie-infos">
+        <h2 class="text-start overflow-visible"><%= Movie.where(id: id)[0].name %></h2>
+        <p class="text-start text-warning">
+          <%= Movie.where(id: id)[0].genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
+        </p>
+        <p class="text-start"><%= Movie.where(id: id)[0].year %>  ~  <%= Movie.where(id: id)[0].duration %> min  ~  <%= Movie.where(id: id)[0].rating %>/10 <i class="fa-solid fa-star"></i></p>
+      </div>
+    </button>
+  <% end %>
+</div>
+
+
+
+<div>
+  <%# Modals %>
+  <% movies.each do |id| %>
+    <div class="modal fade" id="filmsModal<%=Movie.where(id: id)[0].id%>" tabindex="-1" aria-labelledby="filmsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark">
+
+          <div class="modal-body">
+            <img src= "<%= Movie.where(id: id)[0].poster %>" width="100%" height="400px" object-fit="cover" />
+            <div class="card-movie-infos">
+              <h2 class="mt-4"><strong><%= Movie.where(id: id)[0].name %></strong></h2>
+              <div>
+                <p class="text-start"><%= Movie.where(id: id)[0].genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <p><%= Movie.where(id: id)[0].year %> - <%= Movie.where(id: id)[0].duration %> min.</p>
+              </div>
+
+              <hr>
+
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+                <p><%= Movie.where(id: id)[0].actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+              </div>
+
+              <hr>
+
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+                <p><%= Movie.where(id: id)[0].synopsis %></p>
+              </div>
+
+              <hr>
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+                <p><%= Movie.where(id: id)[0].platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end%>
+</div>

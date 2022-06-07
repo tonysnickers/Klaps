@@ -15,7 +15,9 @@ export default class extends Controller {
         this.inputTarget.value = this.cardTargets.map(card => { return card.dataset.movieId })
       },
     animation: 150,
-    ghostClass: 'blue-background-class'
+    ghostClass: 'blue-background-class',
+    delayOnTouchOnly: true,
+    delay: 200
     });
   }
 
