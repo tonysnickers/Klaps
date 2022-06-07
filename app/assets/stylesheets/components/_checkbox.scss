@@ -1,0 +1,56 @@
+
+
+// .check_boxes {
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   grid-template-rows: repeat(7, 1fr);
+//   grid-column-gap: 30px;
+//   grid-row-gap: 15px;
+//   padding: 10px;
+// }
+
+// .form-check {
+//   border: 1px solid #000;
+//   padding:  20px;
+//   text-align: center;
+// }
+
+// .form-check .form-check-input {
+//   margin-left: none;
+// }
+
+.col-form-label {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+.form-check {
+  display: inline-block;
+  padding-left: 1.5em;
+  margin-bottom: 0.125rem;
+}
+
+.form-check-input {
+  position: absolute;
+  transform: scale(0);
+}
+
+.form-check-input + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50rem;
+  padding: 10px 20px;
+  background-color: #fdf7e5;
+  color: $darkgray;
+  border: 2px solid $yellow;
+  margin-right: -0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-check-input:checked + label {
+  background-color: $yellow;
+  color: #fff;
+}
