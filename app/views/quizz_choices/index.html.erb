@@ -91,10 +91,11 @@
 
 
     <div>
-      <% if @quizz_choices.first.sent? %>
+    <%#= raise %>
+      <% if @quizz_choice.sent? %>
         <p>Wait for the others...</p>
       <% else %>
-        <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choices.first), data: { turbo_method: :patch } %>
+        <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choice), data: { turbo_method: :patch } %>
       <% end %>
     </div>
 
