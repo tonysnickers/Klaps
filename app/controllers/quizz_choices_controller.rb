@@ -56,11 +56,11 @@ class QuizzChoicesController < ApplicationController
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
-  def add_genre
+  def edit_genre
     # authorize @quizz_choice
     # @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
     @quizz_choice.update(quizz_choice_params)
-    @quizz_choice.step = "add_genre"
+    # @quizz_choice.step = "edit_genre"
     @quizz_choice.save!
     redirect_to group_quizz_choices_path(@quizz_choice.group)
   end

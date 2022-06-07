@@ -29,17 +29,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :friends, only: [:index, :new, :create, :destroy]
+  resources :friends, only: %i[index new create destroy]
 
-
-  resources :movie_seens, only: [:create, :index]
-  resources :wishes, only: [:index]
-
-
+  resources :movie_seens, only: %i[create index]
+  resources :wishes, only: %i[index]
 
   resources :quizz_choices, only: %i[edit] do
     member do
-      patch :add_genre
+      patch :edit_genre
       patch :add_keyword
       patch :add_duration
       patch :add_date
