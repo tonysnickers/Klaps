@@ -31,9 +31,29 @@
   <%# Modals %>
   <div class="modal fade" id="filmsModal" tabindex="-1" aria-labelledby="filmsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <%# <div class="modal-content bg-dark"> %>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      <%# </div> %>
+      <div class="modal-content bg-dark">
+
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <% @movies.each do |m| %>
+            <img src= "<%= m.poster %>" width="100" heigth="100"/>
+            <div class="card-movie-infos">
+              <h2><%= m.name %></h2>
+              <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+              <p><%= m.year %> - <%= m.duration %> min</p>
+            </div>
+          <% end%>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%# <button type="button" class="btn btn-primary">Save changes</button> %>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
