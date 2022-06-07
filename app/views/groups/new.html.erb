@@ -1,9 +1,9 @@
 <h1>Organize a film show</h1>
 
-<div class="create-group">
+
   <%= simple_form_for @group do |f| %>
     <%= f.input :name %>
     <%= f.association :user, collection: @friends, as: :check_boxes, label_method: :username %>
     <%= f.submit class:"user-group" %>
   <% end %>
-</div>
+

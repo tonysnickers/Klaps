@@ -1,4 +1,12 @@
 .user-group {
-  display: none;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: $yellow;
+  color: $darkgray;
 }
-
