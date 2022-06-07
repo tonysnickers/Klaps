@@ -60,7 +60,7 @@ class QuizzChoicesController < ApplicationController
     # authorize @quizz_choice
     # @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
     @quizz_choice.update(quizz_choice_params)
-    # @quizz_choice.step = "edit_genre"
+    @quizz_choice.step = "edit_genre"
     @quizz_choice.save!
     redirect_to group_quizz_choices_path(@quizz_choice.group)
   end
@@ -70,7 +70,11 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.keyword = params["q"]
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    if params[:edit] == "true"
+      redirect_to group_quizz_choices_path(@quizz_choice.group)
+    else
+      redirect_to edit_quizz_choice_path(@quizz_choice)
+    end
   end
 
   def add_duration
@@ -78,17 +82,22 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
     @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    if params[:edit] == "true"
+      redirect_to group_quizz_choices_path(@quizz_choice.group)
+    else
+      redirect_to edit_quizz_choice_path(@quizz_choice)
+    end
   end
 
   def add_date
     authorize @quizz_choice
     @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
-    if @quizz_choice.save!
-      redirect_to edit_quizz_choice_path(@quizz_choice)
-    else
+    @quizz_choice.save!
+    if params[:edit] == "true"
       redirect_to group_quizz_choices_path(@quizz_choice.group)
+    else
+      redirect_to edit_quizz_choice_path(@quizz_choice)
     end
   end
 
