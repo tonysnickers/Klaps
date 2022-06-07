@@ -17,7 +17,7 @@
 <br>
 <% current_user.friends.each do |fr| %>
   <div class="d-flex">
-    <p><%= fr.users_friend.username %> -
+    <p><%= fr.users_friend.username %>
     <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
       <i class='fa-solid fa-trash-can', style="color: red"></i>
     <% end %></p>
