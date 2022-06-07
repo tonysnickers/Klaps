@@ -1,20 +1,22 @@
-<div class = "title" >
-  <h1>Here are your movies!</h1>
-</div>
+<h1 class="title">All your choice</h1>
 <% n = 0 %>
 <% base_poster_url = "https://image.tmdb.org/t/p/original" %>
 <br>
 
-<div class="movie-container w-75 m-auto" id="draglist" data-controller = "drag">
+<div class="movie-container" id="draglist" data-controller = "drag">
   <% @movies.compact.each do |m| %>
-    <div class="card-movie" id = "dragitem" data-drag-target="card" data-movie-id="<%= m.id %>"%>>
-      <img src= "<%= m.poster %>" />
+    <button type="button" class="card-movie background" id = "dragitem"
+            data-drag-target="card" data-movie-id="<%= m.id %>"
+            data-bs-toggle="modal" data-bs-target="#filmsModal<%=m.id%>" >
+      <img src="<%= m.poster %>" width="10%" />
       <div class="card-movie-infos">
-        <h2 class="overflow-visible"><%= m.name %></h2>
-        <p><%= m.actor.first(2).to_s.gsub(/[\[\]\"]/,"") %></p>
-        <p><%= m.year %> - <%= m.duration %> min</p>
+        <h2 class="text-start overflow-visible"><%= m.name %></h2>
+        <p class="text-start genre">
+          <%= m.genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
+        </p>
+        <p class="text-start"><%= m.year %> ~ <%= m.duration %> min ~ <%= m.rating %>/10 <i class="fa-solid fa-star"></i></p>
       </div>
-    </div>
+    </button>
   <% end %>
 
   <%= simple_form_for :ordered_choice, url: compute_results_group_path(@group), data: {turbo_method: "post"} do |f|%>
@@ -22,4 +24,51 @@
     <%#= f.input :user, value: current_user %>
     <%= f.submit "Vote!", class: "bottom-button"%>
   <% end %>
+</div>
+
+
+<div>
+  <%# Modals %>
+  <% @movies.each do |m| %>
+    <div class="modal fade" id="filmsModal<%=m.id%>" tabindex="-1" aria-labelledby="filmsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark">
+
+          <div class="modal-body">
+            <img src= "<%= m.poster %>" width="100%" height="400px" object-fit="cover" />
+            <div class="card-movie-infos">
+              <h2 class="mt-4"><strong><%= m.name %></strong></h2>
+              <div>
+                <p class="text-start"><%= m.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <p><%= m.year %> - <%= m.duration %> min.</p>
+              </div>
+
+              <hr>
+
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6">Actors</p>
+                <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+              </div>
+
+              <hr>
+
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+                <p><%= m.synopsis %></p>
+              </div>
+
+              <hr>
+
+              <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end%>
 </div>

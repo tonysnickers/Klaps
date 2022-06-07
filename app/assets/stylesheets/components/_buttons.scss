@@ -16,9 +16,10 @@
 }
 
 .bottom-button {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: sticky;
+  bottom: 10px;
+  // left: 0;
+  border-radius: $radius;
   width: 100%;
   padding: 20px;
   color: $darkgray;
