@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
 
     Movie.all.each do |m|
       @genre_all.flatten.each do |g|
-       @movies_max << m if m.genre.include?(g)
+        @movies_max << m if m.genre.include?(g)
       end
 
       @keyword_all.flatten.each do |k|
@@ -36,7 +36,7 @@ class MoviesController < ApplicationController
       end
     end
 
-    @movies = @movies_max.tally.max_by(6) { |key, value| value }.map { |a| a[0] }
+    @movies = @movies_max.tally.max_by(5) { |key, value| value }.map { |a| a[0] }
 
     # movie_popular = movie_finder.tally
     # @movies = movie_popular.max_by(6) { |_key, value| value }.map { |a| a[0] }.reject { |m| m.nil? }

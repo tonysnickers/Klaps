@@ -18,6 +18,10 @@ class GroupPolicy < ApplicationPolicy
       record.user == user
     end
 
+    def compute_results?
+      true
+    end
+
     def results?
       true
     end

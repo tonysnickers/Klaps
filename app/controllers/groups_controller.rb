@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :update, :results]
+  before_action :set_group, only: [:show, :update, :compute_results, :results]
 
   def index
     @groups = policy_scope(Group)
@@ -39,24 +39,38 @@ class GroupsController < ApplicationController
     redirect_to groups_path, status: :see_other
   end
 
-  def results
+  def compute_results
     if params["ordered_choice"]["movie_order"].split(',').length == 1
       @ids = params["ordered_choice"]["movie_order"].split(' ')
     else
       @ids = params["ordered_choice"]["movie_order"].split(',')
     end
-
     authorize @group
     @points = [5, 4, 3, 2, 1]
     @ids.each do |movie_id|
       if OrderedChoice.find_by(movie: Movie.find(movie_id.to_i), group: @group)
-        OrderedChoice.find_by(movie: Movie.find(movie_id.to_i), group: @group).point += @points[@ids.index(movie_id)]
+        oc = OrderedChoice.find_by(movie: Movie.find(movie_id.to_i), group: @group)
+        oc.update(point: oc.point += @points[@ids.index(movie_id)])
       else
         OrderedChoice.create(movie: Movie.find(movie_id.to_i), group: @group, point: @points[@ids.index(movie_id)])
       end
     end
-    @final = OrderedChoice.where(group: @group).sort.reverse.first
+    h = {}
+    OrderedChoice.where(group: @group).each do |oc|
+      h[oc.movie_id] = oc.point
+    end
+    @final = Movie.find(h.sort_by {|k, v| v}.reverse.first.first)
     redirect_to results_group_path(@group)
+  end
+
+  def results
+    authorize @group
+    h = {}
+    OrderedChoice.where(group: @group).each do |oc|
+      h[oc.movie_id] = oc.point
+    end
+    @final = Movie.find(h.sort_by {|k, v| v}.reverse.first.first)
+    # redirect_to results_group_path(@group)
   end
 
   private

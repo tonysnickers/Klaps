@@ -5,21 +5,19 @@ class WishesController < ApplicationController
     @w.where(wish: true)
   end
 
-  def new
-    @wishe = Wishe.new
-    authorize @wishe
-  end
-
   def create
-    @wishe = Wishe.new(params_wishe)
-    @wishe.user = current_user
+    @group = Group.find(params[:group_id])
+
+    @wishe = Wishe.where(user: current_user, movie_id: params_wishe[:movie_id]).first_or_initialize
     authorize @wishe
     @wishe.save
+
+    redirect_to group_movies_path(@group)
   end
 
-  # private
+  private
 
-  # def params_wishe
-  #   params.require(:wishe).permit(:id)
-  # end
+  def params_wishe
+    params.require(:wishe).permit(:movie_id)
+  end
 end
