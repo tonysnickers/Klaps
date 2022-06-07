@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_genre add_keyword add_duration add_date add_actor change_step]
+  before_action :find_quizz_choice, only: %i[edit edit_genre add_keyword add_duration add_date add_actor change_step]
   before_action :actor_list_params, only: %i[index edit]
   before_action :keyword_list_params, only: %i[index edit]
 
@@ -57,8 +57,8 @@ class QuizzChoicesController < ApplicationController
   end
 
   def edit_genre
-    # authorize @quizz_choice
-    # @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
+    authorize @quizz_choice
+    @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
     @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "edit_genre"
     @quizz_choice.save!
