@@ -1,0 +1,22 @@
+<div class = "title" >
+  <h1>Here it is!</h1>
+</div>
+<% n = 0 %>
+<% base_poster_url = "https://image.tmdb.org/t/p/original" %>
+<br>
+
+<div class="card-final">
+  <img src="<%= @final.poster %>"/>
+  <div class="card-final-infos">
+    <div>
+      <h2><%= @final.name %></h2>
+      <p><%= @final.synopsis %></p>
+      <p>Casting : <%= @final.actor %></p>
+      <p><%= @final.year %></p>
+    </div>
+    <h2 class="card-final-other"></h2>
+    <p><%= @final.duration %></p>
+    <p><%= @final.rating %></p>
+    <p><%= @final.platform %></p>
+  </div>
+</div>
