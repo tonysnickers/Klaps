@@ -1,0 +1,41 @@
+<h1>Add some friends</h1>
+
+
+<%= simple_form_for(@friend, data: {turbo_method: 'post'}) do |f| %>
+  <%= f.association :users_friend, as: :check_boxes, label_method: :username %>
+  <%= f.submit class: "bottom-button"  %>
+<% end %>
+<br>
+<hr>
+<br>
+<h2>Your friends</h2>
+
+<% current_user.friends.each do |fr| %>
+  <div class="d-flex">
+    <p><%= fr.users_friend.username %>
+    <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
+      <i class='fa-solid fa-trash-can', style="color: red"></i>
+    <% end %></p>
+  </div>
+
+<% end %>
+<% Friend.where(users_friend: current_user).each do |n| %>
+  <div class="d-flex">
+    <p><%= User.find(n.user_id).username %>
+    <%= link_to friend_path(n), data: {turbo_method: "delete"} do %>
+      <i class='fa-solid fa-trash-can', style="color: red"></i>
+    <% end %></p>
+  </div>
+<% end %>
+
+
+
+<%= form_tag(add_actor_quizz_choice_path(@quizz_choice), method: 'patch', class: "form-inline") do %>
+  <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= @actor_list.to_json %>">
+    <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search an actor...", data: { "autocomplete-target": "searchInput" } %>
+    <br>
+
+  </div>
+
+    <%= submit_tag "Next", class: "bottom-button" %>
+<% end %>
