@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class QuizzChoicesController < ApplicationController
-  before_action :find_quizz_choice, only: %i[edit add_genre add_keyword add_duration add_date add_actor change_step]
+  before_action :find_quizz_choice, only: %i[edit edit_genre add_keyword add_duration add_date add_actor change_step]
   before_action :actor_list_params, only: %i[index edit]
   before_action :keyword_list_params, only: %i[index edit]
 
@@ -56,11 +56,11 @@ class QuizzChoicesController < ApplicationController
     redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
-  def add_genre
-    # authorize @quizz_choice
-    # @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
+  def edit_genre
+    authorize @quizz_choice
+    @quizz_choice.genre = params["quizz_choice"]["genre"].reject(&:empty?)
     @quizz_choice.update(quizz_choice_params)
-    @quizz_choice.step = "add_genre"
+    @quizz_choice.step = "edit_genre"
     @quizz_choice.save!
     redirect_to group_quizz_choices_path(@quizz_choice.group)
   end
@@ -70,7 +70,11 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.keyword = params["q"]
     @quizz_choice.step = "add_keyword"
     @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    if params[:edit] == "true"
+      redirect_to group_quizz_choices_path(@quizz_choice.group)
+    else
+      redirect_to edit_quizz_choice_path(@quizz_choice)
+    end
   end
 
   def add_duration
@@ -78,17 +82,22 @@ class QuizzChoicesController < ApplicationController
     @quizz_choice.duration = params["quizz_choice"]["duration"]
     @quizz_choice.step = "add_duration"
     @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    if params[:edit] == "true"
+      redirect_to group_quizz_choices_path(@quizz_choice.group)
+    else
+      redirect_to edit_quizz_choice_path(@quizz_choice)
+    end
   end
 
   def add_date
     authorize @quizz_choice
     @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
-    if @quizz_choice.save!
-      redirect_to edit_quizz_choice_path(@quizz_choice)
-    else
+    @quizz_choice.save!
+    if params[:edit] == "true"
       redirect_to group_quizz_choices_path(@quizz_choice.group)
+    else
+      redirect_to edit_quizz_choice_path(@quizz_choice)
     end
   end
 

@@ -20,7 +20,7 @@
               </div>
 
               <div class="modal-body">
-                <%= render 'genre_edit' %>
+                <%= render 'edit_genre'%>
               </div>
 
             </div>
@@ -38,7 +38,7 @@
           <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              <%= render 'keyword' %>
+              <%= render 'keyword', edit: true %>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
           <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              <%= render 'duration' %>
+              <%= render 'duration', edit: true %>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
           <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              <%= render 'date' %>
+              <%= render 'date', edit: true %>
             </div>
           </div>
         </div>

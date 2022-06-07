@@ -18,6 +18,10 @@ class QuizzChoicePolicy < ApplicationPolicy
     record.user == user
   end
 
+  def edit_genre?
+    true
+  end
+
   def add_keyword?
     true
   end

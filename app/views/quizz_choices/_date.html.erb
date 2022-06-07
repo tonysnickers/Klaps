@@ -1,4 +1,4 @@
-<div class="progress my-5" style="height: 1px;">
+<div class="progress my-5">
   <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
@@ -10,6 +10,12 @@
   <div class="d-flex justify-content-center w-100 fs-1">
     <%= f.select :start_year, options_for_select(1960..2022, 1960), { prompt: "start year" }, class: 'date-year border-end' %>
     <%= f.select :end_year, options_for_select(1960..2022, 2022), { prompt: "end date" }, class: 'date-year' %>
+
+
+    <% if edit %>
+      <%= hidden_field_tag :edit, "true" %>
+    <% end %>
+
     <%= f.submit class: "bottom-button" %>
   </div>
 <% end %>
