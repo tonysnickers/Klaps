@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :friends, only: [:index, :new, :create, :delete]
+  resources :friends, only: [:index, :new, :create, :destroy]
 
 
   resources :movie_seens, only: [:new, :create, :index]
