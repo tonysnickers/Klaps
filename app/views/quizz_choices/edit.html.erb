@@ -3,11 +3,11 @@
 <% end %>
 
   <% if @quizz_choice.step == "initial" %>
-    <%= render "keyword" %>
+    <%= render "keyword", edit: false %>
   <% elsif @quizz_choice.step == "add_keyword" %>
-    <%= render "duration" %>
+    <%= render "duration", edit: false %>
   <% elsif @quizz_choice.step == "add_duration" %>
-    <%= render "date" %>
+    <%= render "date", edit: false %>
   <% else %>
     <%= render "actor" %>
   <% end %>

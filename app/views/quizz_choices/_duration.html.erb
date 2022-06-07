@@ -19,8 +19,14 @@
                   id: 'sliderRange'
                 } %>
     <p>Your value: <span id="demo"></span> min</p>
-  </div>
+
+
+    <% if edit %>
+      <%= hidden_field_tag :edit, "true" %>
+    <% end %>
+
     <%= f.submit class: "bottom-button" %>
+  </div>
 <% end %>
 
 <script>
