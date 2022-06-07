@@ -46,7 +46,7 @@
               <hr>
 
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Actors</p>
+                <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
                 <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
               </div>
 
@@ -58,8 +58,10 @@
               </div>
 
               <hr>
-
-              <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+                <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+              </div>
             </div>
           </div>
 

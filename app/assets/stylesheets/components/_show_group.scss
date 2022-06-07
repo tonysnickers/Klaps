@@ -1,0 +1,29 @@
+.member-title {
+  color: $yellow;
+}
+
+.member-group {
+  font-size: 20px;
+}
+
+.member-content {
+  margin-bottom: 44px;
+}
+
+.delete-group {
+  color: red;
+  text-decoration: none;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+.group-name {
+  background-color: $yellow;
+  border-radius: 10px;
+  color: $darkgray;
+  margin: 15px auto;
+  width: 300px;
+  padding: 10px 20px;
+}
