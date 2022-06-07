@@ -1,9 +1,10 @@
 .tag-button {
-  background-color: $white;
   text-decoration: none;
   color: $darkgray;
+  border: 1px solid  $yellow;
   border-radius: 15px;
   padding: 10px 20px;
+  margin-top: 13px;
 }
 
 .tag-button:hover {
@@ -16,9 +17,9 @@
 }
 
 .bottom-button {
-  position: sticky;
-  bottom: 10px;
-  // left: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   border-radius: $radius;
   width: 100%;
   padding: 20px;
@@ -64,7 +65,7 @@
 // }
 .add-group {
   font-size: 20px;
-  color: $darkgray;
+  color:  $yellow;
   text-decoration: none;
 }
 .delete {
