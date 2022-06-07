@@ -13,14 +13,14 @@ export default class extends Controller {
         console.log(this.cardTargets)
         console.log(this.cardTargets.map(card => { return card.dataset.movieId }))
         this.inputTarget.value = this.cardTargets.map(card => { return card.dataset.movieId })
-      }
-
+      },
+    animation: 150,
+    ghostClass: 'blue-background-class'
     });
   }
 
 
 }
-
 
 
 // var el = document.getElementById('#draglist');

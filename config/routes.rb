@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     resources :movies, only: %i[index]
 
     member do
-      patch :results
+      post :compute_results
+      get :results
     end
   end
 
