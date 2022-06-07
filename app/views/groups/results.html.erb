@@ -1,22 +1,41 @@
 <div class = "title" >
   <h1>Here it is!</h1>
+  <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_7oqgfm5n.json" mode="bounce" background="transparent"  speed="1"  style="width: 100%; height: 20%;"  loop  autoplay></lottie-player>
 </div>
-<% n = 0 %>
-<% base_poster_url = "https://image.tmdb.org/t/p/original" %>
-<br>
 
-<div class="card-final">
-  <img src="<%= @final.poster %>"/>
-  <div class="card-final-infos">
-    <div>
-      <h2><%= @final.name %></h2>
-      <p><%= @final.synopsis %></p>
-      <p>Casting : <%= @final.actor %></p>
-      <p><%= @final.year %></p>
+<% n = 0 %>
+
+<div>
+  <div class="bg-dark">
+    <div class="modal-body">
+      <img src= "<%= @final.poster %>" width="100%" height="400px" object-fit="cover" />
+      <div class="card-movie-infos">
+        <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
+        <div>
+          <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+          <p><%= @final.year %> - <%= @final.duration %> min.</p>
+        </div>
+
+        <hr>
+
+        <div>
+          <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+          <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+        </div>
+
+        <hr>
+
+        <div>
+          <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+          <p><%= @final.synopsis %></p>
+        </div>
+
+        <hr>
+        <div>
+          <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+          <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+        </div>
+      </div>
     </div>
-    <h2 class="card-final-other"></h2>
-    <p><%= @final.duration %></p>
-    <p><%= @final.rating %></p>
-    <p><%= @final.platform %></p>
   </div>
 </div>
