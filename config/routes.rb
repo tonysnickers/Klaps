@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get 'movie_seens/index'
-  get 'wishes/index'
+  # get 'friends/index'
+  # get 'friends/new'
+  # get 'friends/create'
+  # get 'friends/delete'
+  # get 'movie_seens/index'
+  # get 'wishes/index'
   devise_for :users
   root to: "pages#home"
   get 'dashboard', to: 'dashboards#dashboard'
@@ -23,6 +27,8 @@ Rails.application.routes.draw do
       patch :movie_order
     end
   end
+
+  resources :friends, only: [:index, :new, :create, :destroy]
 
 
   resources :movie_seens, only: [:new, :create, :index]

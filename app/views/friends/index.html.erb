@@ -1,0 +1,28 @@
+<h1>Friends#index</h1>
+<p>Find me in app/views/friends/index.html.erb</p>
+
+
+<%= simple_form_for(@friend, data: {turbo_method: 'post'}) do |f| %>
+  <%= f.association :users_friend, as: :check_boxes, label_method: :username %>
+  <%= f.submit class: "tag-button"  %>
+<% end %>
+
+<h2>Your friends</h2>
+
+<% current_user.friends.each do |fr| %>
+  <div class="d-flex">
+    <p><%= fr.users_friend.username %>
+    <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
+      <i class='fa-solid fa-trash-can', style="color: red"></i>
+    <% end %></p>
+  </div>
+<% end %>
+
+<% Friend.where(users_friend: current_user).each do |n| %>
+  <div class="d-flex">
+    <p><%= User.find(n.user_id).username %>
+    <%= link_to friend_path(n), data: {turbo_method: "delete"} do %>
+      <i class='fa-solid fa-trash-can', style="color: red"></i>
+    <% end %></p>
+  </div>
+<% end %>
