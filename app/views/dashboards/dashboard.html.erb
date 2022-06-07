@@ -24,12 +24,32 @@
         <% end %>
       </div>
 
+      <div class="dashboard-option">
+        <%= link_to wishes_path, class: "text-decoration-none" do %>
+            <p>My wishlist</p>
+        <% end %>
+      </div>
 
+    </div>
+
+    <div class="">
+      <div class="dashboard-option">
+        <%= link_to friends_path, class: "text-decoration-none" do %>
+            <p>Add some friends</p>
+        <% end %>
+      </div>
+
+      <div class="dashboard-option">
+        <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+            <p>My friend's movies</p>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="carousel">
     <ul class="carousel__list">
-      <li class="carousel__item" data-pos="-2">1 - <%= @movies.poster.first %></li>
+      <li class="carousel__item" data-pos="-2">1</li>
       <li class="carousel__item" data-pos="-1">2</li>
       <li class="carousel__item" data-pos="0">3</li>
       <li class="carousel__item" data-pos="1">4</li>
