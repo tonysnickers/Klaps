@@ -39,24 +39,8 @@
 
       <div>
         <div class="text-center">
-          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#actorModal">
-            <%= @quizz_choice.actor %>
-          </button>
-        </div>
-        <div class="modal fade" id="actorModal" tabindex="-1" aria-labelledby="actorModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-dark">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              <%= render 'actor' %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="text-center">
           <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#durationModal">
-            <%= @quizz_choice.duration %>
+            <%= @quizz_choice.duration %> min
           </button>
         </div>
         <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
@@ -85,12 +69,27 @@
           </div>
         </div>
       </div>
+
+      <div>
+        <div class="text-center">
+          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#actorModal">
+            <%= @quizz_choice.actor %>
+          </button>
+        </div>
+        <div class="modal fade" id="actorModal" tabindex="-1" aria-labelledby="actorModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%= render 'actor' %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-      <%#= link_to "Let the magic begin !", group_movies_path(@group), class:"bottom-button" %>
+    <%#= link_to "Let the magic begin !", group_movies_path(@group), class:"bottom-button" %>
 
-
-    <div>
+    <div class="bottom-button">
       <% if @quizz_choices.first.sent? %>
         <p>Wait for the others...</p>
       <% else %>
