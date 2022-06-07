@@ -35,7 +35,6 @@ class QuizzChoicesController < ApplicationController
 
   def edit
     authorize @quizz_choice
-
   end
 
   def change_step
@@ -86,8 +85,11 @@ class QuizzChoicesController < ApplicationController
     authorize @quizz_choice
     @quizz_choice.update(quizz_choice_params)
     @quizz_choice.step = "add_date"
-    @quizz_choice.save!
-    redirect_to edit_quizz_choice_path(@quizz_choice)
+    if @quizz_choice.save!
+      redirect_to edit_quizz_choice_path(@quizz_choice)
+    else
+      redirect_to group_quizz_choices_path(@quizz_choice.group)
+    end
   end
 
   def add_actor
@@ -103,10 +105,8 @@ class QuizzChoicesController < ApplicationController
   def validate
     @quizz_choice = QuizzChoice.where(user_id: current_user.id).find(params[:id])
     authorize @quizz_choice
-
     @quizz_choice.sent = true
     @quizz_choice.save
-
     redirect_to group_quizz_choices_path(@quizz_choice.group)
   end
 
