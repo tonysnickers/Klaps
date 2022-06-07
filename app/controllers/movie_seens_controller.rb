@@ -5,11 +5,6 @@ class MovieSeensController < ApplicationController
     @ms.where(seen: true)
   end
 
-  def new
-    @movie_seen = MovieSeen.new
-    authorize @movie_seen
-  end
-
   def create
     @movie_seen = MovieSeen.new(params_movie_seen)
     @movie_seen.user = current_user
