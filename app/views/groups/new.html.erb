@@ -2,6 +2,6 @@
 
 <%= simple_form_for @group do |f| %>
   <%= f.input :name %>
-  <%= f.association :user, as: :check_boxes, label_method: :username %>
+  <%= f.association :user, collection: @friends, as: :check_boxes, label_method: :username %>
   <%= f.submit %>
 <% end %>

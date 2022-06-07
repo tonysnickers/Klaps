@@ -13,6 +13,9 @@ class GroupsController < ApplicationController
     @group = Group.new
     authorize @group
     @group_user = GroupUser.new
+    @friends = current_user.friends.map(&:users_friend)
+    @friends << Friend.where(users_friend: current_user).map(&:user)
+    @friends.flatten!
   end
 
   def create
