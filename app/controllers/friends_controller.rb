@@ -5,15 +5,13 @@ class FriendsController < ApplicationController
   end
 
   def create
-    params[:friend][:users_friend_id].reject(&:empty?).each do |id|
-      user = User.find(id.to_i)
-      @friend = Friend.new(users_friend: user, user: current_user)
-      if (user != current_user) && ((!current_user.friends.map(&:users_friend).include?(user)) && (!user.friends.map(&:users_friend).include?(current_user)))
-        @friend.save!
-      else
-        p "You are already friends!"
-      end
+    @friend = Friend.new(users_friend: User.where(username: params["q"])[0], user: current_user)
+    if (@friend.users_friend != current_user) && ((!current_user.friends.map(&:users_friend).include?(@friend.users_friend)) && (!@friend.users_friend.friends.map(&:users_friend).include?(current_user)))
+      @friend.save!
+    else
+      flash.alert = "Try another user"
     end
+
     redirect_to friends_path
     authorize @friend
   end
