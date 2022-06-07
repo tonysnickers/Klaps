@@ -10,7 +10,7 @@
             data-bs-toggle="modal" data-bs-target="#filmsModal<%=m.id%>" >
       <img src="<%= m.poster %>" width="10%" />
       <div class="card-movie-infos">
-        <h2 class="text-start"><%= m.name %></h2>
+        <h2 class="text-start overflow-visible"><%= m.name %></h2>
         <p class="text-start genre">
           <%= m.genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
         </p>
@@ -19,8 +19,8 @@
     </button>
   <% end %>
 
-  <%= simple_form_for :ordered_choice, url: results_group_path(@group), data: {turbo_method: "patch"} do |f|%>
-    <%= f.input :movie_order, input_html: {data: {drag_target: "input"}, value: @movies.pluck(:id), type: "hidden"} %>
+  <%= simple_form_for :ordered_choice, url: compute_results_group_path(@group), data: {turbo_method: "post"} do |f|%>
+    <%= f.input :movie_order, input_html: {data: {drag_target: "input"}, type: "hidden", value: @movies.pluck(:id)}%>
     <%#= f.input :user, value: current_user %>
     <%= f.submit "Vote!", class: "bottom-button"%>
   <% end %>
