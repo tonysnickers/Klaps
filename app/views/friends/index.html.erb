@@ -1,4 +1,5 @@
-<h1>Add some friends</h1>
+<h1 class="text-center">Add some friends</h1>
+<br>
 <br>
 <%= form_tag(friends_path, method: 'post', class: "form-inline") do %>
   <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= User.all.pluck(:username)%>">
@@ -9,13 +10,14 @@
     <%= submit_tag "Add a friend", class: "bottom-button" %>
 <% end %>
 
+<br>
 <hr>
 <br>
 <h2>Your friends</h2>
-
+<br>
 <% current_user.friends.each do |fr| %>
   <div class="d-flex">
-    <p><%= fr.users_friend.username %>
+    <p><%= fr.users_friend.username %> -
     <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
       <i class='fa-solid fa-trash-can', style="color: red"></i>
     <% end %></p>
