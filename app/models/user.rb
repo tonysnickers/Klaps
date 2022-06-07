@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_many :friends
   has_many :users, source: :friend, through: :friends
+  validates :username, uniqueness: true
 end
