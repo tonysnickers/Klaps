@@ -4,28 +4,29 @@
 
 <br>
 
-<h3 class="my-5">Choose a duration</h3>
+<h3 class="my-5">How much time do you have?</h3>
 
 <%= simple_form_for @quizz_choice, url: add_duration_quizz_choice_path(@quizz_choice), method: :patch do |f| %>
   <div class="rangeslider">
     <%= f.input :duration,
                 as: :range,
                 input_html: {
-                  min: 60,
-                  max: 300,
-                  value: 180,
+                  min: 20,
+                  max: 260,
+                  value: 150,
                   step: 30,
                   class: 'myslider',
-                  id: 'sliderRange'
-                } %>
-    <p>Your value: <span id="demo"></span> min</p>
+                  id: 'sliderRange',
+                },
+                label: false %>
+    <p class="text-center"><span id="demo"></span> min</p>
 
 
     <% if edit %>
       <%= hidden_field_tag :edit, "true" %>
     <% end %>
 
-    <%= f.submit "Next question", class: "bottom-button" %>
+    <%= f.submit "Next", class: "bottom-button" %>
   </div>
 <% end %>
 
