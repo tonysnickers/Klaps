@@ -9,10 +9,14 @@
 
   <h3>Choose a genre</h3>
 
-  <%= simple_form_for [@group, @quizz_choice], class: "genre-align" do |f| %>
+  <%= simple_form_for [@group, @quizz_choice] do |f| %>
 
-    <%= f.input :genre, as: :check_boxes, collection: ["Action", "Adventure", "Animation","Comedy","Crime","Documentary","Drama","Fantasy","Family","History","Horror","Music","Mystery","Romance","Science Fiction","Thriller", "TV Movie", "War", "Western"] %>
-    <%= f.submit "Start the quizz", class: "bottom-button"  %>
+    <%= f.input :genre, as: :check_boxes,
+                collection: ["Science Fiction", "Adventure", "Action", "Animation", "Comedy", "Romance",
+                             "Crime", "Drama", "Fantasy", "Family", "History", "Horror", "Music",
+                             "Mystery", "Thriller", "TV Movie", "War", "Western", "Documentary"], label: "" %>
+    <%= f.submit "Start the quizz", class: "bottom-button quizz-button"  %>
 
   <% end %>
+
 </div>
