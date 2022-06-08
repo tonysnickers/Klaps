@@ -57,7 +57,7 @@
     <% end %>
 
     <br>
-    <%= link_to "Delete this group", group_path(@group.id), data: {turbo_method: "patch"}, class: 'delete-group' %>
+    <%= link_to "Delete this session", group_path(@group.id), data: {turbo_method: "patch"}, class: 'delete-group' %>
     <br><br><br>
     <%# if @group.quizz_choices.where(user_id: current_user.id).first.nil? || @group.quizz_choices.where(user_id: current_user.id).first.sent == false %>
     <%# end %>
