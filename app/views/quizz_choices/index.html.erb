@@ -14,7 +14,7 @@
           <% if @quizz_choice.genre? == true %>
             <h5><%= @quizz_choice.genre.flatten.to_s.gsub(/[\[\]\"]/,"") %></h5>
           <% else %>
-            <small><em> Nothing selected </em></small>
+            <small><em> Select a genre </em></small>
           <% end %>
         </button>
       </div>
@@ -41,7 +41,7 @@
           <% if @quizz_choice.keyword? == true %>
             <h5><%= @quizz_choice.keyword.capitalize %></h5>
           <% else %>
-            <small><em> Nothing selected </em></small>
+            <small><em> Select a keyword </em></small>
           <% end %>
         </button>
       </div>
@@ -115,7 +115,7 @@
         <% if @quizz_choice.actor? == true %>
           <h5><%= @quizz_choice.actor %></h5>
         <% else %>
-          <small><em> Nothing selected </em></small>
+          <small><em> Select an actor </em></small>
         <% end %>
         </button>
       </div>
