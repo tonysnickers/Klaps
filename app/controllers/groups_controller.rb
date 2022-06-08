@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @solo = params[:solo]
     @group = Group.new
     authorize @group
     @group_user = GroupUser.new
@@ -30,17 +31,27 @@ class GroupsController < ApplicationController
     @friends << current_user.friends.map(&:users_friend)
     @friends << Friend.where(users_friend: current_user).map(&:user)
     @friends.flatten!
-    if (params["group"]["user_id"].count > 1) && @group.save
-      @user_ids = params[:group][:user_id]
-      @user_ids.each do |id|
-        group_user = GroupUser.new(user_id: id, group_id: @group.id)
+    if params["group"]["user_id"]
+      if (params["group"]["user_id"].count > 0) && @group.save
+        @user_ids = params[:group][:user_id]
+        @user_ids.each do |id|
+          group_user = GroupUser.new(user_id: id, group_id: @group.id)
+          group_user.save
+        end
+        group_user = GroupUser.new(user_id: current_user.id, group_id: @group.id)
         group_user.save
+        redirect_to group_path(@group)
+      else
+        render :new
       end
-      group_user = GroupUser.new(user_id: current_user.id, group_id: @group.id)
-      group_user.save
-      redirect_to group_path(@group)
     else
-      render :new
+      if @group.save
+        group_user = GroupUser.new(user_id: current_user.id, group_id: @group.id)
+        group_user.save
+        redirect_to group_path(@group)
+      else
+        render :new
+      end
     end
   end
 

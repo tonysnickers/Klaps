@@ -10,18 +10,18 @@
         <%= link_to groups_path, class: "text-decoration-none" do %>
           <div class="option-join d-flex align-items-center justify-content-center">
             <%= image_tag 'Vector.png', class:"logo-join" %>
-            <p class="mb-0">Join a group</p></i>
+            <p class="mb-0">Join a session</p></i>
           </div>
         <% end %>
 
-        <%= link_to new_group_path, class: "text-decoration-none " do %>
+        <%= link_to new_group_path(solo: false), class: "text-decoration-none " do %>
           <div class="option-background d-flex align-items-center justify-content-center my-4">
             <%= image_tag 'plus.png', class:"logo-join" %>
             <p class="mb-0">Create a group</p>
           </div>
         <% end %>
 
-        <%= link_to groups_path, class: "text-decoration-none text-center" do %>
+        <%= link_to new_group_path(solo: true), class: "text-decoration-none text-center" do %>
           <div class="d-flex align-items-center justify-content-center  solo-div">
             <%= image_tag 'black_lives_matter.png', class:"logo-join solo-logo" %>
             <p class="mb-0 solo">Solo</p>
