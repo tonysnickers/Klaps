@@ -77,9 +77,14 @@
   text-decoration: none;
 }
 
+.delete:active {
+  background-color: red;
+  color: #fff;
+}
+
 .pos {
   padding: 15px;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   width: 100%;
 }
@@ -87,4 +92,23 @@
 .render-button {
   position: sticky !important;
   bottom: 10px !important;
+}
+
+.btn-{
+  color: $yellow;
+  text-align: center;
+  margin: 21px auto;
+  display: flex;
+  padding: 11px 56px;
+  border-radius: 10px;
+  background-color: #ffd86c;
+  font-size: 20px;
+  color: $darkgray;
+  transition: .3s;
+}
+
+.btn-:active {
+  background-color: $yellow;
+  color: $darkgray;
+  box-shadow: none;
 }
