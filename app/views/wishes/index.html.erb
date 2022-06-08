@@ -59,8 +59,12 @@
 
               <hr>
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
-                <p><%= Movie.where(id: id)[0].platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+              <% if Movie.where(id: id)[0].platform? == true %>
+                  <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+                  <p><%= Movie.where(id: id)[0].platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <% else %>
+                  <small>This movie is not free on any platform</small>
+                <% end %>
               </div>
             </div>
           </div>
