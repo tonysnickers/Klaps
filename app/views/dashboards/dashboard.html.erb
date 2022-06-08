@@ -1,5 +1,4 @@
-
-  <div class="dashboard">
+<div class="dashboard">
 
     <div class="dash-text text-center my-4">
       <% if current_user.username.empty? %>
@@ -9,46 +8,36 @@
       <% end %>
     </div>
 
-
-      <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-        <div class="dashboard-header justify-content-center align-items-center text-center">
-    <%= image_tag 'Frame.png', class:"img" %>
-          <div class="justify-content-center align-items-center text-center">
-            <h1>Find a movie</h1>
-
-          </div>
+    <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+      <div class="dashboard-header justify-content-center align-items-center text-center">
+        <%= image_tag 'Frame.png', class:"img" %>
+        <div class="justify-content-center align-items-center text-center">
+          <h1>Find a movie</h1>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-        <div class="dashboard-card my-5">
-          <div class="dahboard-card-content ">
-            <div class="dashboard-option">
-              <%= link_to movie_seens_path, class: "text-decoration-none" do %>
-                  <p>My "old" movies</p>
-              <% end %>
-            </div>
-
-            <div class="dashboard-option">
-              <%= link_to wishes_path, class: "text-decoration-none" do %>
-                  <p>My wishlist</p>
-              <% end %>
-            </div>
-
-          </div>
-
-          <div class="">
-            <div class="dashboard-option">
-              <%= link_to friends_path, class: "text-decoration-none" do %>
-                  <p>Add some friends</p>
-              <% end %>
-            </div>
-
-            <div class="dashboard-option">
-              <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-                  <p>My friend's movies</p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
+  <div class="dashboard-card my-5">
+    <div class="dahboard-card-content ">
+      <div class="dashboard-option">
+        <%= link_to friends_path, class: "text-decoration-none" do %>
+            <p>Add some friends</p>
+        <% end %>
+      </div>
+    </div>
   </div>
+
+<%#---------------------------- CARROUSEL -----------------------------------%>
+
+</div>
+
+  <div class="dashboard-card my-5">
+    <div class="dahboard-card-content ">
+      <div class="dashboard-option">
+        <%= link_to wishes_path, class: "text-decoration-none" do %>
+            <p>My wishlist</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<br><br>
