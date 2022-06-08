@@ -3,7 +3,7 @@ require 'open-uri'
 class QuizzChoicesController < ApplicationController
   before_action :find_quizz_choice, only: %i[edit edit_genre add_keyword add_duration add_date add_actor change_step]
   before_action :actor_list_params, only: %i[index edit]
-  before_action :keyword_list_params, only: %i[index edit]
+  before_action :keyword_list_params, only: %i[index]
 
   def new
     @group = Group.find(params[:group_id])
@@ -35,6 +35,7 @@ class QuizzChoicesController < ApplicationController
 
   def edit
     authorize @quizz_choice
+    keyword_list_params if @quizz_choice.step == "initial"
   end
 
   def change_step
@@ -137,21 +138,11 @@ class QuizzChoicesController < ApplicationController
   end
 
   def actor_list_params
-    (1..30).each do |page_number|
-      actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
-      @actor_list = []
-      actors.each do |act|
-        @actor_list << act['name']
-      end
-    end
+    @actor_list = Actor.pluck(:name)
   end
 
   def keyword_list_params
-    @keywords_list = []
-    keyword_movies = Movie.all
-    keyword_movies.each do |k_movie|
-      @keywords_list << k_movie.keyword
-    end
+    @keywords_list = Movie.pluck(:keyword).flatten.to_json
   end
 end
 

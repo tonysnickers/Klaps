@@ -65,7 +65,17 @@ man = GroupUser.create!(
   group: mf
 )
 
-(1...20).each do |page_number|
+# Actors
+(1..499).each do |page_number|
+  actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
+  @actor_list = []
+  actors.each do |act|
+    Actor.create!(name: act['name'])
+    puts "Created actor #{act['name']}"
+  end
+end
+
+(1...499).each do |page_number|
   movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
 
   movies.each do |movie|

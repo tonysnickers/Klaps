@@ -1,36 +1,38 @@
-<div class="container">
-  <div class="d-flex justify-content-center my-2">
-    <div class="row">
+<div class="progress progress-index-top my-5">
+  <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
-      <h1 class="text-center my-4 font-weight-bold">All your choices</h1>
-<br>
-<hr>
-      <div>
-        <div class="text-center mx-3">
-          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#genreModal">
-            <% if @quizz_choice.genre? == true %>
-              <h5><%= @quizz_choice.genre.flatten.to_s.gsub(/[\[\]\"]/,"") %></h5>
-            <% else %>
-              <small><em> Select a genre </em></small>
-            <% end %>
-          </button>
-        </div>
-        <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-dark">
+<div class="d-flex justify-content-center my-2">
+  <div class="row">
+    <h1 class="text-center my-4 font-weight-bold">All your choices</h1>
+    <br>
+    <hr>
+    <div>
+      <div class="text-center mx-3">
+        <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#genreModal">
+          <% if @quizz_choice.genre? == true %>
+            <h5><%= @quizz_choice.genre.flatten.to_s.gsub(/[\[\]\"]/,"") %></h5>
+          <% else %>
+            <small><em> Select a genre </em></small>
+          <% end %>
+        </button>
+      </div>
+      <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content bg-dark">
 
-              <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <div class="modal-body">
-                <%= render 'edit_genre'%>
-              </div>
-
-            </div>
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+
+          <div class="modal-body">
+            <%= render 'edit_genre'%>
+          </div>
+
         </div>
       </div>
+    </div>
+   </div>
 
       <div>
         <div class="text-center">
@@ -54,57 +56,57 @@
                 <%= render 'keyword', edit: true %>
               </div>
 
-            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div>
-        <div class="text-center">
-          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#durationModal">
-            <h5><%= @quizz_choice.duration %> min</h5>
-          </button>
-        </div>
-        <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-dark">
+    <div>
+      <div class="text-center">
+        <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#durationModal">
+          <h5><%= @quizz_choice.duration %> min</h5>
+        </button>
+      </div>
+      <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content bg-dark">
 
-              <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <div class="modal-body">
-                <%= render 'duration', edit: true %>
-              </div>
-
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+            <div class="modal-body">
+              <%= render 'duration', edit: true %>
+            </div>
+
           </div>
         </div>
       </div>
+    </div>
 
-      <div>
-        <div class="text-center">
-          <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#dateModal">
-            <h5><%= @quizz_choice.start_year %> - <%= @quizz_choice.end_year %></h5>
-          </button>
-        </div>
+    <div>
+      <div class="text-center">
+        <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#dateModal">
+          <h5><%= @quizz_choice.start_year %> - <%= @quizz_choice.end_year %></h5>
+        </button>
+      </div>
 
-        <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="dateModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-dark">
+      <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="dateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content bg-dark">
 
-              <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <div class="modal-body">
-                <%= render 'date', edit: true %>
-              </div>
-
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+            <div class="modal-body">
+              <%= render 'date', edit: true %>
+            </div>
+
           </div>
         </div>
       </div>
+    </div>
 
       <div>
         <div class="text-center">
@@ -124,31 +126,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <div class="modal-body">
-                <%= render 'actor' %>
-              </div>
-
+            <div class="modal-body">
+              <%= render 'actor' %>
             </div>
+
           </div>
         </div>
       </div>
     </div>
-
-    <%#= link_to "Let the magic begin !", group_movies_path(@group), class:"bottom-button" %>
-
-
-    <div class="bottom-button">
-      <% if @quizz_choice.sent? %>
-        <p>Wait for the others...</p>
-      <% else %>
-        <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choice), data: { turbo_method: :patch } %>
-      <% end %>
-    </div>
-
-    <%# <script>
-      setTimeout(function() {
-        location.reload();
-      }, 3000);
-    </script> %>
   </div>
+
+  <%#= link_to "Let the magic begin !", group_movies_path(@group), class:"bottom-button" %>
+
+  <div class="bottom-button">
+    <% if @quizz_choice.sent? %>
+      <p>Wait for the others...</p>
+    <% else %>
+      <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choice), data: { turbo_method: :patch } %>
+    <% end %>
+  </div>
+
+  <%# <script>
+    setTimeout(function() {
+      location.reload();
+    }, 3000);
+  </script> %>
 </div>

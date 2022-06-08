@@ -1,14 +1,14 @@
 class WishesController < ApplicationController
   def index
-    @wishes = policy_scope(Wishe)
-    @w = Wishe.where(user_id: current_user.id)
+    @wishes = policy_scope(Wish)
+    @w = Wish.where(user_id: current_user.id)
     @w.where(wish: true)
   end
 
   def create
     @group = Group.find(params[:group_id])
 
-    @wishe = Wishe.where(user: current_user, movie_id: params_wishe[:movie_id]).first_or_initialize
+    @wishe = Wish.where(user: current_user, movie_id: params_wishe[:movie_id]).first_or_initialize
     authorize @wishe
     @wishe.save
     flash.alert = "Added to your wishlist!"
@@ -18,6 +18,6 @@ class WishesController < ApplicationController
   private
 
   def params_wishe
-    params.require(:wishe).permit(:movie_id)
+    params.require(:wish).permit(:movie_id)
   end
 end

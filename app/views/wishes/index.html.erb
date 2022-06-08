@@ -4,7 +4,7 @@
 <br>
 
 <% movies = [] %>
-  <% Wishe.where(user_id: current_user.id).each do |wish| %>
+  <% Wish.where(user_id: current_user.id).each do |wish| %>
     <% movies << wish.movie_id %>
 <% end %>
 

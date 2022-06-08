@@ -1,3 +1,7 @@
+<div class="progress progress-index-top my-5">
+  <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
 <h1 class="title">Order your movies</h1>
 <% n = 0 %>
 <% base_poster_url = "https://image.tmdb.org/t/p/original" %>
@@ -70,7 +74,7 @@
           </div>
 
           <div class="modal-footer">
-            <%= link_to group_wishes_path(@group, wishe: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
+            <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
               <i class="fa fa-heart" aria-hidden="true"></i>
             <% end %>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
