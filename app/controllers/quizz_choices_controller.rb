@@ -137,7 +137,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def actor_list_params
-    (1..30).each do |page_number|
+    (1..499).each do |page_number|
       actors = JSON.parse(URI.open("https://api.themoviedb.org/3/person/popular?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
       @actor_list = []
       actors.each do |act|
