@@ -1,5 +1,6 @@
 <%= link_to "", change_step_quizz_choice_path, data: { 'turbo-method': :patch } , class:"fa-solid fa-angle-left fa-2x arrow edit-navbar link-none" %>
 
+<%= @quizz_choice.step %>
 <% if @quizz_choice.step == "initial" %>
   <%= render "keyword", edit: false %>
 <% elsif @quizz_choice.step == "add_keyword" %>
