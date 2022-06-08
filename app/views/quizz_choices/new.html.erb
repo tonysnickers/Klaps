@@ -7,15 +7,15 @@
 
   <br>
 
-  <h3>Choose a genre</h3>
+  <h3>Let's choose a genre</h3>
 
   <%= simple_form_for [@group, @quizz_choice] do |f| %>
 
     <%= f.input :genre, as: :check_boxes,
-                collection: ["Science Fiction", "Adventure", "Action", "Animation", "Comedy", "Romance",
+                collection: ["Sci-Fi", "Adventure", "Action", "Animation", "Comedy", "Romance",
                              "Crime", "Drama", "Fantasy", "Family", "History", "Horror", "Music",
                              "Mystery", "Thriller", "TV Movie", "War", "Western", "Documentary"], label: "" %>
-    <%= f.submit "Start the quizz", class: "bottom-button quizz-button"  %>
+    <%= f.submit "Next", class: "bottom-button quizz-button"  %>
 
   <% end %>
 
