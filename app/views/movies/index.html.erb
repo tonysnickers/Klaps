@@ -74,7 +74,7 @@
           </div>
 
           <div class="modal-footer">
-            <%= link_to group_wishes_path(@group, wishe: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
+            <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
               <i class="fa fa-heart" aria-hidden="true"></i>
             <% end %>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
