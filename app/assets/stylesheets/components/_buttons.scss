@@ -112,3 +112,22 @@
   color: $darkgray;
   box-shadow: none;
 }
+
+
+// *************************************** heart movie result ****************************************/
+
+.modal-footer {
+  a{
+    color: #fff;
+  }
+
+  a:active{
+    color: red;
+  }
+
+  .btn{
+    background-color: $yellow;
+    color: $darkgray;
+    border: none;
+  }
+}

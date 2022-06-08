@@ -7,16 +7,24 @@
   border-radius: 15px;
   background-color: $yellow;
   margin: 15px;
-  height: 250px;
+  height: 200px;
 
   h1{
-    padding-top: 35px;
+    padding-top: 5px;
     color: #353535;
-    font-weight: bolder;
+    
   }
 
   img{
     text-align: center;
+  }
+
+  img {
+    margin-top: -1px;
+    width: 335px;
+    border-radius: 10px 10px 0 0;
+    height: 128px;
+    margin-left: -1px;
   }
 }
 
