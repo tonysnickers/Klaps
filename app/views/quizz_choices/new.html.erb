@@ -12,7 +12,7 @@
   <%= simple_form_for [@group, @quizz_choice], class: "genre-align" do |f| %>
 
     <%= f.input :genre, as: :check_boxes, collection: ["Action", "Adventure", "Animation","Comedy","Crime","Documentary","Drama","Fantasy","Family","History","Horror","Music","Mystery","Romance","Science Fiction","Thriller", "TV Movie", "War", "Western"] %>
-    <%= f.submit  class: "bottom-button"  %>
+    <%= f.submit "Start the quizz", class: "bottom-button"  %>
 
   <% end %>
 </div>

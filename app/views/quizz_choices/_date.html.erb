@@ -4,7 +4,7 @@
 
 <br>
 
-<h3>Select an interval of year for your film</h3>
+<h3 class="my-5">Select an interval of year for your film</h3>
 
 <%= simple_form_for @quizz_choice, url: add_date_quizz_choice_path(@quizz_choice), method: :patch do |f| %>
   <div class="d-flex justify-content-center w-100 fs-1">
@@ -16,6 +16,6 @@
       <%= hidden_field_tag :edit, "true" %>
     <% end %>
 
-    <%= f.submit class: "bottom-button" %>
+    <%= f.submit "Next question", class: "bottom-button" %>
   </div>
 <% end %>

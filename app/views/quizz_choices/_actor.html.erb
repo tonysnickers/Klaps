@@ -4,14 +4,12 @@
 
 <br>
 
-<h3>Is there an actor you would like to see?</h3>
+<h3 class="my-5">Is there an actor you would like to see?</h3>
 
 <%= form_tag(add_actor_quizz_choice_path(@quizz_choice), method: 'patch', class: "form-inline") do %>
   <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= @actor_list.to_json %>">
     <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search an actor...", data: { "autocomplete-target": "searchInput" } %>
-    <br>
-
   </div>
 
-    <%= submit_tag "Next", class: "bottom-button" %>
+    <%= submit_tag "Submit your quizz", class: "bottom-button" %>
 <% end %>
