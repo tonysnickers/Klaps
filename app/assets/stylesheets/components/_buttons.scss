@@ -94,6 +94,13 @@
   bottom: 10px !important;
 }
 
+.quizz-button {
+  position: sticky !important;
+  bottom: 0px !important;
+}
+
+.search-input {
+  border-radius: $radius;
 .btn-{
   color: $yellow;
   text-align: center;
@@ -114,7 +121,6 @@
 }
 
 
-// *************************************** heart movie result ****************************************/
 
 .modal-footer {
   a{
@@ -130,4 +136,5 @@
     color: $darkgray;
     border: none;
   }
+
 }
