@@ -1,4 +1,3 @@
-
 <% if params[:wait_for_the_others] == "true" %>
   <div class="text-center">
     <br><br><br><h6>Wait for the others...</h6>
@@ -15,46 +14,45 @@
 
   <% n = 0 %>
 
-  <div>
-    <div class="bg-dark">
-    <div class="lotti-bg">
-      <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_tiviyc3p.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>  </div>
+  <div class="modal-body">
 
+    <div>
+      <div class="lotti-bg">
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_tiviyc3p.json"  background="transparent" speed="1" loop autoplay></lottie-player>
+      </div>
+      <img src= "<%= @final.poster %>" width="100%" height="400px" object-fit="cover" />
     </div>
-      <div class="modal-body">
-        <img src= "<%= @final.poster %>" width="100%" height="400px" object-fit="cover" />
-        <div class="card-movie-infos">
-          <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
-          <div>
-            <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
-            <p><%= @final.year %> - <%= @final.duration %> min.</p>
-          </div>
+    <div class="card-movie-infos">
+      <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
+      <div>
+        <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+        <p><%= @final.year %> - <%= @final.duration %> min.</p>
+      </div>
 
-          <hr>
+      <hr>
 
-          <div>
-            <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
-            <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
-          </div>
+      <div>
+        <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+        <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+      </div>
 
-          <hr>
+      <hr>
 
-          <div>
-            <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
-            <p><%= @final.synopsis %></p>
-          </div>
+      <div>
+        <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+        <p><%= @final.synopsis %></p>
+      </div>
 
-          <hr>
-          <div>
-            <% if @final.platform? == true %>
-              <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
-              <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
-            <% else %>
-              <small>This movie is not free on any platform</small>
-            <% end %>
-          </div>
-        </div>
+      <hr>
+      <div>
+        <% if @final.platform? == true %>
+          <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+          <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+        <% else %>
+          <small>This movie is not free on any platform</small>
+        <% end %>
       </div>
     </div>
+
   </div>
 <% end %>
