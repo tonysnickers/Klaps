@@ -30,6 +30,10 @@
   text-decoration-style: none;
   border: none;
   font-size: 20px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .bottom-button:hover {
