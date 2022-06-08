@@ -1,104 +1,42 @@
 <div class="dashboard">
 
-  <div class="dash-text text-center my-4">
-    <% if current_user.username.empty? %>
-      <h1>Welcome</h1>
-    <% else %>
-      <h1>Welcome <%= current_user.username %></h1>
-    <% end %>
-  </div>
-
-  <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-    <div class="dashboard-header justify-content-center align-items-center text-center">
-      <div class="justify-content-center align-items-center text-center my-3">
-        <h1 class="">Find a movie</h1>
-      </div>
+    <div class="dash-text text-center my-4">
+      <% if current_user.username.empty? %>
+        <h1>Welcome</h1>
+      <% else %>
+        <h1>Welcome <%= current_user.username %>👋</h1>
+      <% end %>
     </div>
-  <% end %>
+
+    <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
+      <div class="dashboard-header justify-content-center align-items-center text-center">
+        <%= image_tag 'Frame.png', class:"img" %>
+        <div class="justify-content-center align-items-center text-center">
+          <h1>Find a movie</h1>
+        </div>
+      </div>
+    <% end %>
 
   <div class="dashboard-card my-5">
     <div class="dahboard-card-content ">
       <div class="dashboard-option">
-        <%= link_to movie_seens_path, class: "text-decoration-none" do %>
-            <p>My "old" movies</p>
+        <%= link_to friends_path, class: "text-decoration-none" do %>
+            <p>Add some friends</p>
         <% end %>
       </div>
+    </div>
+  </div>
 
+
+</div>
+
+  <div class="dashboard-card my-5">
+    <div class="dahboard-card-content ">
       <div class="dashboard-option">
         <%= link_to wishes_path, class: "text-decoration-none" do %>
             <p>My wishlist</p>
         <% end %>
       </div>
     </div>
-
-    <div class="">
-      <div class="dashboard-option">
-        <%= link_to friends_path, class: "text-decoration-none" do %>
-            <p>Add some friends</p>
-        <% end %>
-      </div>
-
-      <div class="dashboard-option">
-        <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-            <p>My friend's movies</p>
-        <% end %>
-      </div>
-    </div>
   </div>
-
-  <div class="carousel">
-    <ul class="carousel__list">
-      <li class="carousel__item" data-pos="-2">1</li>
-      <li class="carousel__item" data-pos="-1">2</li>
-      <li class="carousel__item" data-pos="0">3</li>
-      <li class="carousel__item" data-pos="1">4</li>
-      <li class="carousel__item" data-pos="2">5</li>
-    </ul>
-  </div>
-
-  <script>
-    const state = {};
-    const carouselList = document.querySelector('.carousel__list');
-    const carouselItems = document.querySelectorAll('.carousel__item');
-    const elems = Array.from(carouselItems);
-
-    carouselList.addEventListener('touchmove', function (event) {
-      var newActive = event.target;
-      var isItem = newActive.closest('.carousel__item');
-
-      if (!isItem || newActive.classList.contains('carousel__item_active')) {
-        return;
-      };
-
-      update(newActive);
-    });
-
-    const update = function(newActive) {
-      const newActivePos = newActive.dataset.pos;
-
-      const current = elems.find((elem) => elem.dataset.pos == 0);
-      const prev = elems.find((elem) => elem.dataset.pos == -1);
-      const next = elems.find((elem) => elem.dataset.pos == 1);
-      const first = elems.find((elem) => elem.dataset.pos == -2);
-      const last = elems.find((elem) => elem.dataset.pos == 2);
-
-      current.classList.remove('carousel__item_active');
-
-      [current, prev, next, first, last].forEach(item => {
-        var itemPos = item.dataset.pos;
-
-        item.dataset.pos = getPos(itemPos, newActivePos)
-      });
-    };
-
-    const getPos = function (current, active) {
-      const diff = current - active;
-
-      if (Math.abs(current - active) > 2) {
-        return -current
-      }
-
-      return diff;
-    }
-  </script>
-</div>
+<br><br>

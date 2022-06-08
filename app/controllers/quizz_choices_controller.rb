@@ -38,22 +38,28 @@ class QuizzChoicesController < ApplicationController
   end
 
   def change_step
-    authorize @quizz_choice
     @quizz_choice = QuizzChoice.find(params[:id])
-    @old_step = @quizz_choice.step
-    case @quizz_choice.step
-    when "add_keyword"
-      @quizz_choice.step = "initial"
-    when "add_duration"
-      @quizz_choice.step = "add_keyword"
-    when "add_date"
-      @quizz_choice.step = "add_duration"
-    when "add_actor"
-      @quizz_choice.step = "add_date"
+    @group = @quizz_choice.group
+    authorize @quizz_choice
+    if @quizz_choice.step.strip == 'initial'
+      @quizz_choice.destroy
+      redirect_to new_group_quizz_choice_path(@group), status: :see_other
+    else
+      @old_step = @quizz_choice.step
+      case @quizz_choice.step
+      when "add_keyword"
+        @quizz_choice.step = "initial"
+      when "add_duration"
+        @quizz_choice.step = "add_keyword"
+      when "add_date"
+        @quizz_choice.step = "add_duration"
+      when "add_actor"
+        @quizz_choice.step = "add_date"
+      end
+      @quizz_choice.save!
+      @new_step = @quizz_choice.step
+      redirect_to edit_quizz_choice_path(@quizz_choice), status: :see_other
     end
-    @quizz_choice.save!
-    @new_step = @quizz_choice.step
-    redirect_to edit_quizz_choice_path(@quizz_choice)
   end
 
   def edit_genre

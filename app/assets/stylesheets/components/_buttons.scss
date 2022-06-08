@@ -130,3 +130,19 @@
   color: $yellow !important;
   font-size: 20px;
 }
+
+.modal-footer {
+  a{
+    color: #fff;
+  }
+
+  a:active{
+    color: red;
+  }
+
+  .btn{
+    background-color: $yellow;
+    color: $darkgray;
+    border: none;
+  }
+}
