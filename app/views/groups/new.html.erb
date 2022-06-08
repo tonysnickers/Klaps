@@ -2,10 +2,10 @@
   <h1>Organize a film show</h1>
 </div>
 
-
-  <%= simple_form_for @group do |f| %>
-    <%= f.input :name, placeholder: 'Name your group..', label: false%>
+<%= simple_form_for @group do |f| %>
+  <%= f.input :name, placeholder: 'Give a name to your session..', label: false%>
+  <% if @solo == "false" %>
     <%= f.association :user, collection: @friends, as: :check_boxes, label_method: :username %>
-    <%= f.submit class:"user-group" %>
   <% end %>
-
+  <%= f.submit class:"user-group" %>
+<% end %>
