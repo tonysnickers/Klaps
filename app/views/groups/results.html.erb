@@ -37,7 +37,7 @@
 
           <hr>
           <div>
-            <% if @final.platform == "true" %>
+            <% if @final.platform? == true %>
               <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
               <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
             <% else %>
