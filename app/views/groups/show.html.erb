@@ -12,6 +12,45 @@
       <% end %>
     </div>
 
+
+    <% if @final %>
+    <div>
+      <div class="bg-dark">
+        <div class="modal-body">
+          <img src= "<%= @final.poster %>" width="100%" height="400px" object-fit="cover" />
+          <div class="card-movie-infos">
+            <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
+            <div>
+              <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+              <p><%= @final.year %> - <%= @final.duration %> min.</p>
+            </div>
+
+            <hr>
+
+            <div>
+              <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+              <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+            </div>
+
+            <hr>
+
+            <div>
+              <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+              <p><%= @final.synopsis %></p>
+            </div>
+
+            <hr>
+            <div>
+              <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+              <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
     <%= link_to "Delete this group", group_path(@group.id), data: {turbo_method: "patch"}, class: 'delete-group' %>
 
     <% if @group.quizz_choices.where(user_id: current_user.id).first.nil? || @group.quizz_choices.where(user_id: current_user.id).first.sent == false %>

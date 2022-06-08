@@ -1,41 +1,45 @@
-<div class = "title" >
-  <h1>Here it is!</h1>
-  <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_7oqgfm5n.json" mode="bounce" background="transparent"  speed="1"  style="width: 100%; height: 20%;"  loop  autoplay></lottie-player>
-</div>
+<% if params[:wait_for_the_others] == "true" %>
+  <div><br><br><br><h6>Wait for the others...</h6></div>
+<% else %>
+  <div class = "title" >
+    <h1>Here it is!</h1>
+    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_7oqgfm5n.json" mode="bounce" background="transparent"  speed="1"  style="width: 100%; height: 20%;"  loop  autoplay></lottie-player>
+  </div>
 
-<% n = 0 %>
+  <% n = 0 %>
 
-<div>
-  <div class="bg-dark">
-    <div class="modal-body">
-      <img src= "<%= @final.poster %>" width="100%" height="400px" object-fit="cover" />
-      <div class="card-movie-infos">
-        <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
-        <div>
-          <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
-          <p><%= @final.year %> - <%= @final.duration %> min.</p>
-        </div>
+  <div>
+    <div class="bg-dark">
+      <div class="modal-body">
+        <img src= "<%= @final.poster %>" width="100%" height="400px" object-fit="cover" />
+        <div class="card-movie-infos">
+          <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
+          <div>
+            <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+            <p><%= @final.year %> - <%= @final.duration %> min.</p>
+          </div>
 
-        <hr>
+          <hr>
 
-        <div>
-          <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
-          <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
-        </div>
+          <div>
+            <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+            <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+          </div>
 
-        <hr>
+          <hr>
 
-        <div>
-          <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
-          <p><%= @final.synopsis %></p>
-        </div>
+          <div>
+            <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+            <p><%= @final.synopsis %></p>
+          </div>
 
-        <hr>
-        <div>
-          <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
-          <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+          <hr>
+          <div>
+            <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+            <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
