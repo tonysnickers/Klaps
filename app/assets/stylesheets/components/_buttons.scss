@@ -119,4 +119,22 @@
   color: $darkgray;
   box-shadow: none;
 }
+
+
+
+.modal-footer {
+  a{
+    color: #fff;
+  }
+
+  a:active{
+    color: red;
+  }
+
+  .btn{
+    background-color: $yellow;
+    color: $darkgray;
+    border: none;
+  }
+
 }

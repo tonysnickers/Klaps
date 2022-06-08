@@ -25,6 +25,7 @@ import "bootstrap"
         // import Sortable, { AutoScroll } from 'sortablejs/modular/sortable.core.esm.js';
 // Sortable.mount(new AutoScroll());
 
-// document.addEventListener('turbo:load', function () {
+document.addEventListener('turbo:load', function () {
 //  autocompleteSearch();
-// })
+console.log(history)
+})
