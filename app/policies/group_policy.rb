@@ -15,7 +15,7 @@ class GroupPolicy < ApplicationPolicy
     end
 
     def update?
-      record.user == user
+      true
     end
 
     def compute_results?

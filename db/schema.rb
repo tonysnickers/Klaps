@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_06_154049) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_102856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,15 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_154049) do
     t.datetime "updated_at", null: false
     t.boolean "archive", default: false
     t.index ["user_id"], name: "index_groups_on_user_id"
-  end
-
-  create_table "movie_seens", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_seens_on_movie_id"
-    t.index ["user_id"], name: "index_movie_seens_on_user_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -122,8 +113,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_154049) do
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "groups", "users"
-  add_foreign_key "movie_seens", "movies"
-  add_foreign_key "movie_seens", "users"
   add_foreign_key "ordered_choices", "groups"
   add_foreign_key "ordered_choices", "movies"
   add_foreign_key "quizz_choices", "groups"
