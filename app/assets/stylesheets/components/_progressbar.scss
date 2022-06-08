@@ -1,7 +1,6 @@
 .progress {
-  height: 2px;
+  height: 10px;
   position: relative;
-  // top: 50px;
   margin: 10px 0;
   background-color: white;
 }
@@ -14,4 +13,7 @@
 .progress-new-top {
   // top: -26px;
   top: 42px;
+}
+.progress-index-top {
+  top: 0px;
 }
