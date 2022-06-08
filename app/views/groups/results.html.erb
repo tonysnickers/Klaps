@@ -37,13 +37,15 @@
 
           <hr>
           <div>
-            <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
-            <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+            <% if @final.platform == "true" %>
+              <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+              <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+            <% else %>
+              <small>This movie is not free on any platform</small>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 <% end %>
-
-
