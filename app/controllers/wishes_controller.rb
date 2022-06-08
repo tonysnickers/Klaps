@@ -11,7 +11,7 @@ class WishesController < ApplicationController
     @wishe = Wishe.where(user: current_user, movie_id: params_wishe[:movie_id]).first_or_initialize
     authorize @wishe
     @wishe.save
-
+    flash.alert = "Added to your wishlist!"
     redirect_to group_movies_path(@group)
   end
 
