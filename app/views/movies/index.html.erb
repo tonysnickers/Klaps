@@ -20,7 +20,7 @@
   <% end %>
 
   <%= simple_form_for :ordered_choice, url: compute_results_group_path(@group), data: {turbo_method: "post"} do |f|%>
-    <%= f.input :movie_order, input_html: {data: {drag_target: "input"}, type: "hidden", value: @movies.pluck(:id)}%>
+    <%= f.input :movie_order, input_html: {data: {drag_target: "input"}, type: "hidden", value: @movies.pluck(:id)}, label: false%>
     <%#= f.input :user, value: current_user %>
     <%= f.submit "Vote!", class: "bottom-button render-button"%>
   <% end %>
@@ -59,8 +59,12 @@
 
               <hr>
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
-                <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <% if m.platform == "true" %>
+                  <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+                  <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <% else %>
+                  <small>This movie is not free on any platform</small>
+                <% end %>
               </div>
             </div>
           </div>

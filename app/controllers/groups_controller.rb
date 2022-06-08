@@ -7,9 +7,13 @@ class GroupsController < ApplicationController
 
   def show
     authorize @group
+    if !OrderedChoice.where(group: @group).empty?
+      @final = find_result
+    end
   end
 
   def new
+    @solo = params[:solo]
     @group = Group.new
     authorize @group
     @group_user = GroupUser.new
@@ -27,17 +31,27 @@ class GroupsController < ApplicationController
     @friends << current_user.friends.map(&:users_friend)
     @friends << Friend.where(users_friend: current_user).map(&:user)
     @friends.flatten!
-    if (params["group"]["user_id"].count > 1) && @group.save
-      @user_ids = params[:group][:user_id]
-      @user_ids.each do |id|
-        group_user = GroupUser.new(user_id: id, group_id: @group.id)
+    if params["group"]["user_id"]
+      if (params["group"]["user_id"].count > 0) && @group.save
+        @user_ids = params[:group][:user_id]
+        @user_ids.each do |id|
+          group_user = GroupUser.new(user_id: id, group_id: @group.id)
+          group_user.save
+        end
+        group_user = GroupUser.new(user_id: current_user.id, group_id: @group.id)
         group_user.save
+        redirect_to group_path(@group)
+      else
+        render :new
       end
-      group_user = GroupUser.new(user_id: current_user.id, group_id: @group.id)
-      group_user.save
-      redirect_to group_path(@group)
     else
-      render :new
+      if @group.save
+        group_user = GroupUser.new(user_id: current_user.id, group_id: @group.id)
+        group_user.save
+        redirect_to group_path(@group)
+      else
+        render :new
+      end
     end
   end
 
@@ -68,20 +82,36 @@ class GroupsController < ApplicationController
       h[oc.movie_id] = oc.point
     end
     @final = Movie.find(h.sort_by {|k, v| v}.reverse.first.first)
-    redirect_to results_group_path(@group)
+
+    total_points = OrderedChoice.where(group: @group).sum(:point)
+    points_to_achieve = @group.group_users.count * 15
+
+
+    if (points_to_achieve - total_points) > 1
+      wait_for_the_others = true
+      redirect_to results_group_path(@group, wait_for_the_others: wait_for_the_others)
+    else
+      wait_for_the_others = false
+      redirect_to results_group_path(@group, wait_for_the_others: wait_for_the_others)
+    end
+
   end
 
   def results
     authorize @group
-    h = {}
-    OrderedChoice.where(group: @group).each do |oc|
-      h[oc.movie_id] = oc.point
-    end
-    @final = Movie.find(h.sort_by {|k, v| v}.reverse.first.first)
+    @final = find_result
     # redirect_to results_group_path(@group)
   end
 
   private
+
+  def find_result
+    h = {}
+    OrderedChoice.where(group: @group).each do |oc|
+      h[oc.movie_id] = oc.point
+    end
+    return Movie.find(h.sort_by {|k, v| v}.reverse.first.first)
+  end
 
   def set_group
     @group = Group.find(params[:id])

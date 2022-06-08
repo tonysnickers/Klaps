@@ -3,12 +3,16 @@
 
     <div class="row">
 
-      <h1 class="text-center my-4 font-weight-bold">All your choice</h1>
+      <h1 class="text-center my-4 font-weight-bold">All your choices</h1>
 
       <div>
         <div class="text-center">
           <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#genreModal">
-            <%= @quizz_choice.genre.flatten.to_s.gsub(/[\[\]\"]/,"") %>
+            <% if @quizz_choice.genre == "true" %>
+              <h5><%= @quizz_choice.genre.flatten.to_s.gsub(/[\[\]\"]/,"") %></h5>
+            <% else %>
+              <small><em> Nothing selected </em></small>
+            <% end %>
           </button>
         </div>
         <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModalLabel" aria-hidden="true">
@@ -31,7 +35,11 @@
       <div>
         <div class="text-center">
           <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#keywordModal">
-            <%= @quizz_choice.keyword.capitalize %>
+            <% if @quizz_choice.keyword == "true" %>
+              <h5><%= @quizz_choice.keyword.capitalize %></h5>
+            <% else %>
+              <small><em> Nothing selected </em></small>
+            <% end %>
           </button>
         </div>
         <div class="modal fade" id="keywordModal" tabindex="-1" aria-labelledby="keywordModalLabel" aria-hidden="true">
@@ -47,7 +55,7 @@
       <div>
         <div class="text-center">
           <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#durationModal">
-            <%= @quizz_choice.duration %> min
+            <h5><%= @quizz_choice.duration %> min</h5>
           </button>
         </div>
         <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
@@ -63,7 +71,7 @@
       <div>
         <div class="text-center">
           <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#dateModal">
-            <%= @quizz_choice.start_year %> - <%= @quizz_choice.end_year %>
+            <h5><%= @quizz_choice.start_year %> - <%= @quizz_choice.end_year %></h5>
           </button>
         </div>
 
@@ -80,7 +88,11 @@
       <div>
         <div class="text-center">
           <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#actorModal">
-            <%= @quizz_choice.actor %>
+          <% if @quizz_choice.actor == "true" %>
+            <h5><%= @quizz_choice.actor %></h5>
+          <% else %>
+            <small><em> Nothing selected </em></small>
+          <% end %>
           </button>
         </div>
         <div class="modal fade" id="actorModal" tabindex="-1" aria-labelledby="actorModalLabel" aria-hidden="true">

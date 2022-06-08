@@ -1,16 +1,14 @@
-<div class="container">
+<div style="margin-bottom: 100px;">
   <div class="row d-flex text-center">
-    <h1 class="dash-text mb-4">Your groups</h1>
+    <h1 class="dash-text mb-4">Your sessions</h1>
   </div>
 
-
-    <div class="text-center mx-3">
-      <% @groups.each do |group| %>
-        <div class="tag-button">
-          <%= link_to group.name.capitalize, group_path(group.id), class:'add-group'%>
-        </div>
-      <% end %>
-    </div>
+  <div class="text-center mx-3">
+    <% @groups.each do |group| %>
+      <div class="tag-button">
+        <%= link_to group.name.capitalize, group_path(group.id), class:'add-group'%>
+      </div>
+    <% end %>
   </div>
 </div>
-    <%= link_to "Create a new film show", new_group_path, class:'group-button pos' %>
+<%= link_to "Create a new film show", new_group_path, class:'group-button pos', style: 'margin: 0 -12px;' %>
