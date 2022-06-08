@@ -19,42 +19,28 @@
   <div class="dashboard-card my-5">
     <div class="dahboard-card-content ">
       <div class="dashboard-option">
-        <%= link_to movie_seens_path, class: "text-decoration-none" do %>
-            <p>My "old" movies</p>
-        <% end %>
-      </div>
-
-      <div class="dashboard-option">
-        <%= link_to wishes_path, class: "text-decoration-none" do %>
-            <p>My wishlist</p>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="">
-      <div class="dashboard-option">
         <%= link_to friends_path, class: "text-decoration-none" do %>
             <p>Add some friends</p>
         <% end %>
       </div>
-
-      <div class="dashboard-option">
-        <%= link_to dashboard_index_path, class: "text-decoration-none" do %>
-            <p>My friend's movies</p>
-        <% end %>
-      </div>
     </div>
   </div>
+<%#---------------------------- CARROUSEL -----------------------------------%>
+  <% movies = [] %>
+    <% Wishe.where(user_id: current_user.id).each do |wish| %>
+      <% movies << wish.movie_id %>
+    <% end %>
 
-  <div class="carousel">
-    <ul class="carousel__list">
-      <li class="carousel__item" data-pos="-2">1</li>
-      <li class="carousel__item" data-pos="-1">2</li>
-      <li class="carousel__item" data-pos="0">3</li>
-      <li class="carousel__item" data-pos="1">4</li>
-      <li class="carousel__item" data-pos="2">5</li>
-    </ul>
-  </div>
+
+    <div class="carousel">
+      <ul class="carousel__list">
+        <li class="carousel__item" data-pos="-2"><img src= "<%= Movie.where(id: movies[0])[0].poster %>" width="100%" height="250px" object-fit="cover" /></li>
+        <li class="carousel__item" data-pos="-1"><img src= "<%= Movie.where(id: movies[1])[0].poster %>" width="100%" height="250px" object-fit="cover" /></li>
+        <li class="carousel__item" data-pos="0"><img src= "<%= Movie.where(id: movies[2])[0].poster %>" width="100%" height="250px" object-fit="cover" /></li>
+        <li class="carousel__item" data-pos="1"><img src= "<%= Movie.where(id: movies[3])[0].poster %>" width="100%" height="250px" object-fit="cover" /></li>
+        <li class="carousel__item" data-pos="2"><img src= "<%= Movie.where(id: movies[4])[0].poster %>" width="100%" height="250px" object-fit="cover" /></li>
+      </ul>
+    </div>
 
   <script>
     const state = {};
@@ -97,8 +83,18 @@
       if (Math.abs(current - active) > 2) {
         return -current
       }
-
       return diff;
     }
   </script>
 </div>
+
+  <div class="dashboard-card my-5">
+    <div class="dahboard-card-content ">
+      <div class="dashboard-option">
+        <%= link_to wishes_path, class: "text-decoration-none" do %>
+            <p>My wishlist</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<br><br>
