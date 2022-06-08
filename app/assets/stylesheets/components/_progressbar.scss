@@ -1,10 +1,17 @@
 .progress {
   height: 2px;
   position: relative;
-  top: 50px;
+  // top: 50px;
   margin: 10px 0;
   background-color: white;
 }
 .progress-bar {
   background-color: $yellow;
+}
+.progress-edit-top {
+  top: 50px;
+}
+.progress-new-top {
+  // top: -26px;
+  top: 42px;
 }
