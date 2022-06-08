@@ -3,28 +3,27 @@
 }
 
 .dashboard-header {
-  border: 1px solid $yellow;
+  // border: 1px solid $yellow;
   border-radius: 15px;
   background-color: $yellow;
   margin: 15px;
   height: 200px;
 
-  h1{
+  h1 {
     padding-top: 5px;
     color: #353535;
-    
   }
 
-  img{
+  img {
     text-align: center;
   }
 
   img {
-    margin-top: -1px;
-    width: 335px;
-    border-radius: 10px 10px 0 0;
-    height: 128px;
-    margin-left: -1px;
+    margin-top: 0px;
+    width: 336px;
+    border-radius: 15px 15px 0 0;
+    height: 140px;
+    margin-left: 0px;
   }
 }
 
