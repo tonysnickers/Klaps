@@ -30,6 +30,10 @@
   text-decoration-style: none;
   border: none;
   font-size: 20px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .bottom-button:hover {
@@ -101,6 +105,8 @@
 
 .search-input {
   border-radius: $radius;
+}
+
 .btn-{
   color: $yellow;
   text-align: center;
@@ -120,7 +126,10 @@
   box-shadow: none;
 }
 
-
+.btn-close {
+  color: $yellow !important;
+  font-size: 20px;
+}
 
 .modal-footer {
   a{
@@ -136,5 +145,4 @@
     color: $darkgray;
     border: none;
   }
-
 }
