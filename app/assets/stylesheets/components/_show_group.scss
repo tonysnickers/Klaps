@@ -20,10 +20,12 @@
 
 
 .group-name {
-  background-color: $yellow;
+  border-top: 2px solid $yellow;
+  border-bottom: 2px solid $yellow;
+  // background-color: $yellow;
   border-radius: 10px;
-  color: $darkgray;
+  color: $yellow;
   margin: 15px auto;
   width: 300px;
-  padding: 10px 20px;
+  padding: 10px 0px;
 }

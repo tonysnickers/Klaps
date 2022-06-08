@@ -14,6 +14,7 @@
 .tag-button:focus {
   background-color: $yellow;
   font-weight: bold;
+  color: $darkgray;
 }
 
 .bottom-button {
@@ -132,15 +133,15 @@
 }
 
 .modal-footer {
-  a{
+  a {
     color: #fff;
   }
 
-  a:active{
+  a:active {
     color: red;
   }
 
-  .btn{
+  .btn {
     background-color: $yellow;
     color: $darkgray;
     border: none;
