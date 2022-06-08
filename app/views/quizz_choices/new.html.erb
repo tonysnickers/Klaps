@@ -1,15 +1,22 @@
 <%# ------------------------------------ QUESTIONS SUR LES GENRES ---------------------------------------- %>
-<div class="progress my-5">
-  <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<div class="container-quizz">
+  <div class="progress progress-new-top my-5">
+    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <br>
+
+  <h3>Choose a genre</h3>
+
+  <%= simple_form_for [@group, @quizz_choice] do |f| %>
+
+    <%= f.input :genre, as: :check_boxes,
+                collection: ["Science Fiction", "Adventure", "Action", "Animation", "Comedy", "Romance",
+                             "Crime", "Drama", "Fantasy", "Family", "History", "Horror", "Music",
+                             "Mystery", "Thriller", "TV Movie", "War", "Western", "Documentary"], label: "" %>
+    <%= f.submit "Start the quizz", class: "bottom-button quizz-button"  %>
+
+  <% end %>
+
 </div>
-
-<br>
-
-<h3>Choose a genre</h3>
-
-<%= simple_form_for [@group, @quizz_choice] do |f| %>
-
-  <%= f.input :genre, as: :check_boxes, collection: ["Action", "Adventure", "Animation","Comedy","Crime","Documentary","Drama","Fantasy","Family","History","Horror","Music","Mystery","Romance","Science Fiction","Thriller", "TV Movie", "War", "Western"]  %>
-  <%= f.submit  class: "bottom-button"  %>
-
-<% end %>
