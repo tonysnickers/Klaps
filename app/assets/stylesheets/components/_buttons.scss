@@ -137,6 +137,11 @@
 }
 
 .modal-footer-one {
+  padding: 0 15px 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   a {
     color: red;
     text-decoration: none;
@@ -155,6 +160,11 @@
 }
 
 .modal-footer-two {
+  padding: 0 15px 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   a {
     color: white;
     text-decoration: none;
