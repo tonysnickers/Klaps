@@ -66,6 +66,10 @@ Nav Styles
   text-align: center;
 }
 
+.text-color:hover {
+  color: #353535;
+}
+
 //
 
 /**
@@ -96,6 +100,10 @@ Animations
 .arrow{
   margin-top: 15px;
   margin-left: 15px;
+}
+
+.arrow:hover {
+  color: $light-gray;
 }
 
 .edit-navbar {

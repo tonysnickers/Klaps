@@ -28,3 +28,8 @@
     margin-bottom: 30px;
   }
 }
+
+// désactive l'affichage du label "User*"
+.col-form-label.pt-0 {
+  display: none;
+}
