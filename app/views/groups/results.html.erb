@@ -25,7 +25,7 @@
     <div class="card-movie-infos">
       <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
       <div>
-        <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+        <p class="mt-4"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
         <p><%= @final.year %> - <%= @final.duration %> min.</p>
       </div>
 
