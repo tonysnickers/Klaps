@@ -27,9 +27,6 @@
     </div>
   </div>
 
-
-</div>
-
   <div class="dashboard-card my-5">
     <div class="dahboard-card-content ">
       <div class="dashboard-option">
@@ -39,4 +36,76 @@
       </div>
     </div>
   </div>
-<br><br>
+
+</div>
+
+<% movies = [] %>
+  <% Wish.where(user_id: current_user.id).each do |wish| %>
+  <% movies << wish.movie_id %>
+<% end %>
+
+<div class="carousel">
+  <ul class="carousel__list">
+
+    <li class="carousel__item" data-pos="-2">
+      <img src= "<%= Movie.new(Movie.where(id: movies[0])[0]).poster %>"
+           width="100%" height="250px" object-fit="cover" />
+    </li>
+
+    <li class="carousel__item" data-pos="-1">
+      <img src= "<%= Movie.new(Movie.where(id: movies[1])[0]).poster %>"
+           width="100%" height="250px" object-fit="cover" />
+    </li>
+
+    <li class="carousel__item" data-pos="0">
+      <img src= "<%= Movie.new(Movie.where(id: movies[2])[0]).poster %>"
+           width="100%" height="250px" object-fit="cover" />
+    </li>
+
+    <li class="carousel__item" data-pos="1">
+      <img src= "<%= Movie.new(Movie.where(id: movies[3])[0]).poster %>"
+           width="100%" height="250px" object-fit="cover" />
+    </li>
+
+    <li class="carousel__item" data-pos="2">
+      <img src= "<%= Movie.new(Movie.where(id: movies[4])[0]).poster %>"
+           width="100%" height="250px" object-fit="cover" />
+    </li>
+
+  </ul>
+</div>
+
+<script>
+  const state = {};
+  const carouselList = document.querySelector('.carousel__list');
+  const carouselItems = document.querySelectorAll('.carousel__item');
+  const elems = Array.from(carouselItems);
+  carouselList.addEventListener('touchmove', function (event) {
+    var newActive = event.target;
+    var isItem = newActive.closest('.carousel__item');
+    if (!isItem || newActive.classList.contains('carousel__item_active')) {
+      return;
+    };
+    update(newActive);
+  });
+  const update = function(newActive) {
+    const newActivePos = newActive.dataset.pos;
+    const current = elems.find((elem) => elem.dataset.pos == 0);
+    const prev = elems.find((elem) => elem.dataset.pos == -1);
+    const next = elems.find((elem) => elem.dataset.pos == 1);
+    const first = elems.find((elem) => elem.dataset.pos == -2);
+    const last = elems.find((elem) => elem.dataset.pos == 2);
+    current.classList.remove('carousel__item_active');
+    [current, prev, next, first, last].forEach(item => {
+      var itemPos = item.dataset.pos;
+      item.dataset.pos = getPos(itemPos, newActivePos)
+    });
+  };
+  const getPos = function (current, active) {
+    const diff = current - active;
+    if (Math.abs(current - active) > 2) {
+      return -current
+    }
+    return diff;
+  }
+</script>
