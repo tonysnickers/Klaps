@@ -2,9 +2,9 @@
 
     <div class="dash-text text-center my-4">
       <% if current_user.username.empty? %>
-        <h1>Welcome</h1>
+        <h1 class="hello">Welcome</h1>
       <% else %>
-        <h1>Welcome <%= current_user.username %>👋</h1>
+        <h1 class="hello">Welcome <%= current_user.username %>👋</h1>
       <% end %>
     </div>
 
@@ -12,7 +12,7 @@
       <div class="dashboard-header justify-content-center align-items-center text-center">
         <%= image_tag 'Dashboard-card.png', class:"img" %>
         <div class="justify-content-center align-items-center text-center">
-          <h1>Find a movie</h1>
+          <h1 class="find-a-movie">Find a movie</h1>
         </div>
       </div>
     <% end %>
@@ -44,36 +44,36 @@
   <% movies << wish.movie_id %>
 <% end %>
 
-<div class="carousel">
-  <ul class="carousel__list">
+<%# <div class="carousel"> %>
+  <%# <ul class="carousel__list"> %>
 
-    <li class="carousel__item" data-pos="-2">
-      <img src= "<%= Movie.new(Movie.where(id: movies[0])[0]).poster %>"
-           width="100%" height="250px" object-fit="cover" />
-    </li>
+    <%# <li class="carousel__item" data-pos="-2"> %>
+      <%# <img src= "<%= Movie.new(Movie.where(id: movies[0])[0]).poster %>
+           <%# width="100%" height="250px" object-fit="cover" /> %>
+    <%# </li> %>
 
-    <li class="carousel__item" data-pos="-1">
-      <img src= "<%= Movie.new(Movie.where(id: movies[1])[0]).poster %>"
-           width="100%" height="250px" object-fit="cover" />
-    </li>
+    <%# <li class="carousel__item" data-pos="-1"> %>
+      <%# <img src= "<%= Movie.new(Movie.where(id: movies[1])[0]).poster %>
+           <%# width="100%" height="250px" object-fit="cover" /> %>
+    <%# </li> %>
 
-    <li class="carousel__item" data-pos="0">
-      <img src= "<%= Movie.new(Movie.where(id: movies[2])[0]).poster %>"
-           width="100%" height="250px" object-fit="cover" />
-    </li>
+    <%# <li class="carousel__item" data-pos="0"> %>
+      <%# <img src= "<%= Movie.new(Movie.where(id: movies[2])[0]).poster %>
+           <%# width="100%" height="250px" object-fit="cover" /> %>
+    <%# </li> %>
 
-    <li class="carousel__item" data-pos="1">
-      <img src= "<%= Movie.new(Movie.where(id: movies[3])[0]).poster %>"
-           width="100%" height="250px" object-fit="cover" />
-    </li>
+    <%# <li class="carousel__item" data-pos="1"> %>
+      <%# <img src= "<%= Movie.new(Movie.where(id: movies[3])[0]).poster %>
+           <%# width="100%" height="250px" object-fit="cover" /> %>
+    <%# </li> %>
 
-    <li class="carousel__item" data-pos="2">
-      <img src= "<%= Movie.new(Movie.where(id: movies[4])[0]).poster %>"
-           width="100%" height="250px" object-fit="cover" />
-    </li>
+    <%# <li class="carousel__item" data-pos="2"> %>
+      <%# <img src= "<%= Movie.new(Movie.where(id: movies[4])[0]).poster %>
+           <%# width="100%" height="250px" object-fit="cover" /> %>
+    <%# </li> %>
 
-  </ul>
-</div>
+  <%# </ul> %>
+<%# </div> %>
 
 <script>
   const state = {};
@@ -109,3 +109,4 @@
     return diff;
   }
 </script>
+
