@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import DragController from "./drag_controller.js"
 application.register("drag", DragController)
+
+import AlertController from "./alert_controller.js"
+application.register("alert", AlertController)
