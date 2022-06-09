@@ -46,7 +46,11 @@
         <% end %>
 
         <% if movies.empty? %>
-          <img src="<%#=  Movie.find(movies[0]).poster %>">
+          <div class="card-carousel">
+            <div class="card-empty">
+              <p>No wishes here, take the quizz to add films</p>
+            </div>
+          </div>
         <% else %>
           <div class="card-carousel">
 
