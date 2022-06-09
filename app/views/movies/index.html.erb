@@ -73,7 +73,7 @@
             </div>
           </div>
 
-          <div class="modal-footer">
+          <div class="modal-footer justify-content-between">
             <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
               <i class="fa fa-heart" aria-hidden="true"></i>
             <% end %>
