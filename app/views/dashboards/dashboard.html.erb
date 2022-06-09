@@ -45,30 +45,34 @@
           <% movies << wish.movie_id %>
         <% end %>
 
-        <div class="card-carousel">
+        <% if movies.empty? %>
+          <img src="<%#=  Movie.find(movies[0]).poster %>">
+        <% else %>
+          <div class="card-carousel">
 
-          <div class="card" id="1">
-            <img src="<%=  Movie.find(movies[0]).poster %>">
+            <div class="card" id="1">
+              <img src="<%=  Movie.find(movies[0]).poster %>">
+            </div>
+
+            <div class="card" id="2">
+              <img src="<%=  Movie.find(movies[1]).poster %>">
+            </div>
+
+            <div class="card" id="3">
+              <img src="<%=  Movie.find(movies[2]).poster %>">
+            </div>
+
+            <div class="card" id="4">
+              <img src="<%=  Movie.find(movies[3]).poster %>">
+            </div>
+
+            <div class="card" id="5">
+              <img src="<%=  Movie.find(movies[4]).poster %>">
+            </div>
+
+            <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
           </div>
-
-          <div class="card" id="2">
-            <img src="<%=  Movie.find(movies[1]).poster %>">
-          </div>
-
-          <div class="card" id="3">
-            <img src="<%=  Movie.find(movies[2]).poster %>">
-          </div>
-
-          <div class="card" id="4">
-            <img src="<%=  Movie.find(movies[3]).poster %>">
-          </div>
-
-          <div class="card" id="5">
-            <img src="<%=  Movie.find(movies[4]).poster %>">
-          </div>
-
-          <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
-        </div>
+        <% end %>
 
       </div>
     </div>
@@ -404,4 +408,3 @@
   }
   const carousel = new CardCarousel(cardsContainer);
 </script>
-
