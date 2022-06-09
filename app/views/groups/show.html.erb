@@ -6,9 +6,9 @@
   <div class="text-center ">
 
     <div class="member-content">
-      <h4 class="mt-4 member-title"><u>Who's playing ?</u></h4>
+      <h4 class="my-4 member-title">Who's playing ?</h4>
         <% @group.users.each do |user| %>
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center member">
           <i class="fa-solid fa-user-tie mx-2"></i>
           <p class="member-group"><%= user[:username] %> </p>
         </div>

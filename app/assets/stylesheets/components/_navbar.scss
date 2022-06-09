@@ -98,8 +98,12 @@ Animations
 
 
 .arrow{
-  margin-top: 15px;
-  margin-left: 15px;
+  margin-top: 9px;
+  margin-left: 32px;
+}
+
+.arrow:active {
+  color: #fff;
 }
 
 .arrow:hover {
@@ -108,6 +112,7 @@ Animations
 
 .edit-navbar {
   position: absolute;
-  top: 5.8px;
+  margin-left: 21px;
+  top: 14px;
   z-index: 1000;
 }
