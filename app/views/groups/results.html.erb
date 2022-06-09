@@ -1,20 +1,4 @@
 <% if params[:wait_for_the_others] == "true" %>
-  <div class="navbar">
-    <input id="toggle" type="checkbox">
-    <label for="toggle" class="hamburger">
-      <div class="top-bun"></div>
-      <div class="meat"></div>
-      <div class="bottom-bun"></div>
-    </label>
-
-    <div class="nav py-4" style="
-      z-index: 4;">
-      <div class="d-flex flex-column justify-content-start">
-        <%= link_to "HOME", dashboard_path, class: 'px-4 py-2  text-decoration-none text-color' %>
-        <%= link_to "LOGOUT", destroy_user_session_path, data: {turbo_method: :delete}, class: 'px-4 py-2  text-decoration-none text-color' %>
-      </div>
-    </div>
-  </div>
 
   <div class="text-center">
     <br><br><br><h6>Wait for the others...</h6>
@@ -25,26 +9,10 @@
   </div>
 
 <% else %>
-  <div class="navbar">
-    <input id="toggle" type="checkbox">
-    <label for="toggle" class="hamburger">
-      <div class="top-bun"></div>
-      <div class="meat"></div>
-      <div class="bottom-bun"></div>
-    </label>
 
-    <div class="nav py-4" style="
-      z-index: 4;">
-      <div class="d-flex flex-column justify-content-start">
-        <%= link_to "HOME", dashboard_path, class: 'px-4 py-2  text-decoration-none text-color' %>
-        <%= link_to "LOGOUT", destroy_user_session_path, data: {turbo_method: :delete}, class: 'px-4 py-2  text-decoration-none text-color' %>
-      </div>
-    </div>
-  </div>
-
-  <div class = "title" >
+  <div class="title">
     <h1>Here it is!</h1>
-
+  </div>
 
   <% n = 0 %>
 
