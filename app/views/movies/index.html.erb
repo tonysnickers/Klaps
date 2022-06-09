@@ -73,9 +73,16 @@
             </div>
           </div>
 
-          <div class="modal-footer justify-content-between">
-            <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
-              <i class="fa fa-heart" aria-hidden="true"></i>
+            <% if Wish.where(user_id: current_user.id).map do |n| n.movie_id end.include?(m.id) %>
+            <div class="modal-footer-one justify-content-between">
+              <%= link_to wish_path(Wish.where(user_id: current_user.id).where(movie_id: m.id)[0]), data: {turbo_method: 'delete'} do %>
+                <i class="fa fa-heart" aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+              <div class="modal-footer-two justify-content-between">
+              <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
+                <i class="fa fa-heart" aria-hidden="true"></i>
+              <% end %>
             <% end %>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>

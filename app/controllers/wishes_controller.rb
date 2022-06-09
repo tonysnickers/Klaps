@@ -19,6 +19,7 @@ class WishesController < ApplicationController
     @wish = Wish.find(params[:id])
     authorize @wish
     @wish.destroy
+    flash.alert = "Removed successfully!"
     redirect_to wishes_path
   end
 

@@ -136,13 +136,15 @@
   font-size: 20px;
 }
 
-.modal-footer {
+.modal-footer-one {
   a {
-    color: #fff;
+    color: red;
+    text-decoration: none;
   }
 
-  a:active {
-    color: red;
+  a:focus {
+    color: white;
+    text-decoration: none;
   }
 
   .btn {
@@ -151,6 +153,25 @@
     border: none;
   }
 }
+
+.modal-footer-two {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:focus {
+    color: red;
+    text-decoration: none;
+  }
+
+  .btn {
+    background-color: $yellow;
+    color: $darkgray;
+    border: none;
+  }
+}
+
 
 
 .trash {
