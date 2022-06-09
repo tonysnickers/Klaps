@@ -15,6 +15,14 @@ class WishesController < ApplicationController
     redirect_to group_movies_path(@group)
   end
 
+  def destroy
+    @wish = Wish.find(params[:id])
+    authorize @wish
+    @wish.destroy
+    redirect_to wishes_path
+  end
+
+
   private
 
   def params_wishe
