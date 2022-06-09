@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :groups, only: %i[index show new create update results] do
     resources :quizz_choices, only: %i[new create index]
     resources :movies, only: %i[index]
-    resources :wishes, only: [:create]
+    resources :wishes, only: %i[create]
 
     member do
       post :compute_results
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   resources :friends, only: %i[index new create destroy]
 
   resources :movie_seens, only: %i[create index]
-  resources :wishes, only: %i[index]
+  resources :wishes, only: %i[index destroy]
 
   resources :quizz_choices, only: %i[edit] do
     member do

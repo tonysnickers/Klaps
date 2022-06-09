@@ -1,8 +1,13 @@
 .recap {
-  background-color: #ffff;
-  color: #000;
+  background-color: $darkgray;
+  color: $light-gray;
+  border: 1px solid $light-gray;
   margin: 10px auto;
   width: 196px;
   padding: 15px;
   border-radius: $radius;
+}
+
+h5 {
+  margin: 0;
 }

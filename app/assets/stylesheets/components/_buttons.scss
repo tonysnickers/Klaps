@@ -77,6 +77,10 @@
   text-decoration: none;
 }
 
+.add-group:hover {
+  color: $yellow;
+}
+
 .delete {
   color: red;
   text-decoration: none;
@@ -146,4 +150,10 @@
     color: $darkgray;
     border: none;
   }
+}
+
+
+.trash {
+  color: $light-gray;
+  height: 20px;
 }

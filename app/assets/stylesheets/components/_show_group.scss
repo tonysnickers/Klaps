@@ -5,10 +5,23 @@
 .member-group {
   font-size: 20px;
   margin-bottom: none;
+
 }
 
 .member-content {
   margin-bottom: 44px;
+  p{
+    margin-top: 20px;
+
+  }
+}
+
+.member {
+  border: 1px solid rgba(255, 255, 255, 0.469);
+  width: 150px;
+  margin: 20px auto;
+  border-radius: 10px;
+
 }
 
 .delete-group {
@@ -17,6 +30,15 @@
   border: 1px solid red;
   border-radius: 10px;
   padding: 10px;
+}
+
+.delete-group:active{
+  color: #ffff;
+  background-color: red;
+}
+
+.delete-groups{
+  margin-top: 100%;
 }
 
 

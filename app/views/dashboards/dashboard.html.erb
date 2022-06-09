@@ -2,9 +2,9 @@
 
     <div class="dash-text text-center my-4">
       <% if current_user.username.empty? %>
-        <h1>Welcome</h1>
+        <h1 class="hello">Welcome</h1>
       <% else %>
-        <h1>Welcome <%= current_user.username %>👋</h1>
+        <h1 class="hello">Welcome <%= current_user.username %>👋</h1>
       <% end %>
     </div>
 
@@ -12,7 +12,7 @@
       <div class="dashboard-header justify-content-center align-items-center text-center">
         <%= image_tag 'Dashboard-card.png', class:"img" %>
         <div class="justify-content-center align-items-center text-center">
-          <h1>Find a movie</h1>
+          <h1 class="find-a-movie">Find a movie</h1>
         </div>
       </div>
     <% end %>
@@ -404,3 +404,4 @@
   }
   const carousel = new CardCarousel(cardsContainer);
 </script>
+

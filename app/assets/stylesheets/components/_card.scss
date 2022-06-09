@@ -2,7 +2,6 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   color: $darkgray;
@@ -10,6 +9,7 @@
   border-radius: 10px;
   width: 100%;
   color: white;
+  border: none;
 }
 
 .card-movie img {
@@ -63,4 +63,18 @@
   right: 16px;
   bottom: 567px;
   left: 16px;
+}
+
+.wish-show-small-titles {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  text-decoration: none !important;
+  text-align: center;
+}
+
+.final-text-align {
+  text-align: start;
 }
