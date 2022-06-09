@@ -25,31 +25,31 @@
     <div class="card-movie-infos">
       <h2 class="mt-4"><strong><%= @final.name %></strong></h2>
       <div>
-        <p class="mt-4"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
-        <p><%= @final.year %> - <%= @final.duration %> min.</p>
+        <p class="text-start"><%= @final.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+        <p class="final-text-align"><%= @final.year %> - <%= @final.duration %> min.</p>
       </div>
 
       <hr>
 
       <div>
-        <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
-        <p><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+        <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Casting</p>
+        <p class="final-text-align"><%= @final.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
       </div>
 
       <hr>
 
       <div>
-        <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
-        <p><%= @final.synopsis %></p>
+        <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Synopsis</p>
+        <p class="final-text-align"><%= @final.synopsis %></p>
       </div>
 
       <hr>
       <div>
         <% if @final.platform? == true %>
-          <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+          <p class="fw-semibold text-decoration-underline fs-6 final-text-align wish-show-small-titles">Available on</p>
           <p><%= @final.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
         <% else %>
-          <small>This movie is not free on any platform</small>
+          <small class="final-text-align">This movie is not free on any platform</small>
         <% end %>
       </div>
     </div>

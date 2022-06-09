@@ -15,7 +15,7 @@
       <img src="<%= m.poster %>" width="10%" />
       <div class="card-movie-infos">
         <h2 class="text-start overflow-visible"><%= m.name %></h2>
-        <p class="text-start text-warning">
+        <p class="text-start">
           <%= m.genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
         </p>
         <p class="text-start"><%= m.year %> ~ <%= m.duration %> min ~ <%= m.rating %>/10 <i class="fa-solid fa-star"></i></p>
@@ -50,14 +50,14 @@
               <hr>
 
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Casting</p>
                 <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
               </div>
 
               <hr>
 
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
+                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Synopsis</p>
                 <p><%= m.synopsis %></p>
               </div>
 
