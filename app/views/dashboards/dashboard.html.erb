@@ -46,55 +46,51 @@
   <div class="dashboard-card my-5">
     <div class="dahboard-card-content ">
 
-      <div class="">
+      <div class="d-flex justify-content-between mb-2">
+        <h3 class="ms-3">My wishlist</h3>
 
-        <div class="d-flex justify-content-between mb-2">
-          <h3 class="ms-3">My wishlist</h3>
-
-          <%= link_to wishes_path, class: "text-decoration-none text-white-50" do %>
-            <h5 class="me-3">See all <i class="fa-solid fa-arrow-right-long"></i></h5>
-          <% end %>
-        </div>
-
-        <% movies = [] %>
-          <% Wish.where(user_id: current_user.id).each do |wish| %>
-          <% movies << wish.movie_id %>
+        <%= link_to wishes_path, class: "text-decoration-none text-white-50" do %>
+          <h5 class="me-3">See all <i class="fa-solid fa-arrow-right-long"></i></h5>
         <% end %>
-
-        <% if movies.empty? %>
-          <div class="card-carousel">
-            <div class="card-empty">
-              <p>No wishes here, take the quizz to add films</p>
-            </div>
-          </div>
-        <% else %>
-          <div class="card-carousel">
-
-            <div class="card" id="1">
-              <img src="<%=  Movie.find(movies[0]).poster %>">
-            </div>
-
-            <div class="card" id="2">
-              <img src="<%=  Movie.find(movies[1]).poster %>">
-            </div>
-
-            <div class="card" id="3">
-              <img src="<%=  Movie.find(movies[2]).poster %>">
-            </div>
-
-            <div class="card" id="4">
-              <img src="<%=  Movie.find(movies[3]).poster %>">
-            </div>
-
-            <div class="card" id="5">
-              <img src="<%=  Movie.find(movies[4]).poster %>">
-            </div>
-
-            <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
-          </div>
-        <% end %>
-
       </div>
+
+      <% movies = [] %>
+        <% Wish.where(user_id: current_user.id).each do |wish| %>
+        <% movies << wish.movie_id %>
+      <% end %>
+
+      <% if movies.empty? %>
+        <div class="card-carousel">
+          <div class="card-empty">
+            <p>No wishes here, take the quizz to add films</p>
+          </div>
+        </div>
+      <% else %>
+        <div class="card-carousel">
+
+          <div class="card" id="1">
+            <img src="<%=  Movie.find(movies[0]).poster %>">
+          </div>
+
+          <div class="card" id="2">
+            <img src="<%=  Movie.find(movies[1]).poster %>">
+          </div>
+
+          <div class="card" id="3">
+            <img src="<%=  Movie.find(movies[2]).poster %>">
+          </div>
+
+          <div class="card" id="4">
+            <img src="<%=  Movie.find(movies[3]).poster %>">
+          </div>
+
+          <div class="card" id="5">
+            <img src="<%=  Movie.find(movies[4]).poster %>">
+          </div>
+
+          <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
+        </div>
+      <% end %>
 
     </div>
   </div>
