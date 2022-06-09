@@ -13,12 +13,12 @@
   <%= simple_form_for [@group, @quizz_choice] do |f| %>
 
     <%= f.input :genre, as: :check_boxes,
-                collection: ["Adventure", "Action", "Animation", "Comedy", "Romance",
-                             "Crime", "Documentary", "Drama", "Fantasy", "Family", "History", "Horror", "Music",
-                             "Mystery", "Sci-Fi", "Thriller", "TV Movie", "War", "Western"], label: "" %>
+                collection: ["Action", "Adventure", "Animation", "Comedy", "Crime",
+                             "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music",
+                             "Mystery", "Romance", "Sci-Fi", "Thriller", "TV Movie", "War", "Western"], label: "" %>
 
     <div style="margin-bottom:92px;"></div>
-  
+
     <%= f.submit "Next", class: "bottom-button quizz-button"  %>
 
   <% end %>
