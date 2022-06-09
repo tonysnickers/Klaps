@@ -32,6 +32,15 @@
   padding: 10px;
 }
 
+.delete-group:active{
+  color: #ffff;
+  background-color: red;
+}
+
+.delete-groups{
+  margin-top: 100%;
+}
+
 
 .group-name {
   border-top: 2px solid $yellow;
