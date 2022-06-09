@@ -4,7 +4,7 @@
       <% if current_user.username.empty? %>
         <h1 class="hello">Welcome</h1>
       <% else %>
-        <h1 class="hello">Welcome <%= current_user.username %>👋</h1>
+        <h1 class="hello">Welcome <%= current_user.username %> 👋</h1>
       <% end %>
     </div>
 
@@ -21,7 +21,7 @@
     <div class="dahboard-card-content ">
       <div class="dashboard-option">
         <%= link_to friends_path, class: "text-decoration-none" do %>
-            <p>Add some friends</p>
+          <p>Add some friends</p>
         <% end %>
       </div>
     </div>
@@ -79,7 +79,8 @@
         <% end %>
 
       </div>
-    </div
+
+    </div>
   </div>
 
 </div>
