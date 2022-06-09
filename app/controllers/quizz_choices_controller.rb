@@ -142,7 +142,7 @@ class QuizzChoicesController < ApplicationController
   end
 
   def keyword_list_params
-    @keywords_list = Movie.pluck(:keyword).flatten.to_json
+    @keywords_list = Movie.pluck(:keyword).flatten.uniq.to_json
   end
 end
 
