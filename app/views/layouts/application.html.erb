@@ -1,8 +1,8 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <title>Claps</title>
-
+    <%= favicon_link_tag %>
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
 
@@ -22,7 +22,6 @@
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
-    <%= favicon_link_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -59,7 +58,7 @@
 
   <body>
 
-    <% if controller_name != 'sessions' && action_name != 'home' && action_name != 'edit' && action_name != 'results' && action_name !='dashboard' %>
+    <% if controller_name != 'sessions' && action_name != 'home' && action_name != 'edit' %>
       <%= render "shared/navbar" %>
     <% end %>
 
