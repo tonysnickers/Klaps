@@ -46,21 +46,21 @@
               <hr>
 
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Casting</p>
+                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Casting</p>
                 <p><%= Movie.where(id: id)[0].actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
               </div>
 
               <hr>
 
               <div>
-                <p class="fw-semibold text-decoration-underline fs-6">Synopsis</p>
-                <p><%= Movie.where(id: id)[0].synopsis %></p>
+                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Synopsis</p>
+                <p class="synopsis"><%= Movie.where(id: id)[0].synopsis %></p>
               </div>
 
               <hr>
               <div>
               <% if Movie.where(id: id)[0].platform? == true %>
-                  <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+                  <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Available on</p>
                   <p><%= Movie.where(id: id)[0].platform.to_s.gsub(/[\[\]\"]/,"") %></p>
                 <% else %>
                   <small>This movie is not free on any platform</small>
