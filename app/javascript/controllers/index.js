@@ -4,14 +4,17 @@
 
 import { application } from "./application"
 
+import AlertController from "./alert_controller.js"
+application.register("alert", AlertController)
+
 import AutocompleteController from "./autocomplete_controller.js"
 application.register("autocomplete", AutocompleteController)
-
-import HelloController from "./hello_controller.js"
-application.register("hello", HelloController)
 
 import DragController from "./drag_controller.js"
 application.register("drag", DragController)
 
-import AlertController from "./alert_controller.js"
-application.register("alert", AlertController)
+import HelloController from "./hello_controller.js"
+application.register("hello", HelloController)
+
+import LottieController from "./lottie_controller.js"
+application.register("lottie", LottieController)
