@@ -7,6 +7,6 @@ export default class extends Controller {
     setTimeout(() => {
       this.element.remove()
       window.location = this.dashboardUrlValue
-    }, 7500);
+    }, 7501);
   }
 }
