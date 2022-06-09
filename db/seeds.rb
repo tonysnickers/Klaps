@@ -12,6 +12,8 @@ GroupUser.destroy_all
 puts "group user drop ok"
 Group.destroy_all
 puts "group drop ok"
+Friend.destroy_all
+puts "Friend drop ok"
 User.destroy_all
 puts "Database cleaned"
 
