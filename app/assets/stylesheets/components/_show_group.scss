@@ -4,14 +4,14 @@
 
 .member-group {
   font-size: 20px;
-  margin-bottom: none;
+  margin-bottom: 0;
 
 }
 
 .member-content {
   margin-bottom: 44px;
   p{
-    margin-top: 20px;
+    margin-top: 1px;
 
   }
 }
@@ -19,9 +19,12 @@
 .member {
   border: 1px solid rgba(255, 255, 255, 0.469);
   width: 150px;
-  margin: 20px auto;
+  margin: 10px auto;
   border-radius: 10px;
-
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 10px;
 }
 
 .delete-group {
@@ -29,7 +32,7 @@
   text-decoration: none;
   border: 1px solid red;
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 35px;
 }
 
 .delete-group:active{
@@ -39,6 +42,7 @@
 
 .delete-groups{
   margin-top: 100%;
+  padding: 0 25px;
 }
 
 
@@ -46,7 +50,7 @@
   border-top: 2px solid $yellow;
   border-bottom: 2px solid $yellow;
   // background-color: $yellow;
-  border-radius: 10px;
+  // border-radius: 10px;
   color: $yellow;
   margin: 15px auto;
   width: 300px;

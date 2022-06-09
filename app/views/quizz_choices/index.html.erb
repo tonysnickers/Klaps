@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-center my-2">
 
   <div class="row">
-    <h1 class="text-center my-4 font-weight-bold">All your choices</h1>
+    <h1 class="text-center my-4 font-weight-bold">Your answers</h1>
 
     <br>
 
@@ -154,7 +154,7 @@
     <% if @quizz_choice.sent? %>
       <p>Wait for the others...</p>
     <% else %>
-      <%= link_to "Let the magic begin !", validate_quizz_choice_path(@quizz_choice), data: { turbo_method: :patch } %>
+      <%= link_to "Let the magic begin!", validate_quizz_choice_path(@quizz_choice), data: { turbo_method: :patch } %>
     <% end %>
   </div>
 
