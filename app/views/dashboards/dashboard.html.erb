@@ -56,7 +56,7 @@
 
       <% movies = [] %>
         <% Wish.where(user_id: current_user.id).each do |wish| %>
-        <% movies << wish.movie_id %>
+        <% movies << wish.movie %>
       <% end %>
 
       <% if movies.empty? %>
@@ -66,28 +66,13 @@
           </div>
         </div>
       <% else %>
+
         <div class="card-carousel">
-
-          <div class="card" id="1">
-            <img src="<%=  Movie.find(movies[0]).poster %>">
-          </div>
-
-          <div class="card" id="2">
-            <img src="<%=  Movie.find(movies[1]).poster %>">
-          </div>
-
-          <div class="card" id="3">
-            <img src="<%=  Movie.find(movies[2]).poster %>">
-          </div>
-
-          <div class="card" id="4">
-            <img src="<%=  Movie.find(movies[3]).poster %>">
-          </div>
-
-          <div class="card" id="5">
-            <img src="<%=  Movie.find(movies[4]).poster %>">
-          </div>
-
+          <% movies.each do |movie| %>
+            <div class ="card" ">
+              <img src="<%= movie.poster %>" width="100" />
+            </div>
+          <% end %>
           <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
         </div>
       <% end %>
@@ -99,9 +84,7 @@
 
 <script>
   const cardsContainer = document.querySelector(".card-carousel");
-  const cardsController = document.querySelector(
-    ".card-carousel + .card-controller"
-  );
+  const cardsController = document.querySelector(".card-carousel + .card-controller");
 
   class DraggingEvent {
     constructor(target = undefined) {
