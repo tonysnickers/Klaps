@@ -3,4 +3,18 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  transition: opacity 2s 1s 1s;
+}
+
+.fade-out {
+  animation: fade_out 1s ease forwards;
+}
+
+@keyframes fade_out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
