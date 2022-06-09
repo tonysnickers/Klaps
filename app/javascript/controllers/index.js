@@ -15,3 +15,6 @@ application.register("drag", DragController)
 
 import AlertController from "./alert_controller.js"
 application.register("alert", AlertController)
+
+application.use(express.static(path.join(__dirname,'client','build')))
+application.get("/*", (req, res) => { res.sendFile(path.join(__dirname ,'/FRONTEND/public/index.html')); })
