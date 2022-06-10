@@ -40,11 +40,25 @@ jacques = User.create!(
   password: "moviefinder"
 )
 
+ophelia = User.create!(
+  username: "ophelia",
+  email: "ophelia@gmail.com",
+  password: "moviefinder"
+)
+
+jules = User.create!(
+  username: "jules",
+  email: "jules@gmail.com",
+  password: "moviefinder"
+)
+
+
 antoine.save!
 manoa.save!
 jeanne.save!
 jacques.save!
-
+ophelia.save!
+jules.save!
 p antoine
 
 mf = Group.create!(
@@ -67,11 +81,11 @@ man = GroupUser.create!(
   group: mf
 )
 
-man = GroupUser.create!(
+oph = GroupUser.create!(
   user: ophelia,
   group: mf
 )
-man = GroupUser.create!(
+jul = GroupUser.create!(
   user: jules,
   group: mf
 )
