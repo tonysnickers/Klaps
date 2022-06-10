@@ -5,6 +5,8 @@
   <%= simple_form_for @group do |f| %>
     <%= f.input :name, placeholder: 'Give a name to your session..', label: false%>
     <% if @solo == "false" %>
+    <br>
+    <p>&nbsp;&nbsp;&nbsp;Who do you want to play with?</p>
       <%= f.association :user, collection: @friends, as: :check_boxes, label_method: :username %>
     <% end %>
     <%= f.submit "Let's start !", class:"user-group" %>
