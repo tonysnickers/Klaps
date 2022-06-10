@@ -66,10 +66,7 @@ man = GroupUser.create!(
   user: manoa,
   group: mf
 )
-man = GroupUser.create!(
-  user: rayan,
-  group: mf
-)
+
 man = GroupUser.create!(
   user: ophelia,
   group: mf
