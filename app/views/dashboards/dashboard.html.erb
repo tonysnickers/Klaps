@@ -102,6 +102,29 @@
           </button>
         </div>
       <% elsif movies.count == 5 %>
+        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="<%= movies[0].poster %>" class="ms-3" style="height: 45%" width="45%">
+              <img src="<%= movies[1].poster %>" style="height: 45%" width="45%">
+            </div>
+            <div class="carousel-item">
+              <img src="<%= movies[2].poster %>" class="ms-3" style="height: 45%" width="45%">
+              <img src="<%= movies[3].poster %>" style="height: 45%" width="45%">
+            </div>
+            <div class="carousel-item">
+              <img src="<%= movies[4].poster %>" class="ms-3" style="height: 45%" width="45%">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="prev">
+            <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span> %>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="next">
+            <%# <span class="carousel-control-next-icon" aria-hidden="false"></span> %>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       <% else %>
         <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
