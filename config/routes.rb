@@ -33,7 +33,11 @@ Rails.application.routes.draw do
   resources :friends, only: %i[index new create destroy]
   resources :movie_seens, only: %i[create index]
   resources :wishes, only: %i[index destroy]
-  resources :favorites, only: %i[index new create destroy]
+  resources :favorites, only: %i[index new create destroy] do
+    member do
+      get :friendsfav
+    end
+  end
 
   resources :quizz_choices, only: %i[edit] do
     member do

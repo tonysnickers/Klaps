@@ -4,6 +4,19 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new
   end
 
+  def friendsfav
+    @favorite = Favorite.new
+    authorize @favorite
+    @friends_list = []
+    current_user.friends.map do |f|
+      @friends_list << f.users_friend.id
+    end
+
+    Friend.where(users_friend_id: current_user.id).map do |f|
+      @friends_list << f.user.id
+    end
+  end
+
   def create
     @favorite = Favorite.new(movie: Movie.where(name: params["q"])[0], user: current_user)
     if params["q"].empty?
@@ -13,18 +26,9 @@ class FavoritesController < ApplicationController
     else
       flash.alert = "Added to your favorites !"
       @favorite.save!
-    # else
-    #   flash.alert = "Already in your favorites"
     end
-
     redirect_to favorites_path
     authorize @favorite
-
-    # @favorite = Favorite.where(user: current_user, movie_id: params_favorite[:movie_id]).first_or_initialize
-    # authorize @favorite
-    # @favorite.save
-    # flash.alert = "Added to your favorites!"
-    # redirect_to favorites_path
   end
 
   def destroy
@@ -34,5 +38,4 @@ class FavoritesController < ApplicationController
     flash.alert = "Removed successfully!"
     redirect_to favorites_path
   end
-
 end
