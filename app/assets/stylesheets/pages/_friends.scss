@@ -1,0 +1,11 @@
+.friends {
+  border: 1px solid $yellow;
+  border-radius: 10px;
+  background-color: $yellow;
+  padding: 15px;
+  margin: 10px;
+}
+.friends > p {
+  margin-bottom: 0 !important;
+  color: black;
+}
