@@ -16,6 +16,8 @@ Friend.destroy_all
 puts "Friend drop ok"
 User.destroy_all
 puts "Database cleaned"
+Wish.destroy_all
+puts "Database cleaned"
 
 antoine = User.create!(
   username: "Antoine",
@@ -102,6 +104,7 @@ end
 
 (1...90).each do |page_number|
   movies = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/top_rated?api_key=5a07d55b0507c919cb598bae7c6fd7b4&page=#{page_number}").read)["results"]
+  @movie_list = []
 
   movies.each do |movie|
     base_poster_url = "https://image.tmdb.org/t/p/original"

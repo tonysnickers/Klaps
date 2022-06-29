@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :my_groups, through: :group_users, source: :group
   has_many :quizz_choices
+  has_many :favorites, dependent: :destroy
+  has_many :wishes, dependent: :destroy
 
   has_many :friends, dependent: :destroy
   has_many :users, source: :friend, through: :friends
