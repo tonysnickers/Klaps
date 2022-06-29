@@ -1,6 +1,5 @@
-<h1 class="text-center">Invite someone</h1>
-<br>
-<br>
+<h1 class="text-center mb-4">Invite someone</h1>
+
 <%= form_tag(friends_path, method: 'post', class: "form-inline") do %>
   <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= User.all.pluck(:username)%>">
     <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username...", data: { "autocomplete-target": "searchInput" } %>
@@ -10,25 +9,29 @@
     <%= submit_tag "Add", class: "bottom-button" %>
 <% end %>
 
-<br>
 <hr>
-<br>
-<h2>Your friends</h2>
-<br>
-<% current_user.friends.each do |fr| %>
-  <div class="d-flex">
-    <p><%= fr.users_friend.username %>
-    <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
-      <i class='fa-solid fa-trash-can', style="color: red"></i>
-    <% end %></p>
-  </div>
 
-<% end %>
-<% Friend.where(users_friend: current_user).each do |n| %>
-  <div class="d-flex">
-    <p><%= User.find(n.user_id).username %>
-    <%= link_to friend_path(n), data: {turbo_method: "delete"} do %>
-      <i class='fa-solid fa-trash-can', style="color: red"></i>
-    <% end %></p>
-  </div>
-<% end %>
+<h2 class="text-center my-4">Your friends</h2>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+
+  <% current_user.friends.each do |fr| %>
+    <div class="d-flex friends">
+      <p><%= fr.users_friend.username.capitalize %>
+      <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
+        <i class='fa-solid fa-trash-can', style="color: red"></i>
+      <% end %></p>
+    </div>
+
+  <% end %>
+
+  <% Friend.where(users_friend: current_user).each do |n| %>
+    <div class="d-flex friends">
+      <p><%= User.find(n.user_id).username.capitalize %>
+      <%= link_to friend_path(n), data: {turbo_method: "delete"} do %>
+        <i class='fa-solid fa-trash-can', style="color: red"></i>
+      <% end %></p>
+    </div>
+  <% end %>
+
+</div>

@@ -1,7 +1,7 @@
 <div class="navbar">
   <%#= link_to request.referer.present? ? request.referer : default_path, class:"link-none" do  %>
 
-  <% if action_name != 'dashboard' && action_name != 'results' %>
+  <% if action_name != 'dashboard' && action_name != 'results' && controller_name != 'movies' %>
     <%= link_to "", "javascript:history.go(-1)", class:"fa-solid fa-angle-left fa-2x arrow link-none" %>
   <% end %>
     <%# <i class="fa-solid fa-angle-left fa-2x arrow"></i> %>
