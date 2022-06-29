@@ -1,24 +1,26 @@
 <div class="navbar">
   <%#= link_to request.referer.present? ? request.referer : default_path, class:"link-none" do  %>
 
-  <% if action_name !='dashboard' && action_name != 'results' %>
+  <% if action_name != 'dashboard' && action_name != 'results' %>
     <%= link_to "", "javascript:history.go(-1)", class:"fa-solid fa-angle-left fa-2x arrow link-none" %>
   <% end %>
     <%# <i class="fa-solid fa-angle-left fa-2x arrow"></i> %>
   <%# end  %>
 
-  <input id="toggle" type="checkbox">
-  <label for="toggle" class="hamburger">
-    <div class="top-bun"></div>
-    <div class="meat"></div>
-    <div class="bottom-bun"></div>
-  </label>
+  <% if action_name != 'new' %>
+    <input id="toggle" type="checkbox">
+    <label for="toggle" class="hamburger">
+      <div class="top-bun"></div>
+      <div class="meat"></div>
+      <div class="bottom-bun"></div>
+    </label>
 
-  <div class="nav py-4" style="z-index: 4;">
-    <div class="d-flex flex-column justify-content-start">
-      <%= link_to "HOME", dashboard_path, data: {turbo: 'false'}, class: 'px-4 py-2  text-decoration-none text-color' %>
+    <div class="nav py-4" style="z-index: 4;">
+      <div class="d-flex flex-column justify-content-start">
+        <%= link_to "HOME", dashboard_path, data: {turbo: 'false'}, class:'text-decoration-none text-color' %>
 
-      <%= link_to "LOGOUT", destroy_user_session_path, data: {turbo_method: :delete}, class: 'px-4 py-2  text-decoration-none text-color' %>
+        <%= link_to "LOGOUT", destroy_user_session_path, data: {turbo_method: :delete}, class:'text-decoration-none text-color' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
