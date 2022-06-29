@@ -1,9 +1,4 @@
-<br><br>
-
-
-
-
-<h3 class="my-5">Add a favorite</h3>
+<h3 class="my-4">Add a favorite</h3>
 
 <%= form_tag(favorites_path, method: 'post', class: "form-inline") do %>
   <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= Movie.all.pluck(:name) %>">
@@ -17,27 +12,8 @@
 <br>
 <h1 class="text-center">My favorites</h1>
 
-<% current_user.favorites.each do |fav| %>
-  <div class="d-flex">
-    <p><%= fav.name %>
-    <%= link_to favorites_path(fav), data: {turbo_method: "delete"} do %>
-      <i class='fa-solid fa-trash-can', style="color: red"></i>
-    <% end %></p>
-  </div>
 
-<% end %>
-<% Favorite.where(user: current_user).each do |n| %>
-  <div class="d-flex">
-    <p><%= Favorite.find(n.user_id).name %>
-    <%= link_to favorites_path(n), data: {turbo_method: "delete"} do %>
-      <i class='fa-solid fa-trash-can', style="color: red"></i>
-    <% end %></p>
-  </div>
-<% end %>
-
-
-
-<%# -----------------OTHER METHOD------------------------ %>
+<%# -----------------Affichage------------------------ %>
 
 <% movies = [] %>
   <% Favorite.where(user_id: current_user.id).each do |favorite| %>
@@ -102,17 +78,16 @@
                   <small>This movie is not free on any platform</small>
                 <% end %>
               </div>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <div class="d-flex justify-content-between w-100">
-              <p class="m-0">
-                <%= link_to wish_path(Wish.where(user_id: current_user).where(movie_id: id)[0]), data: {turbo_method: "delete"} do %>
-                  <i class='fa-solid fa-trash-can m-0 trash'></i>
-                <% end %>
-              </p>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <div class="modal-footer">
+                <div class="d-flex justify-content-between w-100">
+                  <p class="m-0">
+                    <%= link_to favorite_path(Favorite.where(user_id: current_user).where(movie_id: id)[0]), data: {turbo_method: "delete"} do %>
+                      <i class='fa-solid fa-trash-can m-0 trash'></i>
+                    <% end %>
+                  </p>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -120,4 +95,5 @@
       </div>
     </div>
   <% end%>
+  <br><br>
 </div>
