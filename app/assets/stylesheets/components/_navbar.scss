@@ -5,39 +5,34 @@
   display: flex;
   align-items: center;
 }
-
-
 #toggle {
   display: none;
 }
 
-/**
-  Hamburger
-**/
+/** Hamburger **/
+
 .hamburger {
   position: absolute;
-  top: 72px;
-  right: 5%;
-  margin-left: -2em;
-  margin-top: -45px;
-  width: 2em;
-  height: 45px;
+  right: 9%;
+  // width: 3em;
   z-index: 5;
+  // top: 72px;
+  // margin-left: -2em;
+  // margin-top: -45px;
+  // height: 45px;
 }
-
 .hamburger div {
-  position: relative;
+  // position: relative;
   width: 2em;
-  height: 4px;
-  border-radius: 3px;
+  height: 5px;
+  border-radius: 5px;
   background-color: #DDDDDD;
-  margin-top: 8px;
+  margin-top: 6px;
   transition: all 0.3s ease-in-out;
 }
 
-/**
-Nav Styles
-**/
+/** Nav Styles **/
+
 .nav {
   position: fixed;
   width: 100%;
@@ -54,62 +49,49 @@ Nav Styles
   background-color: $yellow;
   border-radius: 0 0 10px 10px;
   font-size: 1.5rem;
-
 }
-
-
-
 .text-color {
   color: #353535;
   font-weight: bold;
   margin-top: 17px;
   text-align: center;
 }
-
 .text-color:hover {
   color: #353535;
 }
 
-//
+/** Animations **/
 
-/**
-Animations
-**/
 #toggle:checked + .hamburger .top-bun {
-  transform: rotate(-44deg);
-  margin-top: 21px;
-}
-
-
-
-#toggle:checked + .hamburger .bottom-bun {
-  opacity: 0;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0;
 }
 #toggle:checked + .hamburger .meat {
+  opacity: 0;
   transform: rotate(45deg);
-  margin-top: -4px;
+  // margin-top: -5px;
 }
-
+#toggle:checked + .hamburger .bottom-bun {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+}
 #toggle:checked + .hamburger + .nav {
   top: 0;
   transform: scale(1);
 }
-
-
 .arrow{
-  margin-top: 9px;
-  margin-left: 32px;
+  position: absolute;
+  margin-top: 10px;
+  left: 9%;
 }
-
 .arrow:active {
   color: #fff;
 }
-
 .arrow:hover {
   color: $light-gray;
 }
-
 .edit-navbar {
   position: absolute;
   margin-left: 21px;
