@@ -6,7 +6,8 @@
   // border: 1px solid $yellow;
   border-radius: $radius;
   background-color: $yellow;
-  margin: 15px;
+  margin: 0 15px;
+  width: 90%;
   height: 200px;
 
   h1 {
@@ -14,16 +15,16 @@
     color: #353535;
   }
 
-  img {
+  .img {
     text-align: center;
   }
 
-  img {
+  .img {
     margin-top: -1px;
-    margin-left: -5px;
+    margin-left: -4px;
+    width: 103%;
+    height: 75%;
     border-radius: $radius $radius 0 0;
-    width: 346px;
-    height: 150px;
   }
 }
 
@@ -144,37 +145,27 @@
 
 /* -------------------------------------------------------------------------- */
 
-// // Smallest device
-// @media (min-width: 100px) and (max-width: 575px) {
-//   .cards {
-//     grid-template-columns: 1fr;
-//   }
-// }
+// Smallest device
+@media (min-width: 323.61px) and (max-width: 575px) {
 
-// // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
-//   .cards {
-//     grid-template-columns: 1fr;
-//   }
-// }
+}
 
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
 
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
+}
 
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-//   .cards {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
