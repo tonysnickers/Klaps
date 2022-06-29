@@ -1,0 +1,99 @@
+<h3 class="my-4">Add a favorite</h3>
+
+<%= form_tag(favorites_path, method: 'post', class: "form-inline") do %>
+  <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= Movie.all.pluck(:name) %>">
+    <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a movie...", data: { "autocomplete-target": "searchInput" } %>
+  <br>
+  </div>
+    <%= submit_tag "Add", class: "bottom-button" %>
+<% end %>
+
+
+<br>
+<h1 class="text-center">My favorites</h1>
+
+
+<%# -----------------Affichage------------------------ %>
+
+<% movies = [] %>
+  <% Favorite.where(user_id: current_user.id).each do |favorite| %>
+    <% movies << favorite.movie_id %>
+<% end %>
+
+<div class="movie-container">
+  <% movies.each do |id| %>
+    <button type="button" class="card-movie background" id = "dragitem"
+            data-drag-target="card" data-movie-id="<%= Movie.where(id: id)[0].id %>"
+            data-bs-toggle="modal" data-bs-target="#filmsModal<%=Movie.where(id: id)[0].id%>" >
+      <img src="<%= Movie.where(id: id)[0].poster %>" width="10%" />
+      <div class="card-movie-infos">
+        <h2 class="text-start overflow-visible"><%= Movie.where(id: id)[0].name %></h2>
+        <p class="text-start text-warning">
+          <%= Movie.where(id: id)[0].genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
+        </p>
+        <p class="text-start"><%= Movie.where(id: id)[0].year %>  ~  <%= Movie.where(id: id)[0].duration %> min  ~  <%= Movie.where(id: id)[0].rating %>/10 <i class="fa-solid fa-star"></i></p>
+      </div>
+    </button>
+  <% end %>
+</div>
+
+<br><br>
+
+<div>
+  <%# Modals %>
+  <% movies.each do |id| %>
+    <div class="modal fade" id="filmsModal<%=Movie.where(id: id)[0].id%>" tabindex="-1" aria-labelledby="filmsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark">
+
+          <div class="modal-body">
+            <img src= "<%= Movie.where(id: id)[0].poster %>" width="100%" height="400px" object-fit="cover" style="border-radius: 10px"/>
+            <div class="card-movie-infos">
+              <h2 class="mt-4"><strong><%= Movie.where(id: id)[0].name %></strong></h2>
+              <div>
+                <p class="text-start"><%= Movie.where(id: id)[0].genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <p><%= Movie.where(id: id)[0].year %> - <%= Movie.where(id: id)[0].duration %> min</p>
+              </div>
+
+              <hr>
+
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Casting</p>
+                <p><%= Movie.where(id: id)[0].actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+              </div>
+
+              <hr>
+
+              <div>
+                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Synopsis</p>
+                <p class="synopsis"><%= Movie.where(id: id)[0].synopsis %></p>
+              </div>
+
+              <hr>
+              <div>
+              <% if Movie.where(id: id)[0].platform? == true %>
+                  <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Available on</p>
+                  <p><%= Movie.where(id: id)[0].platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+                <% else %>
+                  <small>This movie is not free on any platform</small>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <div class="d-flex justify-content-between w-100">
+                  <p class="m-0">
+                    <%= link_to favorite_path(Favorite.where(user_id: current_user).where(movie_id: id)[0]), data: {turbo_method: "delete"} do %>
+                      <i class='fa-solid fa-trash-can m-0 trash'></i>
+                    <% end %>
+                  </p>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end%>
+  <br><br>
+</div>
