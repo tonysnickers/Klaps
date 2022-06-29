@@ -17,11 +17,21 @@
       </div>
     <% end %>
 
-  <div class="dashboard-card my-5">
+  <div class="dashboard-card mt-5">
     <div class="dahboard-card-content ">
       <div class="dashboard-option">
         <%= link_to friends_path, class: "text-decoration-none" do %>
           <p><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;Add friends</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-card mb-5">
+    <div class="dahboard-card-content ">
+      <div class="dashboard-option">
+        <%= link_to friendsfav_favorite_path(current_user), class: "text-decoration-none" do %>
+          <p><i class="fa-solid fa-heart"></i>&nbsp;&nbsp;My friends' favorites</p>
         <% end %>
       </div>
     </div>

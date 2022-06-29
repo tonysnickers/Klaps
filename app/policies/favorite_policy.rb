@@ -16,4 +16,9 @@ class FavoritePolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def friendsfav?
+    true
+  end
+
 end
