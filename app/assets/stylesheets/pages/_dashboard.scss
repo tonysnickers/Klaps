@@ -147,7 +147,17 @@
 
 // Smallest device
 @media (min-width: 323.61px) and (max-width: 575px) {
+  .img-bottom{
+    // position: relative;
+    // width: 309px;
+    // top: 86px;
+    // left: 71px;
 
+        position: relative;
+    width: 234px;
+    bottom: 7px;
+    left: 129px;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
