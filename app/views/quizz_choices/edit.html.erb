@@ -1,11 +1,11 @@
 <%= link_to "", change_step_quizz_choice_path, data: { 'turbo-method': :patch } , class:"fa-solid fa-angle-left fa-2x arrow edit-navbar link-none" %>
 
 <% if @quizz_choice.step == "initial" %>
-  <%= render "keyword", edit: false %>
-<% elsif @quizz_choice.step == "add_keyword" %>
   <%= render "duration", edit: false %>
 <% elsif @quizz_choice.step == "add_duration" %>
   <%= render "date", edit: false %>
-<% else %>
-  <%= render "actor" %>
+<% elsif @quizz_choice.step == "add_date" %>
+  <%= render "keyword", edit: false %>
+<% else @quizz_choice.step == "add_keyword" %>
+  <%= render "actor", edit: false %>
 <% end %>

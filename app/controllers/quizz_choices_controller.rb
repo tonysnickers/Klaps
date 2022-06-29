@@ -35,7 +35,7 @@ class QuizzChoicesController < ApplicationController
 
   def edit
     authorize @quizz_choice
-    keyword_list_params if @quizz_choice.step == "initial"
+    keyword_list_params if @quizz_choice.step == "add_date"
   end
 
   def change_step
