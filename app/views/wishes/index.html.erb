@@ -1,7 +1,4 @@
-<br><br>
 <h1 class="text-center">My wishlist</h1>
-
-<br>
 
 <% movies = [] %>
   <% Wish.where(user_id: current_user.id).each do |wish| %>
@@ -24,8 +21,6 @@
     </button>
   <% end %>
 </div>
-
-<br><br>
 
 <div>
   <%# Modals %>
