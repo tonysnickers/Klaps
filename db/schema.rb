@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_100704) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dashboards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_dashboards_on_movie_id"
+    t.index ["user_id"], name: "index_dashboards_on_user_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "movie_id", null: false
     t.bigint "user_id", null: false
@@ -123,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_100704) do
     t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
+  add_foreign_key "dashboards", "movies"
+  add_foreign_key "dashboards", "users"
   add_foreign_key "favorites", "movies"
   add_foreign_key "favorites", "users"
   add_foreign_key "friends", "users"
