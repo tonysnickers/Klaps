@@ -19,7 +19,7 @@
     <div class="d-flex friends">
       <p><%= fr.users_friend.username.capitalize %>
       <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
-        <i class='fa-solid fa-trash-can', style="color: red"></i>
+        <i class='fa-solid fa-trash-can trash-friend'></i>
       <% end %></p>
     </div>
 
