@@ -15,7 +15,7 @@ class WishesController < ApplicationController
   end
 
   def add
-    @wish = Wish.new(user: current_user, movie: Movie.where(name: params["q"])[0])
+    @wish = Wish.new(user: current_user, movie: Movie.where(name: params["q"]))
 
     if params["q"].empty?
       flash.alert = "You have to enter a title"
