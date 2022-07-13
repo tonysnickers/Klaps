@@ -17,4 +17,8 @@ class WishPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def add?
+    true
+  end
 end
