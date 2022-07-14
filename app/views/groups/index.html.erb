@@ -6,7 +6,7 @@
   <div class="text-center mx-3">
     <% @groups.each do |group| %>
       <div class="tag-button">
-        <%= link_to group.name.capitalize, group_path(group.id), class:'add-group'%>
+        <%= link_to group.name, group_path(group.id), class:'add-group'%>
       </div>
     <% end %>
   </div>
