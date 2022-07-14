@@ -40,34 +40,6 @@
       </div>
     </div>
 
-    <div>
-      <div class="text-center mx-3">
-        <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#keywordModal">
-          <% if @quizz_choice.keyword? == true %>
-            <h5><%= @quizz_choice.keyword.capitalize %></h5>
-          <% else %>
-            <small><em> Select a keyword </em></small>
-          <% end %>
-        </button>
-      </div>
-
-      <div class="modal fade" id="keywordModal" tabindex="-1"
-            aria-labelledby="keywordModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-          <div class="modal-content bg-dark">
-
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-              <%= render 'keyword', edit: true %>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div>
       <div class="text-center mx-3">
@@ -119,6 +91,35 @@
       </div>
     </div>
 
+    <div>
+      <div class="text-center mx-3">
+        <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#keywordModal">
+          <% if @quizz_choice.keyword? == true %>
+            <h5><%= @quizz_choice.keyword.capitalize %></h5>
+          <% else %>
+            <small><em> Select a keyword </em></small>
+          <% end %>
+        </button>
+      </div>
+
+      <div class="modal fade" id="keywordModal" tabindex="-1"
+            aria-labelledby="keywordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content bg-dark">
+
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <%= render 'keyword', edit: true %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div>
       <div class="text-center mx-3">
         <button type="button" class="recap" data-bs-toggle="modal" data-bs-target="#actorModal">
