@@ -15,11 +15,11 @@
       <div class="bottom-bun"></div>
     </label>
 
-    <div class="nav py-4" style="z-index: 4;">
+    <div class="nav py-4 menu">
       <div class="d-flex flex-column justify-content-start">
-        <%= link_to "HOME", dashboard_path, data: {turbo: 'false'}, class:'text-decoration-none text-color' %>
+        <%= link_to "HOME", dashboard_path, data: {turbo: 'false'}, class:'menu-items' %>
 
-        <%= link_to "LOGOUT", destroy_user_session_path, data: {turbo_method: :delete}, class:'text-decoration-none text-color' %>
+        <%= link_to "LOGOUT", destroy_user_session_path, data: {turbo_method: :delete}, class:'menu-items' %>
       </div>
     </div>
   <% end %>

@@ -15,10 +15,10 @@
 
 <h2 class="text-center my-4">Your friends</h2>
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+<div class ="friends" style="display: flex; flex-wrap: wrap; justify-content: center;">
 
   <% current_user.friends.each do |fr| %>
-    <div class="d-flex friends">
+    <div class="d-flex friend">
       <p><%= fr.users_friend.username.capitalize %>
       <%= link_to friend_path(fr), data: {turbo_method: "delete"} do %>
         <i class='fa-solid fa-trash-can trash-friend'></i>
@@ -28,7 +28,7 @@
   <% end %>
 
   <% Friend.where(users_friend: current_user).each do |n| %>
-    <div class="d-flex friends">
+    <div class="d-flex friend">
       <p><%= User.find(n.user_id).username.capitalize %>
       <%= link_to friend_path(n), data: {turbo_method: "delete"} do %>
         <i class='fa-solid fa-trash-can', style="color: red"></i>

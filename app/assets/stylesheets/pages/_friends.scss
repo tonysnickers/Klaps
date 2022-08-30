@@ -1,4 +1,8 @@
 .friends {
+  margin-bottom: 90px;
+}
+
+.friend {
   border: 1px solid $yellow;
   border-radius: 10px;
   background-color: rgba(242, 194, 66, 0.2);
@@ -7,7 +11,7 @@
   border: 2px solid #f2c242;
   text-align: center;
 }
-.friends > p {
+.friend > p {
   margin-bottom: 0 !important;
   color: #fff;
 }
