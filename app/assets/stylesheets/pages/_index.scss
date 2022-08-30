@@ -4,3 +4,18 @@
 @import "friends";
 @import "home";
 @import "results";
+
+body {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.super-container {
+  width: 367px;
+  height: 90vh;
+  margin: auto;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  overflow: auto;
+  cursor: grab;
+}

@@ -43,16 +43,15 @@
   </head>
 
   <body>
-
+  <div class="super-container">
     <% if controller_name != 'sessions' && action_name != 'home' && action_name != 'edit' %>
       <%= render "shared/navbar" %>
     <% end %>
-
-    <%= render "shared/flashes" %>
-
     <div class="container">
       <%= yield %>
+      <%= render "shared/flashes" %>
     </div>
+  </div>
 
   </body>
 </html>

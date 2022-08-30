@@ -5,7 +5,9 @@
     <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a movie...", data: { "autocomplete-target": "searchInput" } %>
   <br>
   </div>
-    <%= submit_tag "Add", class: "bottom-button" %>
+    <div class="abs-pos">
+      <%= submit_tag "Add", class: "bottom-button" %>
+    </div>
 <% end %>
 
 
