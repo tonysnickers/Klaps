@@ -1,0 +1,17 @@
+// Details of a film (wishlist, favorites, results)
+
+.modal-content {
+  width: 360px;
+  height: 640px;
+  left: 70px;
+}
+
+
+// Modals at the end of the quiz
+
+.modal-fullscreen {
+  width: 365px;
+  height: 640px;
+  left: calc(((100vw - 360px)/2) - 70px);
+  top: 5.3vh;
+}
