@@ -50,10 +50,8 @@
         <% movies << wish.movie %>
       <% end %>
       <% if movies.empty? %>
-        <div class="card-carousel">
-          <div class="card-empty">
-            <p>No wishes here, take the quizz to add films</p>
-          </div>
+        <div class="card-empty">
+          <p>No wishes here, take the quizz to add films</p>
         </div>
       <% elsif movies.count == 1 %>
         <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
@@ -179,10 +177,8 @@
         <% faves << favorite.movie %>
       <% end %>
       <% if faves.empty? %>
-        <div class="card-carousel">
-          <div class="card-empty">
-            <p>No favorites yet, time to add some !</p>
-          </div>
+        <div class="card-empty">
+          <p>No favorites yet, time to add some !</p>
         </div>
       <% elsif faves.count == 1 %>
         <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">

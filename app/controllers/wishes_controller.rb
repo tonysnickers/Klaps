@@ -1,31 +1,36 @@
 class WishesController < ApplicationController
   def index
     @wishes = policy_scope(Wish)
-    @w = Wish.where(user_id: current_user.id)
-    @w.where(wish: true)
+    @wish = Wish.where(user_id: current_user.id)
+    @wish.where(wish: true)
   end
 
   def create
     @group = Group.find(params[:group_id])
-    @wishe = Wish.where(user: current_user, movie_id: params_wishe[:movie_id]).first_or_initialize
-    authorize @wishe
-    @wishe.save
+    @wish = Wish.where(user: current_user, movie_id: params_wish[:movie_id]).first_or_initialize
+    authorize @wish
+    @wish.save
     flash.alert = "Added to your wishlist!"
     redirect_to group_movies_path(@group)
   end
 
   def add
-    @wish = Wish.new(user: current_user, movie: Movie.where(name: params["q"]))
+    @movie_title = params["q"]
+    @movie = Movie.where(name: @movie_title)
+    @wish = Wish.new(user: current_user, movie: @movie.first)
 
-    if params["q"].empty?
+    if @movie_title.empty?
       flash.alert = "You have to enter a title"
-    elsif Movie.where(name: params["q"]).empty?
+    elsif @movie.empty?
       flash.alert = "Sorry, I don't know this movie..."
+    elsif Wish.where(user: current_user, movie_id: @movie.first.id).exists?
+      flash.alert = "Already in your wishlist"
     else
       flash.alert = "Added to your wishlist !"
       @wish.save!
     end
     authorize @wish
+    redirect_to wishes_path
   end
 
   def destroy
@@ -39,7 +44,7 @@ class WishesController < ApplicationController
 
   private
 
-  def params_wishe
+  def params_wish
     params.require(:wish).permit(:movie_id)
   end
 end
