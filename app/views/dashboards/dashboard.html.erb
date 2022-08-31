@@ -42,7 +42,7 @@
       <div class="d-flex justify-content-between mb-2">
         <h3 class="ms-3">My wishlist</h3>
         <%= link_to wishes_path, class: "text-decoration-none text-white-50" do %>
-          <h5 class="me-3">See all <i class="fa-solid fa-arrow-right-long"></i></h5>
+          <h5 class="mt-1">See all <i class="fa-solid fa-arrow-right-long"></i></h5>
         <% end %>
       </div>
       <% movies = [] %>
@@ -169,7 +169,7 @@
       <div class="d-flex justify-content-between mb-2">
         <h3 class="ms-3">My favorites</h3>
         <%= link_to favorites_path, class: "text-decoration-none text-white-50" do %>
-          <h5 class="me-3">See all <i class="fa-solid fa-arrow-right-long"></i></h5>
+          <h5 class="mt-1">See all <i class="fa-solid fa-arrow-right-long"></i></h5>
         <% end %>
       </div>
       <% faves = [] %>
@@ -181,7 +181,7 @@
           <p>No favorites yet, time to add some !</p>
         </div>
       <% elsif faves.count == 1 %>
-        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+        <div id="carouselNoTouchingBis" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="<%= faves[0].poster %>" class="ms-3" style="height: 45%" width="45%">
@@ -189,7 +189,7 @@
           </div>
         </div>
       <% elsif faves.count == 2 %>
-        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+        <div id="carouselNoTouchingBis" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="<%= faves[0].poster %>" class="ms-3" style="height: 45%" width="45%">
@@ -197,7 +197,7 @@
             </div>
         </div>
       <% elsif faves.count == 3 %>
-        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+        <div id="carouselNoTouchingBis" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="<%= faves[0].poster %>" class="ms-3" style="height: 45%" width="45%">
@@ -206,17 +206,17 @@
             <div class="carousel-item">
               <img src="<%= faves[2].poster %>" class="ms-3" style="height: 45%" width="45%">
             </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="prev">
             <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span> %>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="next">
             <%# <span class="carousel-control-next-icon" aria-hidden="false"></span> %>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
       <% elsif faves.count == 4 %>
-        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+        <div id="carouselNoTouchingBis" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="<%= faves[0].poster %>" class="ms-3" style="height: 45%" width="45%">
@@ -227,17 +227,17 @@
               <img src="<%= faves[3].poster %>" style="height: 45%" width="45%">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="prev">
             <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span> %>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="next">
             <%# <span class="carousel-control-next-icon" aria-hidden="false"></span> %>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
       <% elsif faves.count == 5 %>
-        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+        <div id="carouselNoTouchingBis" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="<%= faves[0].poster %>" class="ms-3" style="height: 45%" width="45%">
@@ -251,17 +251,17 @@
               <img src="<%= faves[4].poster %>" class="ms-3" style="height: 45%" width="45%">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="prev">
             <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span> %>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="next">
             <%# <span class="carousel-control-next-icon" aria-hidden="false"></span> %>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
       <% else %>
-        <div id="carouselNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+        <div id="carouselNoTouchingBis" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="<%= faves[0].poster %>" class="ms-3" style="height: 45%" width="45%">
@@ -276,11 +276,11 @@
               <img src="<%= faves[5].poster %>" style="height: 45%" width="45%">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="prev">
             <%# <span class="carousel-control-prev-icon" aria-hidden="true"></span> %>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouching" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselNoTouchingBis" data-bs-slide="next">
             <%# <span class="carousel-control-next-icon" aria-hidden="false"></span> %>
             <span class="visually-hidden">Next</span>
           </button>

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'dashboard', to: 'dashboards#dashboard'
   get 'dashboard/index', to: 'dashboards#index'
-  get 'favorites/new'
   post 'wishes', to: 'wishes#add'
 
   resources :groups, only: %i[index show new create update results] do
