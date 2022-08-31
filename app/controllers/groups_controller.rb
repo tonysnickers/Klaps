@@ -83,24 +83,20 @@ class GroupsController < ApplicationController
     end
     @final = Movie.find(h.sort_by {|k, v| v}.reverse.first.first)
 
-    total_points = OrderedChoice.where(group: @group).sum(:point)
-    points_to_achieve = @group.group_users.count * 15
+    @group.total_points = OrderedChoice.where(group: @group).sum(:point)
+    # @group.points_to_achieve = @group.group_users.count * 15
+    @group.save
 
-
-    if (points_to_achieve - total_points) > 1
-      wait_for_the_others = true
-      redirect_to results_group_path(@group, wait_for_the_others: wait_for_the_others)
+    if (@group.points_to_achieve - @group.total_points) > 1
+      redirect_to group_movies_path(@group, wait_for_the_others: true)
     else
-      wait_for_the_others = false
-      redirect_to results_group_path(@group, wait_for_the_others: wait_for_the_others)
+      redirect_to results_group_path(@group)
     end
-
   end
 
   def results
     authorize @group
     @final = find_result
-    # redirect_to results_group_path(@group)
   end
 
   private
