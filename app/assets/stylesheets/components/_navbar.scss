@@ -50,6 +50,14 @@
   font-size: 1.5rem;
 }
 
+.menu {
+  position: absolute;
+  top: -115px;
+  width: auto;
+  height: 150px;
+  z-index: 4;
+}
+
 .menu-items {
   margin-top: 12px;
   color: #353535;
@@ -98,12 +106,4 @@
   position: absolute;
   top: 8px;
   z-index: 1000;
-}
-
-.menu {
-  position: absolute;
-  top: -115px;
-  width: 365px;
-  height: 150px;
-  z-index: 4;
 }

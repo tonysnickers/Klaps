@@ -6,17 +6,16 @@
 @import "results";
 @import "friendsfav";
 
+html {
+  min-height: 100vh;
+}
+
 body {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  min-height: 100vh;
 }
 
 .super-container {
   position: relative;
-  width: 367px;
-  height: 90vh;
-  margin: auto;
-  border: 1px solid lightgray;
   border-radius: 4px;
   overflow: auto;
 }
