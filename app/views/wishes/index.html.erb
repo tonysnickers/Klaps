@@ -1,5 +1,4 @@
 <h3 class="my-4">Add to my wishlist</h3>
-  <%# comment intégrer la méthode "add" du controller wishes dans le form ci-dessous / le form rentre tjr dans la méthode POST create %>
 <%= form_tag(wishes_path, method: 'post', class: "form-inline") do %>
   <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= Movie.all.pluck(:name) %>">
     <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a movie...", data: { "autocomplete-target": "searchInput" } %>
