@@ -1,5 +1,4 @@
 <h3 class="my-4">Add to my wishlist</h3>
-  <%# comment intégrer la méthode "add" du controller wishes dans le form ci-dessous / le form rentre tjr dans la méthode POST create %>
 <%= form_tag(wishes_path, method: 'post', class: "form-inline") do %>
   <div data-controller="autocomplete" class="form-search search-data" data-autocomplete-choices-value="<%= Movie.all.pluck(:name) %>">
     <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a movie...", data: { "autocomplete-target": "searchInput" } %>
@@ -19,22 +18,31 @@
     <% movies << wish.movie_id %>
 <% end %>
 
-<div class="movie-container">
-  <% movies.each do |id| %>
-    <button type="button" class="card-movie background" id = "dragitem"
-            data-drag-target="card" data-movie-id="<%= Movie.where(id: id)[0].id %>"
-            data-bs-toggle="modal" data-bs-target="#filmsModal<%=Movie.where(id: id)[0].id%>" >
-      <img src="<%= Movie.where(id: id)[0].poster %>" width="10%" />
-      <div class="card-movie-infos">
-        <h2 class="text-start overflow-visible"><%= Movie.where(id: id)[0].name %></h2>
-        <p class="text-start text-warning">
-          <%= Movie.where(id: id)[0].genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
-        </p>
-        <p class="text-start"><%= Movie.where(id: id)[0].year %>  ~  <%= Movie.where(id: id)[0].duration %> min  ~  <%= Movie.where(id: id)[0].rating %>/10 <i class="fa-solid fa-star"></i></p>
-      </div>
-    </button>
-  <% end %>
-</div>
+<% if movies.empty? %>
+
+  <br>
+  <p style="text-align: center"><%= "You have no wishes yet" %></p>
+
+<% else %>
+
+  <div class="movie-container">
+    <% movies.each do |id| %>
+      <button type="button" class="card-movie background" id = "dragitem"
+              data-drag-target="card" data-movie-id="<%= Movie.where(id: id)[0].id %>"
+              data-bs-toggle="modal" data-bs-target="#filmsModal<%=Movie.where(id: id)[0].id%>" >
+        <img src="<%= Movie.where(id: id)[0].poster %>" width="10%" />
+        <div class="card-movie-infos">
+          <h2 class="text-start overflow-visible"><%= Movie.where(id: id)[0].name %></h2>
+          <p class="text-start genres-infos">
+            <%= Movie.where(id: id)[0].genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
+          </p>
+          <p class="text-start other-infos"><%= Movie.where(id: id)[0].year %>  ~  <%= Movie.where(id: id)[0].duration %> min  ~  <%= Movie.where(id: id)[0].rating %>/10 <i class="fa-solid fa-star"></i></p>
+        </div>
+      </button>
+    <% end %>
+  </div>
+
+<% end %>
 
 <div>
   <%# Modals %>

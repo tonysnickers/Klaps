@@ -7,17 +7,15 @@
 <h3 class="my-5">Any wish ?</h3>
 
 <%= form_tag(add_keyword_quizz_choice_path(@quizz_choice), method: 'patch', class: "form-inline") do %>
-  <%# <div class="d-flex justify-content-center w-100 fs-1"> %>
-    <div class="form-search search-data" data-autocomplete-choices-value="<%= @keywords_list %> " data-controller="autocomplete">
-      <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a keyword...", data: { "autocomplete-target": "searchInput" } %>
-    </div>
+  <div class="form-search search-data" data-autocomplete-choices-value="<%= @keywords_list %> " data-controller="autocomplete">
+    <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search a keyword...", data: { "autocomplete-target": "searchInput" } %>
+  </div>
 
-    <% if edit %>
-      <%= hidden_field_tag :edit, "true" %>
-    <% end %>
+  <% if edit %>
+    <%= hidden_field_tag :edit, "true" %>
+  <% end %>
 
-    <%= submit_tag "Next", class: "bottom-button" %>
-  <%# </div> %>
+  <%= submit_tag "Next", class: "bottom-button" %>
 <% end %>
 
 <br><br>

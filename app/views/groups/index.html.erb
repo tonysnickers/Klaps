@@ -5,10 +5,10 @@
 
   <div class="text-center mx-3">
     <% @groups.each do |group| %>
-      <div class="tag-button">
-        <%= link_to group.name, group_path(group.id), class:'add-group'%>
-      </div>
+      <%= link_to group_path(group.id), class:'add-group' do %>
+        <p><%= group.name %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
-<%= link_to "New game", new_group_path(solo: false), class:'group-button pos', style: 'margin: 0 -12px;' %>
+<%= link_to "New game", new_group_path(solo: false), class:'bottom-button' %>

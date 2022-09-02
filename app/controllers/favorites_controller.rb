@@ -18,11 +18,16 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.new(movie: Movie.where(name: params["q"])[0], user: current_user)
-    if params["q"].empty?
+    @movie_title = params["q"]
+    @movie = Movie.where(name: @movie_title)
+    @favorite = Favorite.new(user: current_user, movie: @movie.first)
+
+    if @movie_title.empty?
       flash.alert = "You have to enter a title"
-    elsif Movie.where(name: params["q"]).empty?
+    elsif @movie.empty?
       flash.alert = "Sorry, I don't know this movie..."
+    elsif Favorite.where(user: current_user, movie_id: @movie.first.id).exists?
+      flash.alert = "Already in your wishlist"
     else
       flash.alert = "Added to your favorites !"
       @favorite.save!

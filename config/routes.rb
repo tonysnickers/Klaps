@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
-  get 'favorites/new'
-  # get 'friends/index'
-  # get 'friends/new'
-  # get 'friends/create'
-  # get 'friends/delete'
-  # get 'movie_seens/index'
-  # get 'wishes/index'
   devise_for :users
   root to: "pages#home"
   get 'dashboard', to: 'dashboards#dashboard'
   get 'dashboard/index', to: 'dashboards#index'
+  post 'wishes', to: 'wishes#add'
 
   resources :groups, only: %i[index show new create update results] do
     resources :quizz_choices, only: %i[new create index]
@@ -32,11 +26,7 @@ Rails.application.routes.draw do
 
   resources :friends, only: %i[index new create destroy]
   resources :movie_seens, only: %i[create index]
-  resources :wishes, only: %i[index new create destroy add]
-  #   member do
-  #     post :add
-  #   end
-  # end
+  resources :wishes, only: %i[index new destroy]
   resources :favorites, only: %i[index new create destroy] do
     member do
       get :friendsfav

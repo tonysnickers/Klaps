@@ -1,97 +1,116 @@
-<div class="progress progress-index-top my-4">
-  <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
+<% if params[:wait_for_the_others] == "true" %>
 
-<h1 class="title">Order your movies</h1>
-<% n = 0 %>
-<% base_poster_url = "https://image.tmdb.org/t/p/original" %>
-<br>
+  <div class="text-center">
+    <br><br><br><h6>Wait for the others...</h6>
+    <br>
+    <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 
-<div class="movie-container" id="draglist" data-controller = "drag">
-  <% @movies.compact.each do |m| %>
-    <button type="button" class="card-movie background" id = "dragitem"
-            data-drag-target="card" data-movie-id="<%= m.id %>"
-            data-bs-toggle="modal" data-bs-target="#filmsModal<%=m.id%>" >
-      <img src="<%= m.poster %>" width="10%" />
-      <div class="card-movie-infos">
-        <h2 class="text-start overflow-visible"><%= m.name %></h2>
-        <p class="text-start">
-          <%= m.genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
-        </p>
-        <p class="text-start"><%= m.year %> ~ <%= m.duration %> min ~ <%= m.rating %>/10 <i class="fa-solid fa-star"></i></p>
-      </div>
-    </button>
-  <% end %>
+  <script>
+    setTimeout(function() {
+      location.reload();
+    }, 5000);
+  </script>
 
-  <%= simple_form_for :ordered_choice, url: compute_results_group_path(@group), data: {turbo_method: "post"} do |f|%>
-    <%= f.input :movie_order, input_html: {data: {drag_target: "input"}, type: "hidden", value: @movies.pluck(:id)}, label: false%>
-    <%#= f.input :user, value: current_user %>
-    <div style="margin-bottom:92px;"></div>
-    <%= f.submit "Vote!", class: "bottom-button"%>
-  <% end %>
-</div>
+<% else %>
+
+  <div class="progress progress-index-top my-4">
+    <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <h1 class="title">Order your movies</h1>
+  <% n = 0 %>
+  <% base_poster_url = "https://image.tmdb.org/t/p/original" %>
+  <br>
+
+  <div class="movie-container" id="draglist" data-controller = "drag">
+    <% @movies.compact.each do |m| %>
+      <button type="button" class="card-movie background" id = "dragitem"
+              data-drag-target="card" data-movie-id="<%= m.id %>"
+              data-bs-toggle="modal" data-bs-target="#filmsModal<%=m.id%>" >
+        <img src="<%= m.poster %>" width="10%" />
+        <div class="card-movie-infos">
+          <h2 class="text-start overflow-visible"><%= m.name %></h2>
+          <p class="text-start">
+            <%= m.genre[0...4].to_s.gsub(/[\[\]\"]/,"") %>
+          </p>
+          <p class="text-start"><%= m.year %> ~ <%= m.duration %> min ~ <%= m.rating %>/10 <i class="fa-solid fa-star"></i></p>
+        </div>
+      </button>
+    <% end %>
+
+    <%= simple_form_for :ordered_choice, url: compute_results_group_path(@group), data: {turbo_method: "post"} do |f|%>
+      <%= f.input :movie_order, input_html: {data: {drag_target: "input"}, type: "hidden", value: @movies.pluck(:id)}, label: false%>
+      <div style="margin-bottom:92px;"></div>
+      <%= f.submit "Vote!", class: "bottom-button"%>
+    <% end %>
+  </div>
 
 
-<div>
-  <%# Modals %>
-  <% @movies.each do |m| %>
-    <div class="modal fade" id="filmsModal<%=m.id%>" tabindex="-1" aria-labelledby="filmsModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content bg-dark">
+  <div>
+    <%# Modals %>
+    <% @movies.each do |m| %>
+      <div class="modal fade" id="filmsModal<%=m.id%>" tabindex="-1" aria-labelledby="filmsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content bg-dark">
 
-          <div class="modal-body">
-            <img src= "<%= m.poster %>" width="100%" height="400px" object-fit="cover" style="border-radius: 10px" />
-            <div class="card-movie-infos">
-              <h2 class="mt-4"><strong><%= m.name %></strong></h2>
-              <div>
-                <p class="text-start"><%= m.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
-                <p><%= m.year %> - <%= m.duration %> min.</p>
-              </div>
+            <div class="modal-body">
+              <img src= "<%= m.poster %>" width="100%" height="400px" object-fit="cover" style="border-radius: 10px" />
+              <div class="card-movie-infos">
+                <h2 class="mt-4"><strong><%= m.name %></strong></h2>
+                <div>
+                  <p class="text-start"><%= m.genre.to_s.gsub(/[\[\]\"]/,"") %></p>
+                  <p><%= m.year %> - <%= m.duration %> min.</p>
+                </div>
 
-              <hr>
+                <hr>
 
-              <div>
-                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Casting</p>
-                <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
-              </div>
+                <div>
+                  <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Casting</p>
+                  <p><%= m.actor.first(3).to_s.gsub(/[\[\]\"]/,"") %></p>
+                </div>
 
-              <hr>
+                <hr>
 
-              <div>
-                <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Synopsis</p>
-                <p><%= m.synopsis %></p>
-              </div>
+                <div>
+                  <p class="fw-semibold text-decoration-underline fs-6 wish-show-small-titles">Synopsis</p>
+                  <p><%= m.synopsis %></p>
+                </div>
 
-              <hr>
-              <div>
-                <% if m.platform? == true %>
-                  <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
-                  <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
-                <% else %>
-                  <small>This movie is not free on any platform</small>
-                <% end %>
+                <hr>
+                <div>
+                  <% if m.platform? == true %>
+                    <p class="fw-semibold text-decoration-underline fs-6">Available on</p>
+                    <p><%= m.platform.to_s.gsub(/[\[\]\"]/,"") %></p>
+                  <% else %>
+                    <small>This movie is not free on any platform</small>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
 
-            <% if Wish.where(user_id: current_user.id).map do |n| n.movie_id end.include?(m.id) %>
-            <hr style="margin-top: 0">
-            <div class="modal-footer-one justify-content-between">
-              <%= link_to wish_path(Wish.where(user_id: current_user.id).where(movie_id: m.id)[0]), data: {turbo_method: 'delete'} do %>
-                <i class="fa fa-heart" style="font-size: 24px" aria-hidden="true"></i>
+              <% if Wish.where(user_id: current_user.id).map do |n| n.movie_id end.include?(m.id) %>
+              <hr style="margin-top: 0">
+              <div class="modal-footer-one justify-content-between">
+                <%= link_to wish_path(Wish.where(user_id: current_user.id).where(movie_id: m.id)[0]), data: {turbo_method: 'delete'} do %>
+                  <i class="fa fa-heart" style="font-size: 24px" aria-hidden="true"></i>
+                <% end %>
+              <% else %>
+              <hr style="margin-top: 0">
+              <div class="modal-footer-two justify-content-between">
+                <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
+                  <i class="fa fa-heart" style="font-size: 24px" aria-hidden="true"></i>
+                <% end %>
               <% end %>
-            <% else %>
-            <hr style="margin-top: 0">
-            <div class="modal-footer-two justify-content-between">
-              <%= link_to group_wishes_path(@group, wish: { movie_id: m.id }), data: {turbo_method: 'post'} do %>
-                <i class="fa fa-heart" style="font-size: 24px" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
 
+          </div>
         </div>
       </div>
-    </div>
-  <% end%>
-</div>
+    <% end%>
+  </div>
+
+<% end %>

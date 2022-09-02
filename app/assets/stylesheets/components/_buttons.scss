@@ -1,36 +1,19 @@
-.tag-button {
-  text-decoration: none;
-  color: $darkgray;
-  border: 1px solid  $yellow;
-  border-radius: 15px;
-  padding: 10px 20px;
-  margin-top: 13px;
-}
-
-.tag-button:hover {
-  color: $darkgray;
-}
-
-.tag-button:focus {
-  background-color: $yellow;
-  font-weight: bold;
-  color: $darkgray;
-}
-
 .bottom-button {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  bottom: -1px;
+  left: 0px;
   padding: 20px;
-  color: $darkgray;
-  text-align: center;
-  background-color: $yellow;
-  text-decoration: none;
-  font-weight: bold;
-  text-decoration-style: none;
   border: none;
+  border-bottom: 1px solid lightgray;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   font-size: 20px;
+  font-weight: bold;
+  background-color: $yellow;
+  color: $darkgray;
+  text-decoration: none;
+  text-align: center;
+
   a {
     text-decoration: none;
     color: black;
@@ -54,31 +37,22 @@
   color: $darkgray;
 }
 
-.group-button {
-  text-align: center;
-  border: 1px solid $yellow;
-  background-color: $yellow;
-  text-decoration: none;
-  color: $darkgray;
-  font-size: 20px;
-  font-weight: bold;
-  // opacity: .7;
-}
-
-// .group-button:focus {
-//   opacity: 1;
-//   color: $white;
-//   background-color: $yellow;
-// }
-
 .add-group {
+  width: 200px;
   font-size: 20px;
-  color:  $yellow;
+  color: $yellow;
   text-decoration: none;
 }
 
 .add-group:hover {
   color: $yellow;
+}
+
+.add-group p {
+  margin-top: 13px;
+  border: 1px solid $yellow;
+  border-radius: 15px;
+  padding: 10px 20px;
 }
 
 .delete {
@@ -89,13 +63,6 @@
 .delete:active {
   background-color: red;
   color: #fff;
-}
-
-.pos {
-  padding: 20px;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
 }
 
 .render-button {
@@ -186,8 +153,6 @@
     border: none;
   }
 }
-
-
 
 .trash {
   color: $light-gray;

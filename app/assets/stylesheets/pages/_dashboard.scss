@@ -3,28 +3,26 @@
 }
 
 .dashboard-header {
-  // border: 1px solid $yellow;
   border-radius: $radius;
   background-color: $yellow;
-  margin: 0 15px;
   width: 90%;
-  height: 200px;
+  height: auto;
+  margin: auto;
+  text-align: center;
 
   h1 {
-    padding-top: 5px;
+    padding: 5px 0;
     color: #353535;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
   }
 
   .img {
-    text-align: center;
-  }
-
-  .img {
-    margin-top: -1px;
-    margin-left: -4px;
-    width: 103%;
-    height: 75%;
-    border-radius: $radius $radius 0 0;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -141,41 +139,4 @@
     margin-bottom: 0px !important;
     color: rgba(255, 255, 255, 1);
   }
-}
-
-/* -------------------------------------------------------------------------- */
-
-// Smallest device
-@media (min-width: 323.61px) and (max-width: 575px) {
-  .img-bottom{
-    // position: relative;
-    // width: 309px;
-    // top: 86px;
-    // left: 71px;
-
-        position: relative;
-    width: 234px;
-    bottom: 7px;
-    left: 129px;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-
 }

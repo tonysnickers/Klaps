@@ -4,3 +4,14 @@
 @import "friends";
 @import "home";
 @import "results";
+@import "friendsfav";
+
+html {
+  min-height: 100vh;
+}
+
+.super-container {
+  position: relative;
+  border-radius: 4px;
+  overflow: auto;
+}
